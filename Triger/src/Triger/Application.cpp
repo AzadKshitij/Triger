@@ -1,7 +1,8 @@
 #include "trpch.h"
 
  #include "Application.h"
-#include "Events/ApplicationEvent.h"
+#include "Triger/Events/ApplicationEvent.h"
+#include "Triger/Input.h"
 #include "Triger/Log.h"
 
 #include "glad/glad.h"

@@ -150,9 +150,11 @@
     <ClInclude Include="src\Triger\Events\MouseEvent.h" />
     <ClInclude Include="src\Triger\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Triger\Input.h" />
+    <ClInclude Include="src\Triger\KeyCodes.h" />
     <ClInclude Include="src\Triger\Layers\Layer.h" />
     <ClInclude Include="src\Triger\Layers\LayerStack.h" />
     <ClInclude Include="src\Triger\Log.h" />
+    <ClInclude Include="src\Triger\MouseButtonCodes.h" />
     <ClInclude Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h" />

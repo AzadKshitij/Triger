@@ -11,5 +11,9 @@ of application.
 #include "Triger/Log.h"
 #include "Triger/Layers/Layer.h"
 
+#include "Triger/Input.h"
+#include "Triger/KeyCodes.h"
+#include "Triger/MouseButtonCodes.h"
+
 // ------------------------ Entry Point ------------------------
 #include "Triger/EntryPoint.h"

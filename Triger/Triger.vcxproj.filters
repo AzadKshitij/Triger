@@ -70,6 +70,8 @@
     <ClInclude Include="src\trpch.h" />
     <ClInclude Include="src\Triger\Input.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Triger\KeyCodes.h" />
+    <ClInclude Include="src\Triger\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
