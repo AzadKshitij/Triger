@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Triger">
+      <UniqueIdentifier>{729A1AD4-5E3C-45AA-47F7-58FE3338CCFA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triger\Events">
+      <UniqueIdentifier>{16D2AF8D-8292-2BC4-4BCD-7441B74C70A0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triger\Platform">
+      <UniqueIdentifier>{06B70AD5-7242-7899-7B53-FB8DE75DD499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triger\Platform\Windows">
+      <UniqueIdentifier>{4007CA74-AC3E-120C-B548-762F21FF3805}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Triger.h" />
+    <ClInclude Include="src\Triger\Application.h">
+      <Filter>Triger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Core.h">
+      <Filter>Triger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\EntryPoint.h">
+      <Filter>Triger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Events\ApplicationEvent.h">
+      <Filter>Triger\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Events\Event.h">
+      <Filter>Triger\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Events\KeyEvent.h">
+      <Filter>Triger\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Events\MouseEvent.h">
+      <Filter>Triger\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Log.h">
+      <Filter>Triger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h">
+      <Filter>Triger\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Window.h">
+      <Filter>Triger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Triger\Application.cpp">
+      <Filter>Triger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Log.cpp">
+      <Filter>Triger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Triger\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\trpch.cpp" />
+  </ItemGroup>
+</Project>

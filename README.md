@@ -1,2 +1,2 @@
 # Triger
-The engine to make any graphic software mostly Games 
+A game engine build using C++ and OpenGL 
