@@ -62,8 +62,6 @@ namespace Triger
 		
 		while (m_Running)
 		{
-			// m_Window->OnUpdate();
-			//TR_TRACE(e);
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)

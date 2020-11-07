@@ -15,10 +15,12 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Triger/vendor/GLFW/include"
 IncludeDir["Glad"] = "Triger/vendor/Glad/include"
 IncludeDir["ImGui"] = "Triger/vendor/ImGui"
+group "Dependencies"
+	include "Triger/vendor/GLFW"
+	include "Triger/vendor/Glad"
+	include "Triger/vendor/ImGui"
 
-include "Triger/vendor/GLFW"
-include "Triger/vendor/Glad"
-include "Triger/vendor/ImGui"
+group ""
 
 
 project "Triger"
@@ -85,7 +87,7 @@ project "Triger"
 		buildoptions "/MD"
 		optimize "On"
 
-startproject "Sandbox"
+project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"

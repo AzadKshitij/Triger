@@ -175,6 +175,21 @@ namespace Triger
 				MouseMovedEvent event((float)xPos, (float)yPos);
 				data.EventCallback(event);
 			});
+		/*
+		*  @param[in] window The window whose callback to set.
+		*  @param[in] callback The new callback, or `NULL` to remove the currently set
+		*  callback.
+		*  @return The previously set callback, or `NULL` if no callback was set or the
+		*  library had not been [initialized](@ref intro_init).
+		*/
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+			});
 
 
 

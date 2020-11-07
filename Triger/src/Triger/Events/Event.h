@@ -25,7 +25,7 @@ namespace Triger {
 		AppTick, AppUpdate, AppRender,
 
 		// This Events are Covered in KeyEvent.h file
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		
 		// This Events are Covered in MouseEvent.h file
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled

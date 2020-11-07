@@ -7,11 +7,17 @@
     <Filter Include="Triger\Events">
       <UniqueIdentifier>{16D2AF8D-8292-2BC4-4BCD-7441B74C70A0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Triger\ImGui">
+      <UniqueIdentifier>{1C9D9D42-0800-2DE7-B185-659D9DC7F869}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Triger\Layers">
       <UniqueIdentifier>{F1BC929C-5D7D-0ED3-26B8-5750923753AF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Triger\Platform">
       <UniqueIdentifier>{06B70AD5-7242-7899-7B53-FB8DE75DD499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triger\Platform\OpenGL">
+      <UniqueIdentifier>{7A7DDE00-6677-0753-4FE4-9D633B7D6DBF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Triger\Platform\Windows">
       <UniqueIdentifier>{4007CA74-AC3E-120C-B548-762F21FF3805}</UniqueIdentifier>
@@ -40,6 +46,9 @@
     <ClInclude Include="src\Triger\Events\MouseEvent.h">
       <Filter>Triger\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\ImGui\ImGuiLayer.h">
+      <Filter>Triger\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Triger\Layers\Layer.h">
       <Filter>Triger\Layers</Filter>
     </ClInclude>
@@ -49,6 +58,9 @@
     <ClInclude Include="src\Triger\Log.h">
       <Filter>Triger</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Triger\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h">
       <Filter>Triger\Platform\Windows</Filter>
     </ClInclude>
@@ -56,12 +68,13 @@
       <Filter>Triger</Filter>
     </ClInclude>
     <ClInclude Include="src\trpch.h" />
-    <ClInclude Include="src\Triger\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
       <Filter>Triger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp">
+      <Filter>Triger\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\Layers\Layer.cpp">
       <Filter>Triger\Layers</Filter>
@@ -72,11 +85,12 @@
     <ClCompile Include="src\Triger\Log.cpp">
       <Filter>Triger</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Triger\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp">
       <Filter>Triger\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\trpch.cpp" />
-    <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

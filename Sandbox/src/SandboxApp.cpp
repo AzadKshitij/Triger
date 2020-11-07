@@ -11,7 +11,7 @@ public:
 
 	void OnUpdate() override
 	{
-		TR_INFO("ExampleLayer::Update");
+		//TR_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Triger::Event& event) override
