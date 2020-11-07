@@ -4,7 +4,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Triger/Log.h"
 
-#include <GLFW/glfw3.h>
+#include "glad/glad.h"
+
 
 namespace Triger
 {

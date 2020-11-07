@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Triger/vendor/GLFW/include"
+IncludeDir["Glad"] = "Triger/vendor/Glad/include"
+IncludeDir["ImGui"] = "Triger/vendor/ImGui"
 
 include "Triger/vendor/GLFW"
+include "Triger/vendor/Glad"
+include "Triger/vendor/ImGui"
 
 
 project "Triger"
@@ -39,12 +43,16 @@ project "Triger"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/vendor/GLFW/include"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -56,7 +64,8 @@ project "Triger"
 		defines
 		{
 			"TR_PLATFORM_WINDOWS",
-			"TR_BUILD_DLL"
+			"TR_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		
