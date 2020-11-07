@@ -16,6 +16,8 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Triger/vendor/GLFW/include"
 IncludeDir["Glad"] = "Triger/vendor/Glad/include"
 IncludeDir["ImGui"] = "Triger/vendor/ImGui"
+IncludeDir["glm"] = "Triger/vendor/glm"
+
 group "Dependencies"
 	include "Triger/vendor/GLFW"
 	include "Triger/vendor/Glad"
@@ -27,9 +29,11 @@ group ""
 project "Triger"
 
 	location "Triger"
-	kind "SharedLib"
+	-- kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -40,7 +44,14 @@ project "Triger"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -49,7 +60,8 @@ project "Triger"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -61,7 +73,6 @@ project "Triger"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -76,23 +87,24 @@ project "Triger"
 	filter "configurations:Debug"
 		defines "TR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -106,7 +118,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Triger/vendor/spdlog/include",
-		"Triger/src"
+		"Triger/src",
+		"Triger/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -115,29 +129,28 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
 		{
 			"TR_PLATFORM_WINDOWS"
 		}
-		postbuildcommands
-		{
-			("{COPY} ../bin/" .. outputdir .. "/Triger/Triger.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
-		}
+		-- postbuildcommands
+		-- {
+		-- 	("{COPY} ../bin/" .. outputdir .. "/Triger/Triger.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
+		-- }
 
 	filter "configurations:Debug"
 		defines "TR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

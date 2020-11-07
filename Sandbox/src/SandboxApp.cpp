@@ -1,5 +1,7 @@
 #include "Triger.h"
 
+#include "ImGui/imgui.h"
+
 
 class ExampleLayer : public Triger::Layer
 {
@@ -14,6 +16,13 @@ public:
 		//TR_INFO("ExampleLayer::Update");
 		if (Triger::Input::IsKeyPressed(TR_KEY_TAB))
 			TR_TRACE("Tab key is pressed (poll)!");
+	}
+	
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Triger::Event& event) override
@@ -36,7 +45,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Triger::ImGuiLayer());
 	}
 
 	~Sandbox()
