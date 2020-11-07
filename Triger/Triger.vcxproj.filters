@@ -68,6 +68,8 @@
       <Filter>Triger</Filter>
     </ClInclude>
     <ClInclude Include="src\trpch.h" />
+    <ClInclude Include="src\Triger\Input.h" />
+    <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
@@ -92,5 +94,6 @@
       <Filter>Triger\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\trpch.cpp" />
+    <ClCompile Include="src\Triger\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>
