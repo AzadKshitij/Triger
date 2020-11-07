@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -106,6 +107,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -129,6 +131,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -148,6 +151,8 @@
     <ClInclude Include="src\Triger\Events\Event.h" />
     <ClInclude Include="src\Triger\Events\KeyEvent.h" />
     <ClInclude Include="src\Triger\Events\MouseEvent.h" />
+    <ClInclude Include="src\Triger\Layers\Layer.h" />
+    <ClInclude Include="src\Triger\Layers\LayerStack.h" />
     <ClInclude Include="src\Triger\Log.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Triger\Window.h" />
@@ -155,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp" />
+    <ClCompile Include="src\Triger\Layers\Layer.cpp" />
+    <ClCompile Include="src\Triger\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Triger\Log.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\trpch.cpp">

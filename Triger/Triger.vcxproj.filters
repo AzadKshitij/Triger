@@ -7,6 +7,9 @@
     <Filter Include="Triger\Events">
       <UniqueIdentifier>{16D2AF8D-8292-2BC4-4BCD-7441B74C70A0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Triger\Layers">
+      <UniqueIdentifier>{F1BC929C-5D7D-0ED3-26B8-5750923753AF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Triger\Platform">
       <UniqueIdentifier>{06B70AD5-7242-7899-7B53-FB8DE75DD499}</UniqueIdentifier>
     </Filter>
@@ -37,6 +40,12 @@
     <ClInclude Include="src\Triger\Events\MouseEvent.h">
       <Filter>Triger\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\Layers\Layer.h">
+      <Filter>Triger\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Layers\LayerStack.h">
+      <Filter>Triger\Layers</Filter>
+    </ClInclude>
     <ClInclude Include="src\Triger\Log.h">
       <Filter>Triger</Filter>
     </ClInclude>
@@ -51,6 +60,12 @@
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
       <Filter>Triger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Layers\Layer.cpp">
+      <Filter>Triger\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Layers\LayerStack.cpp">
+      <Filter>Triger\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\Log.cpp">
       <Filter>Triger</Filter>

@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Core.h"
-#include "Triger/Events/Event.h"
-#include "Triger/Events/ApplicationEvent.h"
 #include "Window.h"
+#include "Triger/Events/ApplicationEvent.h"
+#include "Triger/Events/Event.h"
+#include "Triger/Layers/LayerStack.h"
 
 namespace Triger
 {
@@ -16,12 +17,15 @@ namespace Triger
 		void Run();
 
 		void OnEvent(Event& e);
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 	private:
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 	};
 
 	/*

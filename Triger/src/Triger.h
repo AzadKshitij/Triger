@@ -7,6 +7,7 @@ of application.
 
 #include "Triger/Application.h"
 #include "Triger/Log.h"
+#include "Triger/Layers/Layer.h"
 
 // ------------------------ Entry Point ------------------------
 #include "Triger/EntryPoint.h"

@@ -58,8 +58,13 @@ namespace Triger {
 
 	class TRIGER_API Event
 	{
-		friend class EventDispatcher;
 	public:
+		/*
+		* To check is the event is been handled or not
+		* Can be used to dispatch events to different Layers
+		*/
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		// To get the name of the event
 		virtual const char* GetName() const = 0;
@@ -75,10 +80,7 @@ namespace Triger {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		// To check is the event is been handled or not
-		// Can be used to dispatch events to different Layers
-		bool m_Handled = false;
+	
 	};
 
 	// To dispatch Events on basis of their type
@@ -98,7 +100,7 @@ namespace Triger {
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
