@@ -10,6 +10,10 @@
 	#error Triget only supports Windows!
 #endif // TR_PLATEFORM_WINDOWS
 
+// So that TR_ASSERTS will only work in debug build
+#ifdef TR_DEBUG
+	#define TR_ENABLE_ASSERTS
+#endif // TR_DEBUG
 
 //Will Be removed in Relese build
 #ifdef TR_ENABLE_ASSERTS
