@@ -151,18 +151,22 @@
     <ClInclude Include="src\Triger\Events\Event.h" />
     <ClInclude Include="src\Triger\Events\KeyEvent.h" />
     <ClInclude Include="src\Triger\Events\MouseEvent.h" />
+    <ClInclude Include="src\Triger\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Triger\Layers\Layer.h" />
     <ClInclude Include="src\Triger\Layers\LayerStack.h" />
     <ClInclude Include="src\Triger\Log.h" />
+    <ClInclude Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Triger\Window.h" />
     <ClInclude Include="src\trpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp" />
+    <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Triger\Layers\Layer.cpp" />
     <ClCompile Include="src\Triger\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Triger\Log.cpp" />
+    <ClCompile Include="src\Triger\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\trpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

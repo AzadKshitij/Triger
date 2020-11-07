@@ -85,7 +85,7 @@ project "Triger"
 		buildoptions "/MD"
 		optimize "On"
 
-project "Sandbox"
+startproject "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
