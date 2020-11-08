@@ -1329,6 +1329,9 @@
     <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Triger\Renderer\Shader.h" />
+    <ClInclude Include="src\Triger\Renderer\Renderer.h" />
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Triger\Renderer\Buffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
@@ -1360,5 +1363,8 @@
       <Filter>src\Triger</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Triger\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Triger\Renderer\Buffer.cpp" />
   </ItemGroup>
 </Project>
