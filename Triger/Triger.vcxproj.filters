@@ -1328,6 +1328,7 @@
     </ClInclude>
     <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Triger\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
@@ -1358,5 +1359,6 @@
     <ClCompile Include="src\Triger\ImGui\ImGuiBuild.cpp">
       <Filter>src\Triger</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

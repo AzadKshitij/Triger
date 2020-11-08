@@ -159,6 +159,7 @@
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Triger\Renderer\Shader.h" />
     <ClInclude Include="src\Triger\Window.h" />
     <ClInclude Include="src\trpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -580,6 +581,7 @@
     <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Triger\Renderer\Shader.cpp" />
     <ClCompile Include="src\trpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

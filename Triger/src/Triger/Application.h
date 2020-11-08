@@ -6,6 +6,7 @@
 #include "Triger/Events/Event.h"
 #include "Triger/Layers/LayerStack.h"
 #include "Triger/ImGui/ImGuiLayer.h"
+#include "Triger/Renderer/Shader.h"
 
 
 namespace Triger
@@ -36,6 +37,7 @@ namespace Triger
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		static Application* s_Instance;
