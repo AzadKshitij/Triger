@@ -155,8 +155,10 @@
     <ClInclude Include="src\Triger\Layers\LayerStack.h" />
     <ClInclude Include="src\Triger\Log.h" />
     <ClInclude Include="src\Triger\MouseButtonCodes.h" />
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Triger\Window.h" />
     <ClInclude Include="src\trpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -571,10 +573,11 @@
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp" />
     <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Triger\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Triger\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Triger\Layers\Layer.cpp" />
     <ClCompile Include="src\Triger\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Triger\Log.cpp" />
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\trpch.cpp">

@@ -5,6 +5,8 @@
 #include "Triger/Events/ApplicationEvent.h"
 #include "Triger/Events/Event.h"
 #include "Triger/Layers/LayerStack.h"
+#include "Triger/ImGui/ImGuiLayer.h"
+
 
 namespace Triger
 {
@@ -12,11 +14,12 @@ namespace Triger
 	{
 	public:
 		Application();
-		virtual ~Application();
+		virtual ~Application() = default;
 
 		void Run();
 
 		void OnEvent(Event& e);
+
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
@@ -26,9 +29,13 @@ namespace Triger
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 
 	private:
 		static Application* s_Instance;

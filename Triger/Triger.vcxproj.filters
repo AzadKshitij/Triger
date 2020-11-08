@@ -1326,6 +1326,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
@@ -1333,9 +1335,6 @@
     </ClCompile>
     <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp">
       <Filter>src\Triger\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Triger\ImGuiBuild.cpp">
-      <Filter>src\Triger</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\Layers\Layer.cpp">
       <Filter>src\Triger\Layers</Filter>
@@ -1354,6 +1353,10 @@
     </ClCompile>
     <ClCompile Include="src\trpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Triger\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Triger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

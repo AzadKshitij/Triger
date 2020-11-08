@@ -1,11 +1,13 @@
 #pragma once
 #ifdef TR_PLATFORM_WINDOWS
 #if TR_DYNAMIC_LINK
+
 	#ifdef TR_BUILD_DLL
 		#define TRIGER_API __declspec(dllexport)
 	#else 
 		#define TRIGER_API __declspec(dllimport)
 	#endif // TR_BUILD_DLL
+
 #else
 	#define TRIGER_API
 #endif

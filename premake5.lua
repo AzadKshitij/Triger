@@ -12,6 +12,7 @@ workspace "Triger"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
+
 IncludeDir = {}
 IncludeDir["GLFW"] = "Triger/vendor/GLFW/include"
 IncludeDir["Glad"] = "Triger/vendor/Glad/include"
@@ -81,8 +82,6 @@ project "Triger"
 			"TR_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
-
-		
 
 	filter "configurations:Debug"
 		defines "TR_DEBUG"

@@ -3,6 +3,7 @@
 #include "Triger/Window.h"
 
 #include <GLFW/glfw3.h>
+#include "Triger/Renderer/GraphicsContext.h"
 
 namespace Triger
 {
@@ -35,6 +36,7 @@ namespace Triger
 
 	private:
 		GLFWwindow *m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
