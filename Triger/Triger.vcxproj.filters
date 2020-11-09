@@ -19,8 +19,14 @@
     <Filter Include="src\Triger\Platform">
       <UniqueIdentifier>{1DDE72EF-893F-50FD-12AD-96AF7E0D87BC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Triger\Platform\OpenGL">
+      <UniqueIdentifier>{B1E49E97-9DF4-4A68-06AE-AF86F2DC3901}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Triger\Platform\Windows">
       <UniqueIdentifier>{575597E3-C362-C5C9-4C49-C1B4B8559180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Triger\Renderer">
+      <UniqueIdentifier>{6FE54FCA-DB46-2DD8-64B4-738AD0146497}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -90,11 +96,29 @@
     <ClInclude Include="src\Triger\MouseButtonCodes.h">
       <Filter>src\Triger</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h">
       <Filter>src\Triger\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Triger\Platform\Windows\WindowsWindow.h">
       <Filter>src\Triger\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\Buffer.h">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\GraphicsContext.h">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\Renderer.h">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\Shader.h">
+      <Filter>src\Triger\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Triger\Window.h">
       <Filter>src\Triger</Filter>
@@ -1326,16 +1350,15 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Triger\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Triger\Renderer\Shader.h" />
-    <ClInclude Include="src\Triger\Renderer\Renderer.h" />
-    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Triger\Renderer\Buffer.h" />
+    <ClInclude Include="src\Triger\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
       <Filter>src\Triger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Triger\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\ImGui\ImGuiLayer.cpp">
       <Filter>src\Triger\ImGui</Filter>
@@ -1349,22 +1372,31 @@
     <ClCompile Include="src\Triger\Log.cpp">
       <Filter>src\Triger</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Triger\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Triger\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Triger\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Triger\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Renderer\Buffer.cpp">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Renderer\Renderer.cpp">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triger\Renderer\Shader.cpp">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\trpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Triger\ImGui\ImGuiBuild.cpp">
-      <Filter>src\Triger</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Triger\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Triger\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Triger\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Triger\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>
