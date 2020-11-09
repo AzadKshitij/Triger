@@ -5,3 +5,13 @@ bin-int/
 
 # Files
 *.user 
+
+# Triger files
+*.log
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user

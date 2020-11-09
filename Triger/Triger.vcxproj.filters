@@ -102,6 +102,9 @@
     <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Triger\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Triger\Platform\Windows\WindowsInput.h">
       <Filter>src\Triger\Platform\Windows</Filter>
     </ClInclude>
@@ -118,6 +121,9 @@
       <Filter>src\Triger\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Triger\Renderer\Shader.h">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triger\Renderer\VertexArray.h">
       <Filter>src\Triger\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Triger\Window.h">
@@ -1350,8 +1356,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Triger\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Triger\Application.cpp">
@@ -1378,6 +1382,9 @@
     <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Triger\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Triger\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Triger\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Triger\Platform\Windows</Filter>
     </ClCompile>
@@ -1393,10 +1400,11 @@
     <ClCompile Include="src\Triger\Renderer\Shader.cpp">
       <Filter>src\Triger\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Triger\Renderer\VertexArray.cpp">
+      <Filter>src\Triger\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\trpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Triger\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Triger\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>
