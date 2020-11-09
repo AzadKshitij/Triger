@@ -9,7 +9,7 @@ Triger is primarily an early-stage interactive application and rendering engine 
 
 # Building
 
-## Windows
+### Windows
 
 1. Clone the repository recurcively to download all submodules with command
 
@@ -19,7 +19,7 @@ Triger is primarily an early-stage interactive application and rendering engine 
 
 2. Generate Project for this open folder names **scripts** and run the [Generate-Win-Projects-VS2019](scripts/Generate-Win-Projects-VS2019.bat) file. It will create the solution file for the project.
 
-3. **[Open](Triger.sln)** and Build the solution( shorcut F7 ).
+3. **Open** and Build the solution( shorcut F7 ).
 
 4. **Run** the solution.
 
