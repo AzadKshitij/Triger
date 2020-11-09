@@ -1,6 +1,5 @@
 # Triger
 
----
 
 <p align="center">
   <img src="assets/Logos/TrigerLogo.png" alt="Logo" />
@@ -9,8 +8,6 @@
 Triger is primarily an early-stage interactive application and rendering engine for Windows. But working on making it cross plateform looking for contributors who can work on Linux version.
 
 # Building
-
----
 
 ## Windows
 
