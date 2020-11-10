@@ -1,5 +1,6 @@
 #pragma once
 #include "Triger/Core.h"
+#include "Triger/Core/Timestep.h"
 #include "Triger/Events/Event.h"
 
 namespace Triger {
@@ -8,11 +9,11 @@ namespace Triger {
 	{
 	public:
 		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		virtual ~Layer() = default;
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

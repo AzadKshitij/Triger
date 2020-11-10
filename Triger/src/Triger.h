@@ -15,5 +15,16 @@ of application.
 #include "Triger/KeyCodes.h"
 #include "Triger/MouseButtonCodes.h"
 
+
+// ---Renderer------------------------
+#include "Triger/Renderer/Renderer.h"
+#include "Triger/Renderer/RenderCommand.h"
+
+#include "Triger/Renderer/Buffer.h"
+#include "Triger/Renderer/Shader.h"
+#include "Triger/Renderer/VertexArray.h"
+
+#include "Triger/Renderer/OrthographicCamera.h"
+
 // ------------------------ Entry Point ------------------------
 #include "Triger/EntryPoint.h"

@@ -6,17 +6,13 @@
 #include "Triger/Events/Event.h"
 #include "Triger/Layers/LayerStack.h"
 #include "Triger/ImGui/ImGuiLayer.h"
-#include "Triger/Renderer/Shader.h"
-#include "Triger/Renderer/Buffer.h"
 
-#include "Triger/Renderer/VertexArray.h"
-
-#include "Triger/Renderer/OrthographicCamera.h"
+#include "Triger/Core/Timestep.h"
 
 
 namespace Triger
 {
-	class TRIGER_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -35,19 +31,13 @@ namespace Triger
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;
@@ -56,5 +46,6 @@ namespace Triger
 	/*
 	* This will be defined in the Client
 	*/
+
 	Application *CreateApplication();
 } // namespace Triger

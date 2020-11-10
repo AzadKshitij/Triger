@@ -5,7 +5,6 @@ namespace Triger {
 
 	LayerStack::LayerStack()
 	{
-		
 	}
 
 	LayerStack::~LayerStack()
@@ -24,6 +23,7 @@ namespace Triger {
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -31,7 +31,7 @@ namespace Triger {
 		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer);
 		if (it != m_Layers.end())
 		{
-			layer->OnAttach();
+			layer->OnDetach();
 			m_Layers.erase(it);
 			m_LayerInsertIndex--;
 		}

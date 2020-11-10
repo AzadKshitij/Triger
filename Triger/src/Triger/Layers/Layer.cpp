@@ -7,10 +7,4 @@ namespace Triger {
 		: m_DebugName(debugName)
 	{
 	}
-
-	Layer::~Layer()
-	{
-
-	}
-
 }
