@@ -10,8 +10,8 @@ namespace Triger {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:    TR_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::OpenGL:  return new OpenGLVertexArray();
+		case RendererAPI::API::None:    TR_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return new OpenGLVertexArray();
 		}
 
 		TR_CORE_ASSERT(false, "Unknown RendererAPI!");

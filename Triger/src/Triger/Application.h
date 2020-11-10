@@ -11,6 +11,8 @@
 
 #include "Triger/Renderer/VertexArray.h"
 
+#include "Triger/Renderer/OrthographicCamera.h"
+
 
 namespace Triger
 {
@@ -44,6 +46,8 @@ namespace Triger
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;
