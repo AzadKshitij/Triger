@@ -15,6 +15,8 @@ of application.
 #include "Triger/KeyCodes.h"
 #include "Triger/MouseButtonCodes.h"
 
+#include "Triger/Core/Timestep.h"
+
 
 // ---Renderer------------------------
 #include "Triger/Renderer/Renderer.h"
