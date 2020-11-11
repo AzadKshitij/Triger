@@ -24,13 +24,14 @@ Triger is primarily an early-stage interactive application and rendering engine 
 
 # How to Contribute
 
-1. Clone repo and create a new branch:
+1. First Read [Contribution Guide](https://github.com/AzadKshitij/Triger/blob/main/.github/CONTRIBUTING.md)
+2. Clone repo and create a new branch:
 
 ```bash
  git clone --recurse-submodules https://github.com/AzadKshitij/Triger.git
  git checkout -b name_for_new_branch
 ```
 
-2. Make changes and test
+3. Make changes and test
 
-3. Submit Pull Request with comprehensive description of changes and a working gif
+4. Submit Pull Request with comprehensive description of changes and a working GIF. Do follow the rules. Thaks For Your Contribution.
