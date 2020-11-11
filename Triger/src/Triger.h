@@ -24,6 +24,7 @@ of application.
 
 #include "Triger/Renderer/Buffer.h"
 #include "Triger/Renderer/Shader.h"
+#include "Triger/Renderer/Texture.h"
 #include "Triger/Renderer/VertexArray.h"
 
 #include "Triger/Renderer/OrthographicCamera.h"

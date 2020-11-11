@@ -152,7 +152,7 @@ public:
 		{
 			for (int x = 0; x < 20; x++)
 			{
-				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+				glm::vec3 pos(x * 0.12f, y * 0.12f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				Triger::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}

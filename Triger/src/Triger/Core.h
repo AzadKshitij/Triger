@@ -1,4 +1,7 @@
 #pragma once
+
+#include <memory>
+
 #ifdef TR_PLATFORM_WINDOWS
 #if TR_DYNAMIC_LINK
 
@@ -11,7 +14,7 @@
 #else
 	#define TRIGER_API
 #endif
-#else 
+#else
 	#error Triget only supports Windows!
 #endif // TR_PLATEFORM_WINDOWS
 
@@ -33,3 +36,13 @@
 #define BIT(x) (1 << x)
 
 #define TR_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Triger {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}
