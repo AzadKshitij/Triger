@@ -21,5 +21,7 @@ private:
 	Triger::Ref<Triger::VertexArray> m_SquareVA;
 	Triger::Ref<Triger::Shader> m_FlatColorShader;
 
+	Triger::Ref<Triger::Texture2D> m_CheckerboardTexture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };

@@ -21,7 +21,7 @@ namespace Triger
 	*                                                                        |
 	*************************************************************************/
 
-	static bool s_GLFWInitialized = false;
+	static uint8_t s_GLFWWindowCount = 0;
 
 	/*
 	* TO get any kind of error from GLFW
@@ -55,17 +55,17 @@ namespace Triger
 
 		// TR_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		if (!s_GLFWInitialized)
+		if (s_GLFWWindowCount == 0)
 		{
-			// TODO: glfwTerminate on system shutdown
+			TR_CORE_INFO("Initializing GLFW");
 			int success = glfwInit();
 			TR_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
 
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		++s_GLFWWindowCount;
 		
 		int width, height, chennal;
 		stbi_uc* img = stbi_load("assets/Logos/Icon.png", &width, &height, &chennal, 0); //rgba channels 
@@ -210,6 +210,12 @@ namespace Triger
 	{
 		// To destroy Window when it closed
 		glfwDestroyWindow(m_Window);
+
+		if (--s_GLFWWindowCount == 0)
+		{
+			TR_CORE_INFO("Terminating GLFW");
+			glfwTerminate();
+		}
 	}
 
 	void WindowsWindow::OnUpdate()

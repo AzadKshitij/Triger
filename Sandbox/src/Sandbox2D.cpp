@@ -4,16 +4,16 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Triger/Platform/OpenGL/OpenGLShader.h"
+
 
 Sandbox2D::Sandbox2D()
-	: Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f)
+	: Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f, true)
 {
 }
 
 void Sandbox2D::OnAttach()
 {
-	
+	m_CheckerboardTexture = Triger::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
@@ -30,7 +30,9 @@ void Sandbox2D::OnUpdate(Triger::Timestep ts)
 	Triger::RenderCommand::Clear();
 
 	Triger::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Triger::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+	Triger::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+	Triger::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+	Triger::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
 	Triger::Renderer2D::EndScene();
 	// TODO: Add these functions - Shader::SetMat4, Shader::SetFloat4
 	// std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->Bind();
