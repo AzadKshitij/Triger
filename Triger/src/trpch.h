@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Triger/Log.h"
+#include "Triger/Core/Log.h"
 
 
 #ifdef TR_PLATFORM_WINDOWS

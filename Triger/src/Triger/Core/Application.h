@@ -7,7 +7,6 @@
 #include "Triger/Layers/LayerStack.h"
 #include "Triger/ImGui/ImGuiLayer.h"
 
-#include "Triger/Core/Timestep.h"
 
 
 namespace Triger

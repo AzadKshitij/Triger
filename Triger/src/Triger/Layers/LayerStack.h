@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Triger/Core.h"
+#include "Triger/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

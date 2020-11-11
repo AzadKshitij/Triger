@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Triger/Core.h"
+#include "Triger/Core/Core.h"
 
 namespace Triger {
 

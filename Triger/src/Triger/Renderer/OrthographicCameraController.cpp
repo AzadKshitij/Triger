@@ -1,8 +1,8 @@
 #include "trpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Triger/Input.h"
-#include "Triger/KeyCodes.h"
+#include "Triger/Core/Input.h"
+#include "Triger/Core/KeyCodes.h"
 
 namespace Triger {
 

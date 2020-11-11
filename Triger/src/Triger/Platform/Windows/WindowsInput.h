@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Triger/Input.h"
+#include "Triger/Core/Input.h"
 
 namespace Triger {
 

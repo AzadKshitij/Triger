@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Triger/Window.h"
+#include "Triger/Core/Window.h"
 
 #include <GLFW/glfw3.h>
 #include "Triger/Renderer/GraphicsContext.h"

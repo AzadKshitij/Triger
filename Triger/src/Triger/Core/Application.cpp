@@ -1,8 +1,8 @@
 #include "trpch.h"
 #include "Application.h"
 
-#include "Triger/Input.h"
-#include "Triger/Log.h"
+
+#include "Triger/Core/Log.h"
 
 #include "Triger/Renderer/Renderer.h"
 
