@@ -35,8 +35,13 @@ namespace Triger
 		virtual void Shutdown();
 
 	private:
-		GLFWwindow *m_Window;
+		GLFWwindow* m_Window;
+
+
+		GLFWimage m_Images[1];
+
 		Scope<GraphicsContext> m_Context;
+
 
 		struct WindowData
 		{

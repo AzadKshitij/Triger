@@ -5,6 +5,7 @@
 #include "Triger/Events/MouseEvent.h"
 
 #include "Triger/Platform/OpenGL/OpenGLContext.h"
+#include <stb_image.h>
 
 // #include "Triger.h"
 
@@ -45,6 +46,7 @@ namespace Triger
 		Shutdown();
 	}
 
+
 	void WindowsWindow::Init(const WindowProps& props)
 	{
 		m_Data.Title = props.Title;
@@ -64,6 +66,15 @@ namespace Triger
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		
+		int width, height, chennal;
+		stbi_uc* img = stbi_load("assets/Logos/Icon.png", &width, &height, &chennal, 0); //rgba channels 
+		if (img == NULL) std::cout << "Icon Can Not Be Loaded\n in WindowsWindow.cpp line: 72";
+		m_Images->height = height;
+		m_Images->width = width;
+		m_Images[0].pixels = img;
+		glfwSetWindowIcon(m_Window, 1, m_Images);
+
 		m_Context = CreateScope<OpenGLContext>(m_Window);
 		m_Context->Init();
 		glfwSetWindowUserPointer(m_Window, &m_Data);
