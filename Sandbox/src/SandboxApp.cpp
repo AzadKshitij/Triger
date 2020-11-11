@@ -11,7 +11,7 @@ class ExampleLayer : public Triger::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		m_VertexArray.reset(Triger::VertexArray::Create());
 
@@ -87,7 +87,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Triger::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Triger::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -116,43 +116,29 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Triger::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Triger::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Triger::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Triger::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_TrigerLogoTexture = Triger::Texture2D::Create("assets/Logos/TrigerLogo.png");
 		m_TriEditorLogoTexture = Triger::Texture2D::Create("assets/Logos/TriEditorLogo.png");
 
 
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Triger::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Triger::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Triger::Timestep ts) override
 	{
-		if (Triger::Input::IsKeyPressed(TR_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Triger::Input::IsKeyPressed(TR_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+		// Update
+		m_CameraController.OnUpdate(ts);
 
-		if (Triger::Input::IsKeyPressed(TR_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Triger::Input::IsKeyPressed(TR_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (Triger::Input::IsKeyPressed(TR_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		if (Triger::Input::IsKeyPressed(TR_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
+		// Render
 		Triger::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Triger::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Triger::Renderer::BeginScene(m_Camera);
+		Triger::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -169,14 +155,16 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Triger::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_TrigerLogoTexture->Bind();
-		Triger::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		
 		m_TriEditorLogoTexture->Bind();
-		Triger::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(2.0f), glm::vec3(2.0f)));
+		Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(2.0f), glm::vec3(2.0f)));
 
 		// Triangle
 		// Triger::Renderer::Submit(m_Shader, m_VertexArray);
@@ -191,24 +179,21 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Triger::Event& event) override
+	void OnEvent(Triger::Event& e) override
 	{
+		m_CameraController.OnEvent(e);
 	}
 private:
+	Triger::ShaderLibrary m_ShaderLibrary;
 	Triger::Ref<Triger::Shader> m_Shader;
 	Triger::Ref<Triger::VertexArray> m_VertexArray;
 
-	Triger::Ref<Triger::Shader> m_FlatColorShader, m_TextureShader;
+	Triger::Ref<Triger::Shader> m_FlatColorShader;
 	Triger::Ref<Triger::VertexArray> m_SquareVA;
 
 	Triger::Ref<Triger::Texture2D> m_Texture, m_TrigerLogoTexture, m_TriEditorLogoTexture;
 
-	Triger::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
+	Triger::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
