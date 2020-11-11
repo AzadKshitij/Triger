@@ -23,6 +23,7 @@ of application.
 // ---Renderer------------------------
 #include "Triger/Renderer/Renderer.h"
 #include "Triger/Renderer/RenderCommand.h"
+#include "Triger/Renderer/Renderer2D.h"
 
 #include "Triger/Renderer/Buffer.h"
 #include "Triger/Renderer/Shader.h"
