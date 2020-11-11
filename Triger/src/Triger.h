@@ -32,5 +32,5 @@ of application.
 #include "Triger/Renderer/OrthographicCamera.h"
 #include "Triger/Renderer/OrthographicCameraController.h"
 
-// ------------------------ Entry Point ------------------------
-#include "Triger/Core/EntryPoint.h"
+ //------------------------ Entry Point ------------------------
+//#include "Triger/Core/EntryPoint.h"
