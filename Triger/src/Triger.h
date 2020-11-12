@@ -1,8 +1,8 @@
 #pragma once
 /*
-*This File is only intended to include all important
-header files in one place to use in a game or any kind
-of application.
+* This File is only intended to include all important
+* header files in one place to use in a game or any kind
+* of application.
 */
 // ----------------- Core -------------------
 #include "Triger/ImGui/ImGuiLayer.h"
@@ -16,7 +16,6 @@ of application.
 #include "Triger/Core/MouseButtonCodes.h"
 
 #include "Triger/Core/Timestep.h"
-
 
 #include "Triger/Layers/Layer.h"
 
@@ -33,5 +32,5 @@ of application.
 #include "Triger/Renderer/OrthographicCamera.h"
 #include "Triger/Renderer/OrthographicCameraController.h"
 
- //------------------------ Entry Point ------------------------
+//------------------------ Entry Point ------------------------
 //#include "Triger/Core/EntryPoint.h"

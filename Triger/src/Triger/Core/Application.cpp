@@ -28,7 +28,10 @@ namespace Triger
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 	}
-
+	/**
+	 * @brief 
+	 * @param layer 
+	*/
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);

@@ -35,8 +35,8 @@ void Sandbox2D::OnUpdate(Triger::Timestep ts)
 	Triger::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
 	Triger::Renderer2D::EndScene();
 	// TODO: Add these functions - Shader::SetMat4, Shader::SetFloat4
-	// std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->Bind();
-	// std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
+	// std::dynamic_pointer_cast<Triger::OpenGLShader>(m_FlatColorShader)->Bind();
+	// std::dynamic_pointer_cast<Triger::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 
 void Sandbox2D::OnImGuiRender()

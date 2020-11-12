@@ -101,6 +101,7 @@ namespace Triger
 		* @param[in] scancode The system - specific scancode of the key.
 		* @param[in] action `GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`.  Future
 		*/
+
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				/*

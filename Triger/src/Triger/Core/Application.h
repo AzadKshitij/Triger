@@ -1,3 +1,9 @@
+/**
+ *  @file   Application.h
+ *  @brief  Applicatoin creation base
+ *  @author Kshitij Azad
+ *  @date   November 2, 2020
+ ***********************************************/
 #pragma once
 
 #include "Core.h"
@@ -7,49 +13,116 @@
 #include "Triger/Layers/LayerStack.h"
 #include "Triger/ImGui/ImGuiLayer.h"
 
-
-
 namespace Triger
 {
-	class Application
-	{
-	public:
-		Application();
-		virtual ~Application() = default;
+  
+  class Application
+  {
+  public:
+    /**
+   * @brief 
+   */
+    Application();
+    /**
+   * @brief 
+   * @param 
+   * @return 
+   */
+    virtual ~Application() = default;
 
-		void Run();
+    /**
+   * @brief 
+   * @return (void)
+   */
+    void Run();
 
-		void OnEvent(Event& e);
+    /**
+   * @brief 
+   * @param e
+   * @return (void)
+   */
+    void OnEvent(Event &e);
 
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* layer);
+    /**
+   * @brief 
+   * @param layer
+   * @return (void)
+   */
+    void PushLayer(Layer *layer);
+ 
+    /**
+     * @brief 
+     * @param layer 
+    */
+    void PushOverlay(Layer *layer);
 
-		inline Window& GetWindow() { return *m_Window; }
+    /**
+   * @brief 
+   * @return 
+   */
+    inline Window &GetWindow() { return *m_Window; }
 
-		inline static Application& Get() { return *s_Instance; }
+    /**
+   * @brief 
+   * @return 
+   */
+    inline static Application &Get() { return *s_Instance; }
 
-	private:
-		bool OnWindowClose(WindowCloseEvent& e);
-		bool OnWindowResize(WindowResizeEvent& e);
+  private:
+    /**
+   * @brief 
+   * @param e
+   * @return 
+   */
+    bool OnWindowClose(WindowCloseEvent &e);
+    /**
+   * @brief 
+   * @param e
+   * @return 
+   */
+    bool OnWindowResize(WindowResizeEvent &e);
 
-	private:
-		std::unique_ptr<Window> m_Window;
+  private:
+    /**
+     * @brief 
+    */
+    std::unique_ptr<Window> m_Window;
+    
+    /**
+     * @brief 
+    */
+    bool m_Running = true;
+    
+    /**
+     * @brief 
+    */
+    bool m_Minimized = false;
 
-		bool m_Running = true;
-		bool m_Minimized = false;
-		
-		ImGuiLayer* m_ImGuiLayer;
-		LayerStack m_LayerStack;
-		
-		float m_LastFrameTime = 0.0f;
+    /**
+     * @brief 
+    */
+    ImGuiLayer *m_ImGuiLayer;
+    
+    /**
+     * @brief 
+    */
+    LayerStack m_LayerStack;
+    
+    /**
+     * @brief 
+    */
+    float m_LastFrameTime = 0.0f;
 
-	private:
-		static Application* s_Instance;
-	};
+  private:
+    /**
+     * @brief 
+    */
+    static Application *s_Instance;
+  };
 
-	/*
-	* This will be defined in the Client
-	*/
-
-	Application *CreateApplication();
+  /**
+  * @brief This will be defined in the Client. Everytime you want to make a new app you have to call this function
+  * @return 
+  */
+  Application *CreateApplication();
 } // namespace Triger

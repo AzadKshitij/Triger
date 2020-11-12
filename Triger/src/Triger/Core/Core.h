@@ -1,3 +1,9 @@
+/**
+ *  @file   Core.h
+ *  @brief  core macros
+ *  @author Kshitij Azad
+ *  @date   November 2, 2020
+ ***********************************************/
 #pragma once
 
 #include <memory>

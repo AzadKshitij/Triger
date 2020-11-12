@@ -1,3 +1,9 @@
+/**
+ *  @file   Log.h
+ *  @brief  Loging system for core and applications
+ *  @author Kshitij Azad
+ *  @date   November 2, 2020
+ ***********************************************/
 #pragma once
 
 #include "Core.h"
@@ -6,17 +12,40 @@
 
 namespace Triger
 {
-
+	/**
+	 * @brief 
+	*/
 	class TRIGER_API Log
 	{
 	public:
-		static void Init();
 
+		/**
+		 * @brief 
+		*/
+		static void Init();
+		
+		/**
+		 * @brief 
+		 * @return 
+		*/
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+		
+		/**
+		 * @brief 
+		 * @return 
+		*/
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 
 	private:
+
+		/**
+		 * @brief 
+		*/
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
+		
+		/**
+		 * @brief 
+		*/
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
 } // namespace Triger

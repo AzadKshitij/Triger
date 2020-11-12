@@ -1,3 +1,9 @@
+/**
+ *  @file   EntryPoint.h
+ *  @brief  Entry point for any new application
+ *  @author Kshitij Azad
+ *  @date   November 2, 2020
+ ***********************************************/
 #pragma once
 // TODO: Temprory include
 //#include "Application.h"
