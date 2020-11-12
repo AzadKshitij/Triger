@@ -31,22 +31,24 @@ namespace Triger
     virtual ~Application() = default;
 
     /**
-   * @brief 
+   * @brief Runs the applications
    * @return (void)
    */
     void Run();
 
     /**
-   * @brief 
-   * @param e
+   * @brief check if the event has been triggered
+   * @param e An Event
    * @return (void)
    */
     void OnEvent(Event &e);
 
     /**
-   * @brief 
-   * @param layer
+   * @brief push layer into layer stack
+   * @param layer layer object
    * @return (void)
+   * @see Layer
+   * @see LayerStack
    */
     void PushLayer(Layer *layer);
  
@@ -57,8 +59,8 @@ namespace Triger
     void PushOverlay(Layer *layer);
 
     /**
-   * @brief 
-   * @return 
+   * @brief To get the current window 
+   * @return the current window
    */
     inline Window &GetWindow() { return *m_Window; }
 

@@ -1,5 +1,5 @@
 /**
- *  @file   Input.h.h
+ *  @file   Input.h
  *  @brief  Different type of input to interect with app
  *  @author Kshitij Azad
  *  @date   November 6, 2020

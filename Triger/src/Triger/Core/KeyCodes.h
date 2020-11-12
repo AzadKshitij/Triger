@@ -1,3 +1,9 @@
+/**
+ *  @file   KeyCodes.h
+ *  @brief  Keycodes for all keybord events
+ *  @author Kshitij Azad
+ *  @date   November 9, 2020
+ ***********************************************/
 #pragma once
 
 // From glfw3.h
