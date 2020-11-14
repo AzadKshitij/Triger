@@ -3,7 +3,7 @@
 
 namespace Triger {
 
-	class TRIGER_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		// x, y  location of mouse pointer
@@ -29,7 +29,7 @@ namespace Triger {
 		float m_MouseX, m_MouseY;
 	};
 
-	class TRIGER_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -51,7 +51,7 @@ namespace Triger {
 		float m_XOffset, m_YOffset;
 	};
 
-	class TRIGER_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -64,7 +64,7 @@ namespace Triger {
 		int m_Button;
 	};
 
-	class TRIGER_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -80,7 +80,7 @@ namespace Triger {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class TRIGER_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

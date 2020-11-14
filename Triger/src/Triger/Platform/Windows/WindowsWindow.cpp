@@ -31,9 +31,9 @@ namespace Triger
 		TR_CORE_ERROR("GLFW Error ({0}) : {1}",error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
@@ -75,7 +75,7 @@ namespace Triger
 		m_Images[0].pixels = img;
 		glfwSetWindowIcon(m_Window, 1, m_Images);
 
-		m_Context = CreateScope<OpenGLContext>(m_Window);
+		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
@@ -211,8 +211,9 @@ namespace Triger
 	{
 		// To destroy Window when it closed
 		glfwDestroyWindow(m_Window);
+		--s_GLFWWindowCount;
 
-		if (--s_GLFWWindowCount == 0)
+		if (s_GLFWWindowCount == 0)
 		{
 			TR_CORE_INFO("Terminating GLFW");
 			glfwTerminate();

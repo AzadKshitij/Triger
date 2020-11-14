@@ -5,9 +5,8 @@
  *  @date   November 2, 2020
  ***********************************************/
 #pragma once
-// TODO: Temprory include
-//#include "Application.h"
-//#include "Log.h"
+
+#include "Triger/Core/Core.h"
 
 #ifdef TR_PLATFORM_WINDOWS
 

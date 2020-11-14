@@ -3,7 +3,7 @@
 
 namespace Triger {
 
-	class TRIGER_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		// To get the key code
@@ -17,7 +17,7 @@ namespace Triger {
 		int m_KeyCode;
 	};
 
-	class TRIGER_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -37,7 +37,7 @@ namespace Triger {
 		int m_RepeatCount;
 	};
 
-	class TRIGER_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -53,7 +53,7 @@ namespace Triger {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class TRIGER_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

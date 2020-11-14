@@ -1,10 +1,8 @@
 #include "trpch.h"
-#include "RenderCommand.h"
 
-#include "Triger/Platform/OpenGL/OpenGLRendererAPI.h"
+#include "RenderCommand.h"
 
 namespace Triger {
 
-	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
-
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 }

@@ -1,10 +1,10 @@
-#include <Triger.h>
+#include "Triger.h"
 
 #include "Triger/Platform/OpenGL/OpenGLShader.h"
 
-#include <Triger/Core/EntryPoint.h>
+#include "Triger/Core/EntryPoint.h"
 
-#include "imgui/imgui.h"
+#include <Imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -25,8 +25,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		Triger::Ref<Triger::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Triger::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Triger::Ref<Triger::VertexBuffer> vertexBuffer = Triger::VertexBuffer::Create(vertices, sizeof(vertices));
 		Triger::BufferLayout layout = {
 			{ Triger::ShaderDataType::Float3, "a_Position" },
 			{ Triger::ShaderDataType::Float4, "a_Color" }
@@ -35,8 +34,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Triger::Ref<Triger::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Triger::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Triger::Ref<Triger::IndexBuffer> indexBuffer = Triger::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = Triger::VertexArray::Create();
@@ -48,8 +46,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Triger::Ref<Triger::VertexBuffer> squareVB;
-		squareVB.reset(Triger::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Triger::Ref<Triger::VertexBuffer> squareVB = Triger::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Triger::ShaderDataType::Float3, "a_Position" },
 			{ Triger::ShaderDataType::Float2, "a_TexCoord" }
@@ -57,8 +54,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Triger::Ref<Triger::IndexBuffer> squareIB;
-		squareIB.reset(Triger::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Triger::Ref<Triger::IndexBuffer> squareIB = Triger::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(
@@ -129,8 +125,8 @@ public:
 		m_TriEditorLogoTexture = Triger::Texture2D::Create("assets/Logos/TriEditorLogo.png");
 
 
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Triger::Timestep ts) override
@@ -146,8 +142,8 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Triger::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{

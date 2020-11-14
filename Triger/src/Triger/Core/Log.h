@@ -7,15 +7,15 @@
 #pragma once
 
 #include "Core.h"
-#include "spdlog/spdlog.h"
-#include "spdlog/fmt/ostr.h"
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace Triger
 {
 	/**
 	 * @brief 
 	*/
-	class TRIGER_API Log
+	class Log
 	{
 	public:
 

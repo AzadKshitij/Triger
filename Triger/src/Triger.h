@@ -7,10 +7,12 @@
 // ----------------- Core -------------------
 #include "Triger/ImGui/ImGuiLayer.h"
 
+
 #include "Triger/Core/Application.h"
 
 #include "Triger/Core/Log.h"
 
+#include "Triger/Core/Core.h"
 #include "Triger/Core/Input.h"
 #include "Triger/Core/KeyCodes.h"
 #include "Triger/Core/MouseButtonCodes.h"

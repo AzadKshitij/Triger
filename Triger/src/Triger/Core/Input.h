@@ -13,7 +13,7 @@ namespace Triger
 	/**
 	 * @brief
 	*/
-	class TRIGER_API Input
+	class Input
 	{
 	protected:
 		/**

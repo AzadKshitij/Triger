@@ -50,7 +50,7 @@ namespace Triger
 	/*
 	* Interface representing a desktop system based Window
 	*/
-	class TRIGER_API Window
+	class Window
 	{
 	public:
 		/**
@@ -60,7 +60,7 @@ namespace Triger
 
 		// Will implemented saperately for each plateform
 
-		virtual ~Window() {}
+		virtual ~Window() = default;
 
 		/**
 		 * @brief will update the window 
@@ -113,7 +113,7 @@ namespace Triger
 		 * @return Window object
 		 * @see Application#OnEvent
 		*/
-		static Window *Create(const WindowProps &props = WindowProps());
+		static Scope<Window> Create(const WindowProps &props = WindowProps());
 	};
 
 } // namespace Triger
