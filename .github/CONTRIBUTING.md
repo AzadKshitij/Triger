@@ -38,7 +38,7 @@ You've created a new fix or feature for Triger. Awesome!
 
 3. Submit a pull request, use the implemented issue template if it is based on an issue or the new issue template if it is not linked to any issue.
 
-4. Give us a moment. Triger is maintained by only one person, all of whom are doing this on their limited free time, so it may take us a bit to review your request. Bug fixes should be merged in directly, while features usually require Cherno's approval with or without it mentioned in one (or more) videos.
+4. Give us a moment. Triger is maintained by only one person, all of whom are doing this on their limited free time, so it may take us a bit to review your request. Bug fixes should be merged in directly.
 
 If you're not sure what any of that means, check out Thinkful's [GitHub Pull Request Tutorial][thinkful-pr-tutorial] for a complete walkthrough of the process.
 
@@ -71,7 +71,7 @@ If you're not sure what any of that means, check out Thinkful's [GitHub Pull Req
     - Class static variables get the 's\_' prefix: **`s_ClassStaticVariableName`**.
 
   - For macros we use snake case: **`MACRO_NAME`**.
-    - If it is specifically related to Triger, we add the 'HZ\_' prefix: **`TR_MACRO_NAME`**.
+    - If it is specifically related to Triger, we add the 'TR\_' prefix: **`TR_MACRO_NAME`**.
     - If there is a macro for the application and for the engine, we add an additional 'CORE\_' prefix to the engine macro: **`TR_CORE_MACRO_NAME`**.
 
 - Use tabs for indentation, not spaces. (4 spaces)
