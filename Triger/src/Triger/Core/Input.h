@@ -8,6 +8,9 @@
 
 #include "Triger/Core/Core.h"
 
+#include "Triger/Core/KeyCodes.h"
+#include "Triger/Core/MouseButtonCodes.h"
+
 namespace Triger
 {
 	/**
@@ -36,18 +39,18 @@ namespace Triger
 		Input& operator=(const Input&) = delete;
 		
 		/**
-		 * @brief
-		 * @param keycode
-		 * @return
+		 * @brief 
+		 * @param key 
+		 * @return 
 		*/
-		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
+		inline static bool IsKeyPressed(KeyCode key) { return s_Instance->IsKeyPressedImpl(key); }
 
 		/**
-		 * @brief
-		 * @param button
-		 * @return
+		 * @brief 
+		 * @param button 
+		 * @return 
 		*/
-		inline static bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImpl(button); }
+		inline static bool IsMouseButtonPressed(MouseCode button) { return s_Instance->IsMouseButtonPressedImpl(button); }
 		
 		/**
 		 * @brief
@@ -73,13 +76,13 @@ namespace Triger
 		 * @param keycode 
 		 * @return 
 		*/
-		virtual bool IsKeyPressedImpl(int keycode) = 0;
+		virtual bool IsKeyPressedImpl(KeyCode key) = 0;
 		/**
 		 * @brief 
 		 * @param button 
 		 * @return 
 		*/
-		virtual bool IsMouseButtonPressedImpl(int button) = 0;
+		virtual bool IsMouseButtonPressedImpl(MouseCode button) = 0;
 		/**
 		 * @brief 
 		 * @return 

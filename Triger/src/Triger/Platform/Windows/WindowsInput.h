@@ -13,14 +13,14 @@ namespace Triger {
 		 * @param keycode 
 		 * @return 
 		*/
-		virtual bool IsKeyPressedImpl(int keycode) override;
+		virtual bool IsKeyPressedImpl(KeyCode key) override;
 		
 		/**
 		 * @brief 
 		 * @param button 
 		 * @return 
 		*/
-		virtual bool IsMouseButtonPressedImpl(int button) override;
+		virtual bool IsMouseButtonPressedImpl(MouseCode button) override;
 		
 		/**
 		 * @brief 

@@ -45,7 +45,7 @@ namespace Triger
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
-		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it; )
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it )
 		{
 			(*it)->OnEvent(e);
 			if (e.Handled)

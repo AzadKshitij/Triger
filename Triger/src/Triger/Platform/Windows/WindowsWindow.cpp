@@ -1,12 +1,13 @@
 #include "trpch.h"
+#include <stb_image.h>
+
 #include "WindowsWindow.h"
 #include "Triger/Events/ApplicationEvent.h"
 #include "Triger/Events/KeyEvent.h"
 #include "Triger/Events/MouseEvent.h"
 
 #include "Triger/Platform/OpenGL/OpenGLContext.h"
-#include <stb_image.h>
-
+#include "Triger/Renderer//Renderer.h"
 // #include "Triger.h"
 
 namespace Triger
@@ -28,7 +29,7 @@ namespace Triger
 	*/
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		TR_CORE_ERROR("GLFW Error ({0}) : {1}",error, description);
+		TR_CORE_ERROR("GLFW Error ({0}) : {1}", error, description);
 	}
 
 	Scope<Window> Window::Create(const WindowProps& props)
@@ -64,9 +65,14 @@ namespace Triger
 
 		}
 
+#if defined(TR_DEBUG)
+		if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+			glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#endif //defined(TR_DEBUG)
+
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		++s_GLFWWindowCount;
-		
+
 		int width, height, chennal;
 		stbi_uc* img = stbi_load("assets/Logos/Icon.png", &width, &height, &chennal, 0); //rgba channels 
 		if (img == NULL) std::cout << "Icon Can Not Be Loaded\n in WindowsWindow.cpp line: 72";
@@ -111,26 +117,26 @@ namespace Triger
 
 				switch (action)
 				{
-					case GLFW_PRESS:
-					{
-						KeyPressedEvent event(key, 0);
-						data.EventCallback(event);
-						break;
-					}
-					case GLFW_RELEASE:
-					{
-						KeyReleasedEvent event(key);
-						data.EventCallback(event);
-						break;
-					}
-					case GLFW_REPEAT:
-					{
-						KeyPressedEvent event(key, 1);
-						data.EventCallback(event);
-						break;
-					}
-					default:
-						break;
+				case GLFW_PRESS:
+				{
+					KeyPressedEvent event(static_cast<KeyCode>(key), 0);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					KeyReleasedEvent event(static_cast<KeyCode>(key));
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_REPEAT:
+				{
+					KeyPressedEvent event(static_cast<KeyCode>(key), 1);
+					data.EventCallback(event);
+					break;
+				}
+				default:
+					break;
 				}
 			});
 		/*
@@ -146,27 +152,27 @@ namespace Triger
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				switch (action)
 				{
-					case GLFW_PRESS:
-					{
-						MouseButtonPressedEvent event(button);
-						data.EventCallback(event);
-						break;
-					}
-					case GLFW_RELEASE:
-					{
-						MouseButtonReleasedEvent event(button);
-						data.EventCallback(event);
-						break;
-					}
-					default:
-						break;
+				case GLFW_PRESS:
+				{
+					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					MouseButtonReleasedEvent event(static_cast<MouseCode>(button));
+					data.EventCallback(event);
+					break;
+				}
+				default:
+					break;
 				}
 			});
 		/*
 		*  @param[in] xoffset The scroll offset along the x-axis.
 		*  @param[in] yoffset The scroll offset along the y-axis.
 		*/
-		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset) 
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				MouseScrolledEvent event((float)xOffset, (float)yOffset);
@@ -198,13 +204,9 @@ namespace Triger
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent event(keycode);
+				KeyTypedEvent event(static_cast<KeyCode>(keycode));
 				data.EventCallback(event);
 			});
-
-
-
-
 	}
 
 	void WindowsWindow::Shutdown()
