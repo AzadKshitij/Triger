@@ -98,6 +98,12 @@ namespace Triger
 		 * @return 
 		*/
 		virtual float GetMouseYImpl() = 0;
+		
+		/**
+		 * @brief 
+		 * @return 
+		*/
+		static Scope<Input> Create();
 
 	private:
 		/**
