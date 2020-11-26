@@ -9,7 +9,7 @@
 
 #include "trpch.h"
 
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 #include "Triger/Events/Event.h"
 
 namespace Triger

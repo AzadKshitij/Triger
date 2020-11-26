@@ -6,7 +6,7 @@
  ***********************************************/
 #pragma once
 
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 #include "Triger/Core/Window.h"
 
 #include "Triger/Layers/LayerStack.h"

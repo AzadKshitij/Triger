@@ -6,7 +6,7 @@
  ***********************************************/
 #pragma once
 
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 
 #ifdef TR_PLATFORM_WINDOWS
 

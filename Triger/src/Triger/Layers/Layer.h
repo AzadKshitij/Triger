@@ -1,5 +1,5 @@
 #pragma once
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 #include "Triger/Core/Timestep.h"
 #include "Triger/Events/Event.h"
 

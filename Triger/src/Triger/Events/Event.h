@@ -1,7 +1,7 @@
 #pragma once
 #include "trpch.h"
 
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 
 namespace Triger
 {

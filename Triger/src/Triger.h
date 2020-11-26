@@ -5,7 +5,7 @@
 * of application.
 */
 // ----------------- Core -------------------
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 
 #include "Triger/Core/Application.h"
 #include "Triger/Core/Log.h"

@@ -6,7 +6,7 @@
  ***********************************************/
 #pragma once
 
-#include "Triger/Core/Core.h"
+#include "Triger/Core/Base.h"
 
 #include "Triger/Core/KeyCodes.h"
 #include "Triger/Core/MouseCodes.h"
