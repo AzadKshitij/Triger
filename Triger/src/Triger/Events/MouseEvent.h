@@ -1,5 +1,5 @@
 #pragma once
-#include "Event.h"
+#include "Triger/Events/Event.h"
 
 #include "Triger/Core/Input.h"
 
@@ -8,15 +8,12 @@ namespace Triger {
 	class MouseMovedEvent : public Event
 	{
 	public:
-		// x, y  location of mouse pointer
 		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
 
-		// Getter for mouse position 
 		inline float GetX() const { return m_MouseX; }
 		inline float GetY() const { return m_MouseY; }
 
-		// To print mouse position
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -25,8 +22,7 @@ namespace Triger {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-
+			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};

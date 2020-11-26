@@ -1,7 +1,7 @@
 #include "trpch.h"
-#include "Texture.h"
+#include "Triger/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "Triger/Renderer/Renderer.h"
 #include "Triger/Platform/OpenGL/OpenGLTexture.h"
 
 namespace Triger {

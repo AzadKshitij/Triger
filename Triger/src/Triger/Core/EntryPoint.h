@@ -27,12 +27,20 @@ int main(int argc, char **argv)
 	TR_CORE_INFO("*         |  |        |  |          |_|    _____|  |______  *" );
 	TR_CORE_INFO("*         |__|        |__|          |_|   |_______________| *" );
 	TR_CORE_INFO("*************************************************************");
-	//TR_CORE_INFO("Triger Core Is Running ");
-	TR_INFO("Sandbox Is Running");
 
+
+	//TR_CORE_INFO("Triger Core Is Running ");
+	TR_PROFILE_BEGIN_SESSION("Startup", "TrigerProfile-Startup.json");
 	auto app = Triger::CreateApplication();
+	TR_PROFILE_END_SESSION();
+
+	TR_PROFILE_BEGIN_SESSION("Runtime", "TrigerProfile-Runtime.json");
 	app->Run();
+	TR_PROFILE_END_SESSION();
+
+	TR_PROFILE_BEGIN_SESSION("Startup", "TrigerProfile-Shutdown.json");
 	delete app;
+	TR_PROFILE_END_SESSION();
 }
 
 #endif

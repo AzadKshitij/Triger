@@ -2,7 +2,7 @@
 #include "Triger/Core/Input.h"
 
 #ifdef TR_PLATFORM_WINDOWS
-#include "Triger/Platform/Windows/WindowsInput.h"
+	#include "Triger/Platform/Windows/WindowsInput.h"
 #endif
 
 namespace Triger {
@@ -11,11 +11,11 @@ namespace Triger {
 
 	Scope<Input> Input::Create()
 	{
-#ifdef TR_PLATFORM_WINDOWS
+	#ifdef TR_PLATFORM_WINDOWS
 		return CreateScope<WindowsInput>();
-#else
+	#else
 		TR_CORE_ASSERT(false, "Unknown platform!");
 		return nullptr;
-#endif
+	#endif
 	}
 }

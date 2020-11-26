@@ -1,13 +1,12 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "Triger/Renderer/RendererAPI.h"
 
 namespace Triger {
 
 	class RenderCommand
 	{
 	public:
-
 		inline static void Init()
 		{
 			s_RendererAPI->Init();
@@ -17,7 +16,6 @@ namespace Triger {
 		{
 			s_RendererAPI->SetViewport(x, y, width, height);
 		}
-
 
 		inline static void SetClearColor(const glm::vec4& color)
 		{

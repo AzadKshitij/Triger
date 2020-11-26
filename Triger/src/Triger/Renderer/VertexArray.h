@@ -21,5 +21,4 @@ namespace Triger {
 
 		static Ref<VertexArray> Create();
 	};
-
 }

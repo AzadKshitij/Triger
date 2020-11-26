@@ -6,7 +6,8 @@
  ***********************************************/
 #pragma once
 
-#include "Core.h"
+#include "Triger/Core/Core.h"
+
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 

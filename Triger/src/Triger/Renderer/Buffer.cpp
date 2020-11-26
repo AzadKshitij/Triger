@@ -1,7 +1,7 @@
 #include "trpch.h"
-#include "Buffer.h"
+#include "Triger/Renderer/Buffer.h"
 
-#include "Renderer.h"
+#include "Triger/Renderer/Renderer.h"
 
 #include "Triger/Platform/OpenGL/OpenGLBuffer.h"
 

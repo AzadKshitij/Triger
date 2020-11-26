@@ -17,4 +17,5 @@ namespace Triger {
 		GLFWwindow* m_WindowHandle;
 	};
 
+
 }

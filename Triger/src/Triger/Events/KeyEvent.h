@@ -1,5 +1,5 @@
 #pragma once
-#include "Event.h"
+#include "Triger/Events/Event.h"
 
 #include "Triger/Core/Input.h"
 
@@ -8,7 +8,6 @@ namespace Triger {
 	class KeyEvent : public Event
 	{
 	public:
-		// To get the key code
 		inline KeyCode GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)

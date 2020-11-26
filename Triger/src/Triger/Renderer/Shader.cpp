@@ -1,7 +1,7 @@
 #include "trpch.h"
-#include "Shader.h"
+#include "Triger/Renderer/Shader.h"
 
-#include "Renderer.h"
+#include "Triger/Renderer/Renderer.h"
 #include "Triger/Platform/OpenGL/OpenGLShader.h"
 
 namespace Triger {
@@ -49,14 +49,14 @@ namespace Triger {
 		return shader;
 	}
 
-	Ref<Triger::Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
+	Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
 		Add(name, shader);
 		return shader;
 	}
 
-	Ref<Triger::Shader> ShaderLibrary::Get(const std::string& name)
+	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
 		TR_CORE_ASSERT(Exists(name), "Shader not found!");
 		return m_Shaders[name];

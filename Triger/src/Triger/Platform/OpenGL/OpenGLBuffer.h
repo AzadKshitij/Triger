@@ -4,7 +4,6 @@
 
 namespace Triger
 {
-
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:

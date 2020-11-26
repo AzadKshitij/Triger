@@ -13,9 +13,10 @@
 #include "Triger/Events/Event.h"
 
 namespace Triger
-{
+{	
 	struct WindowProps
 	{
+		// TODO : To add perameter to show window Icon
 		/**
 		 * @brief Title of the window
 		*/

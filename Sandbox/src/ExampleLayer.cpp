@@ -1,45 +1,50 @@
 #include "ExampleLayer.h"
-#include <Imgui/imgui.h>
+
+#include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 ExampleLayer::ExampleLayer()
-		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
+	: Layer("ExampleLayer"), m_CameraController(1280.0f / 720.0f)
 {
 	m_VertexArray = Triger::VertexArray::Create();
 
 	float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-			0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f};
+		-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+		 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+		 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
+	};
 
 	Triger::Ref<Triger::VertexBuffer> vertexBuffer = Triger::VertexBuffer::Create(vertices, sizeof(vertices));
 	Triger::BufferLayout layout = {
-			{Triger::ShaderDataType::Float3, "a_Position"},
-			{Triger::ShaderDataType::Float4, "a_Color"}};
-
+		{ Triger::ShaderDataType::Float3, "a_Position" },
+		{ Triger::ShaderDataType::Float4, "a_Color" }
+	};
 	vertexBuffer->SetLayout(layout);
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-	uint32_t indices[3] = {0, 1, 2};
+	uint32_t indices[3] = { 0, 1, 2 };
 	Triger::Ref<Triger::IndexBuffer> indexBuffer = Triger::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 	m_VertexArray->SetIndexBuffer(indexBuffer);
 
 	m_SquareVA = Triger::VertexArray::Create();
 
 	float squareVertices[5 * 4] = {
-			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-			0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-			0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
-			-0.5f, 0.5f, 0.0f, 0.0f, 1.0f};
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
+	};
 
 	Triger::Ref<Triger::VertexBuffer> squareVB = Triger::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
-	squareVB->SetLayout({{Triger::ShaderDataType::Float3, "a_Position"},
-											 {Triger::ShaderDataType::Float2, "a_TexCoord"}});
+	squareVB->SetLayout({
+		{ Triger::ShaderDataType::Float3, "a_Position" },
+		{ Triger::ShaderDataType::Float2, "a_TexCoord" }
+		});
 	m_SquareVA->AddVertexBuffer(squareVB);
 
-	uint32_t squareIndices[6] = {0, 1, 2, 2, 3, 0};
+	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 	Triger::Ref<Triger::IndexBuffer> squareIB = Triger::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 	m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -48,10 +53,13 @@ ExampleLayer::ExampleLayer()
 			
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
+
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
+
 			void main()
 			{
 				v_Position = a_Position;
@@ -64,8 +72,10 @@ ExampleLayer::ExampleLayer()
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
+
 			in vec3 v_Position;
 			in vec4 v_Color;
+
 			void main()
 			{
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
@@ -79,9 +89,12 @@ ExampleLayer::ExampleLayer()
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
+
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
+
 			out vec3 v_Position;
+
 			void main()
 			{
 				v_Position = a_Position;
@@ -93,9 +106,11 @@ ExampleLayer::ExampleLayer()
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
+
 			in vec3 v_Position;
 			
 			uniform vec3 u_Color;
+
 			void main()
 			{
 				color = vec4(u_Color, 1.0);
@@ -107,8 +122,7 @@ ExampleLayer::ExampleLayer()
 	auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 	m_Texture = Triger::Texture2D::Create("assets/textures/Checkerboard.png");
-	m_TrigerLogoTexture = Triger::Texture2D::Create("assets/Logos/TrigerLogo.png");
-	m_TriEditorLogoTexture = Triger::Texture2D::Create("assets/Logos/TriEditorLogo.png");
+	m_ChernoLogoTexture = Triger::Texture2D::Create("assets/Logos/TrigerLogo.png");
 
 	textureShader->Bind();
 	textureShader->SetInt("u_Texture", 0);
@@ -128,7 +142,7 @@ void ExampleLayer::OnUpdate(Triger::Timestep ts)
 	m_CameraController.OnUpdate(ts);
 
 	// Render
-	Triger::RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
+	Triger::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Triger::RenderCommand::Clear();
 
 	Triger::Renderer::BeginScene(m_CameraController.GetCamera());
@@ -152,12 +166,8 @@ void ExampleLayer::OnUpdate(Triger::Timestep ts)
 
 	m_Texture->Bind();
 	Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-	m_TrigerLogoTexture->Bind();
+	m_ChernoLogoTexture->Bind();
 	Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-	m_TriEditorLogoTexture->Bind();
-	Triger::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(2.0f), glm::vec3(2.0f)));
 
 	// Triangle
 	// Triger::Renderer::Submit(m_Shader, m_VertexArray);
@@ -172,7 +182,7 @@ void ExampleLayer::OnImGuiRender()
 	ImGui::End();
 }
 
-void ExampleLayer::OnEvent(Triger::Event &e)
+void ExampleLayer::OnEvent(Triger::Event& e)
 {
 	m_CameraController.OnEvent(e);
 }

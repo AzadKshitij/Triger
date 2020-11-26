@@ -1,7 +1,7 @@
 #include "trpch.h"
-#include "VertexArray.h"
+#include "Triger/Renderer/VertexArray.h"
 
-#include "Renderer.h"
+#include "Triger/Renderer/Renderer.h"
 #include "Triger/Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace Triger {

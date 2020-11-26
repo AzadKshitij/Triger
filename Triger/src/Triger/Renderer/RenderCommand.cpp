@@ -5,4 +5,5 @@
 namespace Triger {
 
 	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
+
 }

@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "VertexArray.h"
+#include "Triger/Renderer/VertexArray.h"
 
 namespace Triger {
 
@@ -23,6 +23,7 @@ namespace Triger {
 
 		inline static API GetAPI() { return s_API; }
 		static Scope<RendererAPI> Create();
+
 	private:
 		static API s_API;
 	};

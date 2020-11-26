@@ -15,6 +15,7 @@
 
 #include "Triger/Core/Log.h"
 
+#include "Triger/Debug/Instrumentor.h"
 
 #ifdef TR_PLATFORM_WINDOWS
 	#include <Windows.h>

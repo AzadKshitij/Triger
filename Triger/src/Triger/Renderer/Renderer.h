@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RenderCommand.h"
+#include "Triger/Renderer/RenderCommand.h"
 
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "Triger/Renderer/OrthographicCamera.h"
+#include "Triger/Renderer/Shader.h"
 
 namespace Triger {
 
@@ -15,9 +15,8 @@ namespace Triger {
 		static void BeginScene(OrthographicCamera& camera);
 		static void OnWindowResize(uint32_t width, uint32_t height);
 		static void EndScene();
-		
-		static void Shutdown();
 
+		static void Shutdown();
 
 		static void Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
 
@@ -30,6 +29,5 @@ namespace Triger {
 
 		static Scope<SceneData> s_SceneData;
 	};
-
 
 }

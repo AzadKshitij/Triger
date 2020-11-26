@@ -36,7 +36,6 @@ group ""
 project "Triger"
 
 	location "Triger"
-	-- kind "SharedLib"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
@@ -87,7 +86,6 @@ project "Triger"
 
 		defines
 		{
-			"TR_PLATFORM_WINDOWS",
 			"TR_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -140,11 +138,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"TR_PLATFORM_WINDOWS"
-		}
+		
 		-- postbuildcommands
 		-- {
 		-- 	("{COPY} ../bin/" .. outputdir .. "/Triger/Triger.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
