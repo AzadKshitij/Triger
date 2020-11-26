@@ -33,6 +33,7 @@ namespace Triger {
 		void PushOverlay(Layer* layer);
 
 		inline Window& GetWindow() { return *m_Window; }
+		void Close();
 
 		inline static Application& Get() { return *s_Instance; }
 	private:
