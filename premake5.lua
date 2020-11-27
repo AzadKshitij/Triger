@@ -1,6 +1,6 @@
 workspace "Triger"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "Tridor"
 
 	configurations
 	{
@@ -24,11 +24,13 @@ IncludeDir["Glad"] = "Triger/vendor/Glad/include"
 IncludeDir["ImGui"] = "Triger/vendor/ImGui"
 IncludeDir["glm"] = "Triger/vendor/glm"
 IncludeDir["stb_image"] = "Triger/vendor/stb_image"
+IncludeDir["entt"] = "Triger/vendor/entt/include"
 
 group "Dependencies"
 	include "Triger/vendor/GLFW"
 	include "Triger/vendor/Glad"
 	include "Triger/vendor/ImGui"
+
 
 group ""
 
@@ -71,7 +73,8 @@ project "Triger"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -105,6 +108,7 @@ project "Triger"
 		defines "TR_DIST"
 		runtime "Release"
 		optimize "on"
+
 
 project "Sandbox"
 	location "Sandbox"
@@ -177,7 +181,8 @@ project "Tridor"
 		"Triger/vendor/spdlog/include",
 		"Triger/src",
 		"Triger/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

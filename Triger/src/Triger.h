@@ -14,6 +14,10 @@
 
 #include "Triger/Core/Timestep.h"
 
+// ----------------- Scene & Entt -------------------
+
+#include "Triger/Scene/Scene.h"
+#include "Triger/Scene/Components.h"
 
 // ----------------- Controlls -------------------
 #include "Triger/Core/Input.h"
