@@ -30,6 +30,7 @@
 #include "Triger/Renderer/Renderer2D.h"
 
 #include "Triger/Renderer/Buffer.h"
+#include "Triger/Renderer/Framebuffer.h"
 #include "Triger/Renderer/Shader.h"
 #include "Triger/Renderer/Texture.h"
 #include "Triger/Renderer/VertexArray.h"
