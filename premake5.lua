@@ -139,12 +139,55 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-		
-		-- postbuildcommands
-		-- {
-		-- 	("{COPY} ../bin/" .. outputdir .. "/Triger/Triger.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
-		-- }
 
+	filter "configurations:Debug"
+		defines "TR_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "TR_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "TR_DIST"
+		runtime "Release"
+		optimize "on"
+
+
+project "Tridor"
+	location "Tridor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Triger/vendor/spdlog/include",
+		"Triger/src",
+		"Triger/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"Triger"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
 	filter "configurations:Debug"
 		defines "TR_DEBUG"
 		runtime "Debug"

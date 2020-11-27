@@ -25,12 +25,12 @@ namespace Triger
 		/**
 		 * @brief Width of the window
 		*/
-		unsigned int Width;
+		uint32_t Width;
 		
 		/**
 		 * @brief Height of the window
 		*/
-		unsigned int Height;
+		uint32_t Height;
 
 		/**
 		 * @brief Window properties which will pass into GLFWwindow 
@@ -40,8 +40,8 @@ namespace Triger
 		*/
 		WindowProps(
 			const std::string &title = "Triger Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720
+			uint32_t width = 1280,
+			uint32_t height = 720
 		)
 				: Title(title), Width(width), Height(height)
 		{
@@ -72,13 +72,13 @@ namespace Triger
 		 * @brief will return the width of window
 		 * @return unsigned int window width
 		*/
-		virtual unsigned int GetWidth() const = 0;
+		virtual uint32_t GetWidth() const = 0;
 
 		/**
 		 * @brief will return the height of window
 		 * @return unsigned int window height 
 		*/
-		virtual unsigned int GetHeight() const = 0;
+		virtual uint32_t GetHeight() const = 0;
 		
 		/*
 		* Window attributes

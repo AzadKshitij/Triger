@@ -4,21 +4,45 @@
 #include "Sandbox2D.h"
 #include "ExampleLayer.h"
 
-class Sandbox : public Triger::Application
-{
-public:
-	Sandbox()
+//class Sandbox : public Triger::Application
+//{
+//public:
+//	Sandbox()
+//	{
+//		// PushLayer(new ExampleLayer());
+//		PushLayer(new Sandbox2D());
+//	}
+//
+//	~Sandbox()
+//	{
+//	}
+//};
+//
+//Triger::Application* Triger::CreateApplication()
+//{
+//	return new Sandbox();
+//}
+
+
+namespace Triger {
+
+	class Sandbox : public Application
 	{
-		// PushLayer(new ExampleLayer());
-		PushLayer(new Sandbox2D());
+	public:
+		Sandbox()
+			: Application("Sandbox")
+		{
+			PushLayer(new Sandbox2D());
+		}
+
+		~Sandbox()
+		{
+		}
+	};
+
+	Application* CreateApplication()
+	{
+		return new Sandbox();
 	}
 
-	~Sandbox()
-	{
-	}
-};
-
-Triger::Application* Triger::CreateApplication()
-{
-	return new Sandbox();
 }

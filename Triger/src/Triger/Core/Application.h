@@ -24,7 +24,7 @@ namespace Triger {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Triger App");
 		virtual ~Application();
 
 		void OnEvent(Event& e);
