@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Triger/Renderer/Camera.h"
+
 namespace Triger {
 
 	struct TagComponent
@@ -27,6 +29,18 @@ namespace Triger {
 		operator glm::mat4& () { return Transform; }
 		operator const glm::mat4& () const { return Transform; }
 	};
+
+	struct CameraComponent
+	{
+		Triger::Camera Camera;
+		bool Primary = true; // TODO: think about moving to Scene
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			: Camera(projection) {}
+	};
+
 
 	struct SpriteRendererComponent
 	{
