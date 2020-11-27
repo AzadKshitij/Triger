@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 	app->Run();
 	TR_PROFILE_END_SESSION();
 
-	TR_PROFILE_BEGIN_SESSION("Startup", "TrigerProfile-Shutdown.json");
+	TR_PROFILE_BEGIN_SESSION("Shutdown", "TrigerProfile-Shutdown.json");
 	delete app;
 	TR_PROFILE_END_SESSION();
 }
