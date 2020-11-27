@@ -20,7 +20,7 @@ Triger is primarily an early-stage interactive application and rendering engine 
 
 3. **Open** and Build the solution( shorcut F7 ).
 
-4. **Run** the solution.
+4. **Run** the solution ( Defalt starter project is **SandboxApp** if you want to check **TrigerEditor** aka **Tridor** change starter project to Tridor ).
 
 # How to Contribute
 
