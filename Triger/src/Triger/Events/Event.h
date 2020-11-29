@@ -1,5 +1,7 @@
 #pragma once
-#include "trpch.h"
+#include <functional>
+
+#include "Triger/Debug/Instrumentor.h"
 
 #include "Triger/Core/Base.h"
 

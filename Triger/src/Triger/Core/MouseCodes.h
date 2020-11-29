@@ -8,8 +8,11 @@
 
 namespace Triger
 {
-	typedef enum class MouseCode : uint16_t
+	using MouseCode = uint16_t;
+	namespace Mouse
 	{
+		enum : MouseCode
+		{
 		// From glfw3.h
 		Button0 = 0,
 		Button1 = 1,
@@ -24,24 +27,6 @@ namespace Triger
 		ButtonLeft = Button0,
 		ButtonRight = Button1,
 		ButtonMiddle = Button2
-	} Mouse;
-
-	inline std::ostream& operator<<(std::ostream& os, MouseCode mouseCode)
-	{
-		os << static_cast<int32_t>(mouseCode);
-		return os;
+		};
 	}
 }
-
-#define TR_MOUSE_BUTTON_0      ::Triger::Mouse::Button0
-#define TR_MOUSE_BUTTON_1      ::Triger::Mouse::Button1
-#define TR_MOUSE_BUTTON_2      ::Triger::Mouse::Button2
-#define TR_MOUSE_BUTTON_3      ::Triger::Mouse::Button3
-#define TR_MOUSE_BUTTON_4      ::Triger::Mouse::Button4
-#define TR_MOUSE_BUTTON_5      ::Triger::Mouse::Button5
-#define TR_MOUSE_BUTTON_6      ::Triger::Mouse::Button6
-#define TR_MOUSE_BUTTON_7      ::Triger::Mouse::Button7
-#define TR_MOUSE_BUTTON_LAST   ::Triger::Mouse::ButtonLast
-#define TR_MOUSE_BUTTON_LEFT   ::Triger::Mouse::ButtonLeft
-#define TR_MOUSE_BUTTON_RIGHT  ::Triger::Mouse::ButtonRight
-#define TR_MOUSE_BUTTON_MIDDLE ::Triger::Mouse::ButtonMiddle

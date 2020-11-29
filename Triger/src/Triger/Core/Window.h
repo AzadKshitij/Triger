@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "trpch.h"
+#include <sstream>
 
 #include "Triger/Core/Base.h"
 #include "Triger/Events/Event.h"

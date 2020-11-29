@@ -6,6 +6,9 @@
 #include <iomanip>
 #include <string>
 #include <thread>
+#include <mutex>
+#include <sstream>
+#include "Triger/Core/Log.h"
 
 namespace Triger {
 
