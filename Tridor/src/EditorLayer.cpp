@@ -18,10 +18,8 @@ namespace Triger {
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
 		FramebufferSpecification fbSpec;
-
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
@@ -35,14 +33,12 @@ namespace Triger {
 
 		m_SquareEntity = square;
 
-
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
 		m_CameraEntity.AddComponent<CameraComponent>();
 
 		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
-
 
 		class CameraController : public ScriptableEntity
 		{
@@ -60,6 +56,7 @@ namespace Triger {
 			virtual void OnUpdate(Timestep ts) override
 			{
 				auto& translation = GetComponent<TransformComponent>().Translation;
+
 				float speed = 5.0f;
 
 				if (Input::IsKeyPressed(Key::A))
@@ -77,10 +74,7 @@ namespace Triger {
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-
 	}
-
-
 
 	void EditorLayer::OnDetach()
 	{
@@ -112,12 +106,8 @@ namespace Triger {
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
-		Renderer2D::BeginScene(m_CameraController.GetCamera());
-
 		// Update scene
 		m_ActiveScene->OnUpdate(ts);
-
-		Renderer2D::EndScene();
 
 		m_Framebuffer->Unbind();
 	}
@@ -165,11 +155,16 @@ namespace Triger {
 
 		// DockSpace
 		ImGuiIO& io = ImGui::GetIO();
+		ImGuiStyle& style = ImGui::GetStyle();
+		float minWinSizeX = style.WindowMinSize.x;
+		style.WindowMinSize.x = 370.0f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 			ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 		}
+
+		style.WindowMinSize.x = minWinSizeX;
 
 		if (ImGui::BeginMenuBar())
 		{
@@ -188,7 +183,6 @@ namespace Triger {
 
 		m_SceneHierarchyPanel.OnImGuiRender();
 
-		//------------------------------- Stats --------------------------------------
 		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
@@ -197,28 +191,22 @@ namespace Triger {
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
 		ImGui::End();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
-
-		
-
-		//------------------------------- View Port --------------------------------------
 		ImGui::Begin("Viewport");
-		
+
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-
 		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-
 		ImGui::End();
-
 		ImGui::PopStyleVar();
 
 		ImGui::End();
@@ -228,5 +216,5 @@ namespace Triger {
 	{
 		m_CameraController.OnEvent(e);
 	}
- 
+
 }
