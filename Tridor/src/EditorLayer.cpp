@@ -71,8 +71,9 @@ namespace Triger {
 		};
 
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 
 	}
 
@@ -181,6 +182,8 @@ namespace Triger {
 
 			ImGui::EndMenuBar();
 		}
+
+		m_SceneHierarchyPanel.OnImGuiRender();
 
 		//------------------------------- Stats --------------------------------------
 		ImGui::Begin("Stats");
