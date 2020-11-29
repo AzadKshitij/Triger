@@ -26,7 +26,7 @@ namespace Triger {
 		TR_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
 		TR_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 
-		TR_CORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "Hazel requires at least OpenGL version 4.5!");
+		TR_CORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "Triger requires at least OpenGL version 4.5!");
 	}
 
 	void OpenGLContext::SwapBuffers()
