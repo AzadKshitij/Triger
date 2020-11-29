@@ -17,6 +17,7 @@
 // ----------------- Scene & Entt -------------------
 
 #include "Triger/Scene/Entity.h"
+#include "Triger/Scene/ScriptableEntity.h"
 #include "Triger/Scene/Scene.h"
 #include "Triger/Scene/Components.h"
 
