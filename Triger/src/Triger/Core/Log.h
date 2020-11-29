@@ -13,6 +13,8 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/basic_file_sink.h>
 
 namespace Triger
 {
@@ -21,6 +23,10 @@ namespace Triger
 	*/
 	class Log
 	{
+
+	public:
+		//static std::vector<spdlog::sink_ptr> logSinks;
+
 	public:
 
 		/**

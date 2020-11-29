@@ -4,11 +4,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Log/AppLog.h"
 #include "Triger/Scene/SceneSerializer.h"
 #include "Triger/Utils/PlatformUtils.h"
 
 namespace Triger {
 
+	Tridor::AppLog LogMessages;
+	
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 	{
@@ -17,6 +20,11 @@ namespace Triger {
 	void EditorLayer::OnAttach()
 	{
 		TR_PROFILE_FUNCTION();
+		
+		LogMessages.putMessage(0, "Normal");
+		LogMessages.putMessage(1, "Green");
+		LogMessages.putMessage(2, "Warning");
+		LogMessages.putMessage(3, "Error");
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
@@ -199,6 +207,7 @@ namespace Triger {
 
 		m_SceneHierarchyPanel.OnImGuiRender();
 
+		//-------------------------------- States --------------------------------------------
 		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
@@ -211,6 +220,59 @@ namespace Triger {
 		ImGui::End();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+
+		//-------------------------------- Console --------------------------------------------
+		ImGui::Begin("Console");
+
+		ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
+		/*if (logMessages.logMessages.first == "Warning")
+		{
+			if (logMessages.logMessages.second != "") 
+			{
+				ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
+			}
+		}*/
+		for (int i = 0; i < LogMessages.logMessages.size(); i++)
+		{
+			switch (LogMessages.logMessages[i].first)
+			{
+			case 0: // Normal
+			{
+				ImGui::TextColored(ImVec4( 1, 1, 1, 1), "Normal : %s ", LogMessages.logMessages[i].second);
+
+				break;
+			}
+
+			case 1: // Green
+			{
+				ImGui::TextColored(ImVec4(0, 1, 0, 1), "Worked : %s ", LogMessages.logMessages[i].second);
+
+				break;
+			}
+
+			case 2: // Yellow
+			{
+				ImGui::TextColored(ImVec4(1, 1, 0, 1), "Warning : %s ", LogMessages.logMessages[i].second);
+
+				break;
+			}
+			
+			case 3: // Red
+			{
+				ImGui::TextColored(ImVec4(1, 0, 0, 1), "Error : %s ", LogMessages.logMessages[i].second);
+
+				break;
+			}
+
+			default:
+				break;
+			}
+
+		}
+
+		ImGui::End();
+
+		//-------------------------------- Viewport --------------------------------------------
 		ImGui::Begin("Viewport");
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
@@ -247,30 +309,32 @@ namespace Triger {
 		bool shift = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
 		switch (e.GetKeyCode())
 		{
-		case Key::N:
-		{
-			if (control)
-				NewScene();
+			case Key::N:
+			{
+				if (control)
+					NewScene();
 
-			break;
-		}
-		case Key::O:
-		{
-			if (control)
-				OpenScene();
+				break;
+			}
+			case Key::O:
+			{
+				if (control)
+					OpenScene();
 
-			break;
-		}
-		case Key::S:
-		{
-			if (control && shift)
-				SaveSceneAs();
+				break;
+			}
+			case Key::S:
+			{
+				if (control && shift)
+					SaveSceneAs();
 
-			if (control)
-				SaveScene();
+				if (control)
+					SaveScene();
 
-			break;
-		}
+				break;
+			}
+			default:
+				break;
 		}
 	}
 

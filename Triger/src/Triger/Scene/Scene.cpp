@@ -8,8 +8,9 @@
 
 #include <glm/glm.hpp>
 
-namespace Triger {
+#include "Triger/Scene/SceneCamera.h"
 
+namespace Triger {
 
 	Scene::Scene()
 	{ 
@@ -135,7 +136,5 @@ namespace Triger {
 	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent& component)
 	{
 	}
-
-
 
 }
