@@ -23,6 +23,7 @@ namespace Triger {
 
 		void NewScene();
 		void OpenScene();
+		void SaveScene();
 		void SaveSceneAs();
 
 	private:
@@ -37,6 +38,7 @@ namespace Triger {
 		Entity m_SquareEntity;
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
+		std::string m_openedFilepath;
 
 		bool m_PrimaryCamera = true;
 

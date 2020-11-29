@@ -184,6 +184,9 @@ namespace Triger {
 				if (ImGui::MenuItem("Open...", "Ctrl+O"))
 					OpenScene();
 
+				if (ImGui::MenuItem("Save", "Ctrl+S"))
+					SaveScene();
+				
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 					SaveSceneAs();
 
@@ -263,6 +266,9 @@ namespace Triger {
 			if (control && shift)
 				SaveSceneAs();
 
+			if (control)
+				SaveScene();
+
 			break;
 		}
 		}
@@ -277,25 +283,33 @@ namespace Triger {
 
 	void EditorLayer::OpenScene()
 	{
-		std::string filepath = FileDialogs::OpenFile("Triger Scene (*.triger)\0*.triger\0");
-		if (!filepath.empty())
+		std::optional<std::string> filepath = FileDialogs::OpenFile("Triger Scene (*.hazel)\0*.triger\0");
+		if (filepath)
 		{
 			m_ActiveScene = CreateRef<Scene>();
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Deserialize(filepath);
+			m_openedFilepath = *filepath;
+			serializer.Deserialize(*filepath);
 		}
 	}
 
+	void EditorLayer::SaveScene()
+	{
+		if (m_openedFilepath != "") {
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Serialize(m_openedFilepath);
+		}
+	}
 	void EditorLayer::SaveSceneAs()
 	{
-		std::string filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
-		if (!filepath.empty())
+		std::optional<std::string> filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
+		if (filepath)
 		{
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(filepath);
+			serializer.Serialize(*filepath);
 		}
 	}
 

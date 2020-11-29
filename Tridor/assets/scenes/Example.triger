@@ -22,7 +22,7 @@ Entities:
     TagComponent:
       Tag: Red Square
     TransformComponent:
-      Translation: [-1.10000002, 0.699999988, 0]
+      Translation: [5, 0.699999988, 0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
