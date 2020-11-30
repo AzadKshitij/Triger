@@ -366,6 +366,14 @@ namespace Triger {
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.Serialize(m_openedFilepath);
 		}
+		else {
+			std::optional<std::string> filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
+			if (filepath)
+			{
+				SceneSerializer serializer(m_ActiveScene);
+				serializer.Serialize(*filepath);
+			}
+		}
 	}
 	void EditorLayer::SaveSceneAs()
 	{
