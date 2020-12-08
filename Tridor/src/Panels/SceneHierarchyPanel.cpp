@@ -47,8 +47,18 @@ namespace Triger {
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
 				m_Context->CreateEntity("Empty Entity");
-			else if (ImGui::MenuItem("Create Prespective Camera"))
-				m_Context->CreateEntity("Prespective Camera");
+			else if (ImGui::MenuItem("Create Camera"))
+			{
+				m_SelectionContext = m_Context->CreateEntity("Camera");
+				m_SelectionContext.AddComponent<CameraComponent>();
+				ImGui::CloseCurrentPopup();
+			}
+			else if (ImGui::MenuItem("Create Sprite"))
+			{
+				m_SelectionContext = m_Context->CreateEntity("Sprite");
+				m_SelectionContext.AddComponent<SpriteRendererComponent>();
+				ImGui::CloseCurrentPopup();
+			}
 
 			ImGui::EndPopup();
 		}
