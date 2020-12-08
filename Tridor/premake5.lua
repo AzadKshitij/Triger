@@ -19,7 +19,8 @@ project "Tridor"
 		"%{wks.location}/Triger/src",
 		"%{wks.location}/Triger/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links

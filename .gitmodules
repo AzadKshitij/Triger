@@ -17,3 +17,6 @@
 [submodule "Triger/vendor/yaml-cpp"]
 	path = Triger/vendor/yaml-cpp
 	url = https://github.com/thecherno/yaml-cpp
+[submodule "Triger/vendor/ImGuizmo"]
+	path = Triger/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

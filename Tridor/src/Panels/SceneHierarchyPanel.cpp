@@ -47,6 +47,8 @@ namespace Triger {
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
 				m_Context->CreateEntity("Empty Entity");
+			else if (ImGui::MenuItem("Create Prespective Camera"))
+				m_Context->CreateEntity("Prespective Camera");
 
 			ImGui::EndPopup();
 		}
