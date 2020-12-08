@@ -172,6 +172,7 @@ namespace Triger {
 		ImGui::PopItemWidth();
 
 		ImGui::PopStyleVar();
+		ImGui::Separator();
 
 		ImGui::Columns(1);
 
