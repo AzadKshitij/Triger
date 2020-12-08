@@ -18,7 +18,7 @@ namespace Triger
 	Tridor::AppLog LogMessages;
 
 	EditorLayer::EditorLayer()
-			: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({0.2f, 0.3f, 0.8f, 1.0f})
+			: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({1.0f,1.0f, 1.0f, 1.0f})
 	{
 	}
 
@@ -207,6 +207,29 @@ namespace Triger
 					Application::Get().Close();
 				ImGui::EndMenu();
 			}
+			if (ImGui::BeginMenu("View"))
+			{
+				// Disabling fullscreen would allow the window to be moved to the front of other windows,
+				// which we can't undo at the moment without finer window depth/z control.
+				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
+				if (m_showConsole)
+				{
+					if (ImGui::MenuItem("Hide Console"))
+					{
+						m_showConsole = false;
+						NewScene();
+					}
+				}
+				else
+				{
+					if (ImGui::MenuItem("Show Console"))
+					{
+						m_showConsole = true;
+						NewScene();
+					}
+				}
+				ImGui::EndMenu();
+			}
 
 			ImGui::EndMenuBar();
 		}
@@ -238,54 +261,58 @@ namespace Triger
 		ImGui::End();
 
 		//-------------------------------- Console --------------------------------------------
-		ImGui::Begin("Console");
-
-		ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
-		/*if (logMessages.logMessages.first == "Warning")
+		if (m_showConsole)
 		{
-			if (logMessages.logMessages.second != "") 
+			ImGui::Begin("Console");
+
+			ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
+			/*if (logMessages.logMessages.first == "Warning")
 			{
-				ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
-			}
-		}*/
-		for (int i = 0; i < LogMessages.logMessages.size(); i++)
-		{
-			switch (LogMessages.logMessages[i].first)
+				if (logMessages.logMessages.second != "") 
+				{
+					ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
+				}
+			}*/
+			for (int i = 0; i < LogMessages.logMessages.size(); i++)
 			{
-			case 0: // Normal
-			{
-				ImGui::TextColored(ImVec4(1, 1, 1, 1), "Normal : %s ", LogMessages.logMessages[i].second);
+				switch (LogMessages.logMessages[i].first)
+				{
+				case 0: // Normal
+				{
+					ImGui::TextColored(ImVec4(1, 1, 1, 1), "Normal : %s ", LogMessages.logMessages[i].second);
 
-				break;
+					break;
+				}
+
+				case 1: // Green
+				{
+					ImGui::TextColored(ImVec4(0, 1, 0, 1), "Worked : %s ", LogMessages.logMessages[i].second);
+
+					break;
+				}
+
+				case 2: // Yellow
+				{
+					ImGui::TextColored(ImVec4(1, 1, 0, 1), "Warning : %s ", LogMessages.logMessages[i].second);
+
+					break;
+				}
+
+				case 3: // Red
+				{
+					ImGui::TextColored(ImVec4(1, 0, 0, 1), "Error : %s ", LogMessages.logMessages[i].second);
+
+					break;
+				}
+
+				default:
+					break;
+				}
 			}
 
-			case 1: // Green
-			{
-				ImGui::TextColored(ImVec4(0, 1, 0, 1), "Worked : %s ", LogMessages.logMessages[i].second);
-
-				break;
-			}
-
-			case 2: // Yellow
-			{
-				ImGui::TextColored(ImVec4(1, 1, 0, 1), "Warning : %s ", LogMessages.logMessages[i].second);
-
-				break;
-			}
-
-			case 3: // Red
-			{
-				ImGui::TextColored(ImVec4(1, 0, 0, 1), "Error : %s ", LogMessages.logMessages[i].second);
-
-				break;
-			}
-
-			default:
-				break;
-			}
+			ImGui::End();
 		}
 
-		ImGui::End();
 
 		//-------------------------------- Viewport --------------------------------------------
 		ImGui::Begin("Viewport");
@@ -304,6 +331,7 @@ namespace Triger
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
 		{
+			
 			ImGuizmo::SetOrthographic(false);
 			ImGuizmo::SetDrawlist();
 
@@ -336,6 +364,7 @@ namespace Triger
 
 			if (ImGuizmo::IsUsing())
 			{
+				m_AllowShortcuts = false;
 				glm::vec3 translation, rotation, scale;
 				Math::DecomposeTransform(transform, translation, rotation, scale);
 
@@ -343,6 +372,9 @@ namespace Triger
 				tc.Translation = translation;
 				tc.Rotation += deltaRotation;
 				tc.Scale = scale;
+			}
+			else {
+				m_AllowShortcuts = true;
 			}
 		}
 
@@ -397,18 +429,30 @@ namespace Triger
 
 		// Gizmos
 		case Key::Q:
-			m_GizmoType = -1;
+			if (m_AllowShortcuts)
+			{
+				m_GizmoType = -1;
+			}
 			break;
 		case Key::W:
-			m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+			if (m_AllowShortcuts)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+			}
 			break;
 		case Key::E:
-			m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+			if (m_AllowShortcuts)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+			}
 			break;
 		case Key::R:
-			m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			if (m_AllowShortcuts)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			}
 			break;
-
+		
 		default:
 			break;
 		}
