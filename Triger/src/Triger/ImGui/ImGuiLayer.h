@@ -22,7 +22,7 @@ namespace Triger {
 		void End();
 		void BlockEvents(bool block) { m_BlockEvents = block; }
 
-		void SetDarkThemeColors();
+		void SetDarkThemeColors(std::string theme);
 	private:
 		bool m_BlockEvents = true;
 	};
