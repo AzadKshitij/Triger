@@ -46,7 +46,7 @@ namespace Triger {
 		if (ImGui::BeginPopupContextWindow(0, 1, false))
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
-				m_Context->CreateEntity("Empty Entity");
+				m_SelectionContext = m_Context->CreateEntity("Empty Entity");
 			else if (ImGui::MenuItem("Create Camera"))
 			{
 				m_SelectionContext = m_Context->CreateEntity("Camera");
