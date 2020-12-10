@@ -2,6 +2,7 @@
 
 #include "Triger.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Triger/Renderer/EditorCamera.h"
 
 namespace Triger {
 
@@ -41,6 +42,7 @@ namespace Triger {
 		std::string m_openedFilepath;
 
 		bool m_PrimaryCamera = true;
+		EditorCamera m_EditorCamera;
 
 		Ref<Texture2D> m_CheckerboardTexture;
 		

@@ -40,6 +40,8 @@ namespace Triger
 
 		m_ActiveScene = CreateRef<Scene>();
 
+		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.01f, 1000.0f);
+
 #if 0
 		// Entity
 		auto square = m_ActiveScene->CreateEntity("Green Square");
@@ -109,13 +111,18 @@ namespace Triger
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
-
+			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		// Update
 		if (m_ViewportFocused)
+		{
 			m_CameraController.OnUpdate(ts);
+			m_EditorCamera.onUpdate(ts);
+		}
+
+
 
 		// Render
 		Renderer2D::ResetStats();
@@ -124,7 +131,7 @@ namespace Triger
 		RenderCommand::Clear();
 
 		// Update scene
-		m_ActiveScene->OnUpdate(ts);
+		m_ActiveScene->OnUpdateEditor(ts,m_EditorCamera);
 
 		m_Framebuffer->Unbind();
 	}
@@ -387,6 +394,7 @@ namespace Triger
 	void EditorLayer::OnEvent(Event &e)
 	{
 		m_CameraController.OnEvent(e);
+		m_EditorCamera.onEvent(e);
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
