@@ -61,6 +61,11 @@ namespace Triger {
 				m_SelectionContext = m_Context->CreateEntity("Sprite");
 				m_SelectionContext.AddComponent<SpriteRendererComponent>();
 				ImGui::CloseCurrentPopup();
+				for (int i = 0; i < 1000 ; i++)
+				{
+					m_SelectionContext = m_Context->CreateEntity("Sprite");
+					m_SelectionContext.AddComponent<SpriteRendererComponent>();
+				}
 			}
 			
 
