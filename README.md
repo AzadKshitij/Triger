@@ -6,6 +6,20 @@
 
 Triger is primarily an early-stage interactive application and rendering engine for Windows. But working on making it cross plateform looking for contributors who can work on Linux version.
 
+# Showcase
+- ### 3D Viewport Camera
+This camera is same as Blender's viewport camera
+
+![3DViewPortCameraShowcase](./Showcase/GIF/3DViewPortCameraShowcase.gif)
+
+- ### 3D Gizmo
+
+![GizmoShowcase](./Showcase/GIF/GizmoShowcase.gif)
+
+- ### Scene Loading and saving
+- ### Batch render
+- ### Rendering Stats
+
 # Building
 
 ### Windows
