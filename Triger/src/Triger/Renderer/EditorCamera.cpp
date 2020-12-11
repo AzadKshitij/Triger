@@ -25,6 +25,10 @@ namespace Triger {
 
 	void EditorCamera::UpdateView()
 	{
+		// Reseting view if F is pressed
+		if (Input::IsKeyPressed(Key::F))
+			ResetView();
+
 		m_Position = CalculatePosition();
 
 		glm::quat orientation = GetOriantation ();
@@ -150,6 +154,18 @@ namespace Triger {
 	glm::quat EditorCamera::GetOriantation() const
 	{
 		return glm::quat(glm::vec3(-m_Pitch, -m_Yaw, 0.0f));
+	}
+
+	void EditorCamera::ResetView()
+	{
+		m_FOV = 45.0f, m_AspectRatio = 1.778f, m_NearClip = 1.0f, m_FarClip = 1000.0f;
+
+		m_Position = { 0.0f, 0.0f, 0.0f };
+		m_FocalPoint = { 0.0f, 0.0f, 0.0f };
+
+
+		m_Distance = 10.0f;
+		m_Pitch = 0.0f, m_Yaw = 0.0f;
 	}
 
 }

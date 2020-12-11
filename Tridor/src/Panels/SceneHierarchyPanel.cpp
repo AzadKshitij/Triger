@@ -1,3 +1,5 @@
+#include <trpch.h>
+
 #include "SceneHierarchyPanel.h"
 
 #include <imgui/imgui.h>
@@ -6,6 +8,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Triger/Scene/Components.h"
+#include "Triger/Core/Input.h"
 
 #include <cstring>
 
@@ -59,6 +62,7 @@ namespace Triger {
 				m_SelectionContext.AddComponent<SpriteRendererComponent>();
 				ImGui::CloseCurrentPopup();
 			}
+			
 
 			ImGui::EndPopup();
 		}
@@ -76,6 +80,9 @@ namespace Triger {
 
 	void SceneHierarchyPanel::DrawEntityNode(Entity entity)
 	{
+
+		int count = 0;
+
 		auto& tag = entity.GetComponent<TagComponent>().Tag;
 
 		ImGuiTreeNodeFlags flags = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
@@ -95,6 +102,14 @@ namespace Triger {
 			ImGui::EndPopup();
 		}
 
+		if (Input::IsKeyPressedOnce(Key::Delete))
+		{
+			//std::cout << "Kshitij" << std::endl;
+			m_Context->DestroyEntity(entity);
+			if (m_SelectionContext == entity)
+				m_SelectionContext = {};
+		}
+
 		if (opened)
 		{
 			ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
@@ -108,7 +123,10 @@ namespace Triger {
 		{
 			m_Context->DestroyEntity(entity);
 			if (m_SelectionContext == entity)
+			{
+				//std::cout << "Kshitij" << std::endl;
 				m_SelectionContext = {};
+			}
 		}
 	}
 

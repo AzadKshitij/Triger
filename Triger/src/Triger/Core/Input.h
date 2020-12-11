@@ -18,6 +18,7 @@ namespace Triger
 	public:
 		virtual ~Input() = default;
 		static bool IsKeyPressed(KeyCode key);
+		static bool IsKeyPressedOnce(KeyCode key);
 		static bool IsMouseButtonPressed(MouseCode button);
 		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
