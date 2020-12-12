@@ -10,7 +10,6 @@
 
 namespace Triger {
 
-
 	std::optional<std::string> FileDialogs::OpenFile(const char* filter)
 	{
 		OPENFILENAMEA ofn;

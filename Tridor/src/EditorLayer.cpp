@@ -117,11 +117,9 @@ namespace Triger
 
 		// Update
 		if (m_ViewportFocused)
-		{
 			m_CameraController.OnUpdate(ts);
-			m_EditorCamera.onUpdate(ts);
-		}
 
+		m_EditorCamera.OnUpdate(ts);
 
 
 		// Render
@@ -243,7 +241,6 @@ namespace Triger
 
 		m_SceneHierarchyPanel.OnImGuiRender();
 
-		//-------------------------------- States --------------------------------------------
 		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
@@ -255,7 +252,19 @@ namespace Triger
 
 		ImGui::End();
 
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+		ImGui::Begin("Viewport");
+
+		m_ViewportFocused = ImGui::IsWindowFocused();
+		m_ViewportHovered = ImGui::IsWindowHovered();
+		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
+
+		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+
+		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+		
 
 		//-------------------------------- Keys --------------------------------------------
 		ImGui::Begin("Keys");
@@ -275,7 +284,7 @@ namespace Triger
 			ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
 			/*if (logMessages.logMessages.first == "Warning")
 			{
-				if (logMessages.logMessages.second != "") 
+				if (logMessages.logMessages.second != "")
 				{
 					ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
 				}
@@ -321,19 +330,6 @@ namespace Triger
 		}
 
 
-		//-------------------------------- Viewport --------------------------------------------
-		ImGui::Begin("Viewport");
-
-		m_ViewportFocused = ImGui::IsWindowFocused();
-		m_ViewportHovered = ImGui::IsWindowHovered();
-		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
-
-		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		m_ViewportSize = {viewportPanelSize.x, viewportPanelSize.y};
-
-		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-		ImGui::Image(reinterpret_cast<void *>(textureID), ImVec2{m_ViewportSize.x, m_ViewportSize.y}, ImVec2{0, 1}, ImVec2{1, 0});
-
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
@@ -347,17 +343,16 @@ namespace Triger
 			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
 
 			// Camera
-			// Runtime Camera from Entity
-			/*
-			auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
-			const auto &camera = cameraEntity.GetComponent<CameraComponent>().Camera;
-			const glm::mat4 &cameraProjection = camera.GetProjection();
-			glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
-			*/
 
-			//Editor Camera
+			// Runtime camera from entity
+			// auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+			// const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
+			// const glm::mat4& cameraProjection = camera.GetProjection();
+			// glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+
+			// Editor camera
 			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
-			glm::mat4 cameraView = m_EditorCamera.GetViewportMatrix();
+			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
 
 			// Entity transform
 			auto &tc = selectedEntity.GetComponent<TransformComponent>();
@@ -401,7 +396,7 @@ namespace Triger
 	void EditorLayer::OnEvent(Event &e)
 	{
 		m_CameraController.OnEvent(e);
-		m_EditorCamera.onEvent(e);
+		m_EditorCamera.OnEvent(e);
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
