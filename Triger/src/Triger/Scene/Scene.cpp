@@ -1,8 +1,8 @@
 #include "trpch.h"
 
-#include "Components.h"
-#include "Entity.h"
-#include "Scene.h"
+#include "Triger/Scene/Components.h"
+#include "Triger/Scene/Entity.h"
+#include "Triger/Scene/Scene.h"
 
 #include "Triger/Renderer/Renderer2D.h"
 

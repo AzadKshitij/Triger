@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scene.h"
+#include "Triger/Scene/Scene.h"
 
 #include "entt.hpp"
 

@@ -1,5 +1,5 @@
 #include "trpch.h"
-#include "SceneCamera.h"
+#include "Triger/Scene/SceneCamera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 

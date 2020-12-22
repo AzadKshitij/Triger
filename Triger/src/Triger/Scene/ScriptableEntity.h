@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Triger/Scene/Entity.h"
 
 namespace Triger {
 
