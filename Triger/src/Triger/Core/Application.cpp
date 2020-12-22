@@ -1,5 +1,12 @@
+/**
+ *  @file   Application.h
+ *  @brief  Applicatoin creation base
+ *  @author Kshitij Azad
+ *  @date   November 2, 2020
+ ***********************************************/
+
 #include "trpch.h"
-#include "Application.h"
+#include "Triger/Core/Application.h"
 
 
 #include "Triger/Core/Log.h"

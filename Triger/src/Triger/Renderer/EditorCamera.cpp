@@ -1,5 +1,5 @@
 #include "trpch.h"
-#include "EditorCamera.h"
+#include "Triger/Renderer/EditorCamera.h"
 
 #include "Triger/Core/Input.h"
 

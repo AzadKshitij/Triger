@@ -1,5 +1,5 @@
 #include "trpch.h"
-#include "Entity.h"
+#include "Triger/Scene/Entity.h"
 
 namespace Triger {
 
