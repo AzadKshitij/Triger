@@ -5,8 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Log/AppLog.h"
-#include "Triger/Scene/SceneSerializer.h"
-#include "Triger/Utils/PlatformUtils.h"
+#include "Triger.h"
 
 #include "ImGuizmo.h"
 

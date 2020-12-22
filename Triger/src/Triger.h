@@ -21,6 +21,11 @@
 #include "Triger/Scene/Scene.h"
 #include "Triger/Scene/Components.h"
 
+#include "Triger/Scene/SceneSerializer.h"
+
+// ------------------ Utils -------------------
+#include "Triger/Utils/PlatformUtils.h"
+
 // ----------------- Controlls -------------------
 #include "Triger/Core/Input.h"
 #include "Triger/Core/KeyCodes.h"
@@ -42,6 +47,8 @@
 #include "Triger/Renderer/VertexArray.h"
 
 #include "Triger/Renderer/OrthographicCamera.h"
+
+#include "Triger/Renderer/EditorCamera.h"
 
 //------------------------ Entry Point ------------------------
 //#include "Triger/Core/EntryPoint.h"

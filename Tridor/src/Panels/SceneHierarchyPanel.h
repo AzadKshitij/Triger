@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Triger/Core/Base.h"
-#include "Triger/Core/Log.h"
-#include "Triger/Scene/Scene.h"
-#include "Triger/Scene/Entity.h"
+#include "Triger.h"
 
 namespace Triger {
 

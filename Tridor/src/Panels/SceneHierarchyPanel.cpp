@@ -7,8 +7,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Triger/Scene/Components.h"
-#include "Triger/Core/Input.h"
+#include "Triger.h"
 
 #include <cstring>
 
