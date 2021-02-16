@@ -115,6 +115,9 @@ namespace Triger
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
+		// Clear our entity ID attachment to -1
+		m_Framebuffer->ClearAttachment(1, -1);
+
 		// Update
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
