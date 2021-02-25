@@ -39,6 +39,8 @@ namespace Triger {
 		Entity m_SquareEntity;
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
+		Entity m_HoveredEntity;
+
 		std::string m_openedFilepath;
 
 		bool m_PrimaryCamera = true;
@@ -54,6 +56,7 @@ namespace Triger {
 
 		int m_GizmoType = -1;
 		bool m_AllowShortcuts = true;
+
 
 		// View
 		bool m_showConsole = true;

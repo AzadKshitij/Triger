@@ -87,6 +87,7 @@ namespace Triger {
 			//TR_CORE_ASSERT(false);
 			return 0;
 		}
+
 	}
 
 

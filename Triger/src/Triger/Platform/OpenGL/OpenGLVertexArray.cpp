@@ -90,10 +90,9 @@ namespace Triger {
 			case ShaderDataType::Bool:
 			{
 				glEnableVertexAttribArray(m_VertexBufferIndex);
-				glVertexAttribPointer(m_VertexBufferIndex,
+				glVertexAttribIPointer(m_VertexBufferIndex,
 					element.GetComponentCount(),
 					ShaderDataTypeToOpenGLBaseType(element.Type),
-					element.Normalized ? GL_TRUE : GL_FALSE,
 					layout.GetStride(),
 					(const void*)element.Offset);
 				m_VertexBufferIndex++;
