@@ -21,6 +21,7 @@ namespace Triger {
 
 	private:
 		bool OnKeyPressed(KeyPressedEvent& e);
+		bool OnMouseButtonPressed(MouseButtonEvent& e);
 
 		void NewScene();
 		void OpenScene();

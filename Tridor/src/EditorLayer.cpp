@@ -15,7 +15,7 @@ namespace Triger
 {
 
 	Tridor::AppLog LogMessages;
-
+	
 	EditorLayer::EditorLayer()
 			: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({1.0f,1.0f, 1.0f, 1.0f})
 	{
@@ -431,6 +431,7 @@ namespace Triger
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
 	}
 
 	bool EditorLayer::OnKeyPressed(KeyPressedEvent &e)
@@ -497,6 +498,19 @@ namespace Triger
 		default:
 			break;
 		}
+	}
+
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent& e)
+	{
+		if (e.GetMouseButton() == Mouse::ButtonLeft)
+		{
+			if (m_ViewportFocused && !ImGuizmo::IsOver())
+			{
+				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
+			}
+		}
+
+		return false;
 	}
 
 	void EditorLayer::NewScene()

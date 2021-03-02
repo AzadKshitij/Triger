@@ -15,6 +15,7 @@ namespace Triger {
 		void OnImGuiRender();
 
 		Entity GetSelectedEntity() const { return m_SelectionContext; }
+		Entity SetSelectedEntity(Entity entity);
 
 	private:
 		void DrawEntityNode(Entity entity);

@@ -76,6 +76,13 @@ namespace Triger {
 		ImGui::End();
 	}
 
+	Entity SceneHierarchyPanel::SetSelectedEntity(Entity entity)
+	{
+		m_SelectionContext = entity;
+
+		return Entity();
+	}
+
 	void SceneHierarchyPanel::DrawEntityNode(Entity entity)
 	{
 
