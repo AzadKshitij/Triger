@@ -1,12 +1,20 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Log.cpp
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Core/Log.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
-
-
-namespace Triger {
+namespace Triger
+{
 
 	Ref<spdlog::logger> Log::s_CoreLogger;
 	Ref<spdlog::logger> Log::s_ClientLogger;
@@ -29,7 +37,6 @@ namespace Triger {
 		spdlog::register_logger(s_ClientLogger);
 		s_ClientLogger->set_level(spdlog::level::trace);
 		s_ClientLogger->flush_on(spdlog::level::trace);
-
 	}
 
 }

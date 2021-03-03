@@ -1,9 +1,12 @@
-/**
- *  @file   Window.h
- *  @brief  Window base to create window in all plateform
- *  @author Kshitij Azad
- *  @date   November 9, 2020
- ***********************************************/
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Window.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 
 #pragma once
 
@@ -13,7 +16,7 @@
 #include "Triger/Events/Event.h"
 
 namespace Triger
-{	
+{
 	struct WindowProps
 	{
 		// TODO : To add perameter to show window Icon
@@ -21,12 +24,12 @@ namespace Triger
 		 * @brief Title of the window
 		*/
 		std::string Title;
-		
+
 		/**
 		 * @brief Width of the window
 		*/
 		uint32_t Width;
-		
+
 		/**
 		 * @brief Height of the window
 		*/
@@ -41,9 +44,8 @@ namespace Triger
 		WindowProps(
 			const std::string &title = "Triger Engine",
 			uint32_t width = 1280,
-			uint32_t height = 720
-		)
-				: Title(title), Width(width), Height(height)
+			uint32_t height = 720)
+			: Title(title), Width(width), Height(height)
 		{
 		}
 	};
@@ -79,7 +81,7 @@ namespace Triger
 		 * @return unsigned int window height 
 		*/
 		virtual uint32_t GetHeight() const = 0;
-		
+
 		/*
 		* Window attributes
 		*/
@@ -89,13 +91,13 @@ namespace Triger
 		 * @param callback 
 		*/
 		virtual void SetEventCallback(const EventCallbackFn &callback) = 0;
-		
+
 		/**
 		 * @brief set the VSync property, it will limit your frames to the referesh rate of your display 
 		 * @param enabled true/false
 		*/
 		virtual void SetVSync(bool enabled) = 0;
-		
+
 		/**
 		 * @brief check if the vSync is enabled or not
 		 * @return false/true

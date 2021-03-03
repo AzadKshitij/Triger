@@ -1,9 +1,19 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : MouseEvent.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 #include "Triger/Events/Event.h"
 
 #include "Triger/Core/MouseCodes.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class MouseMovedEvent : public Event
 	{
@@ -22,7 +32,7 @@ namespace Triger {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -44,7 +54,7 @@ namespace Triger {
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_XOffset, m_YOffset;
 	};
@@ -93,5 +103,4 @@ namespace Triger {
 
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
-
 }

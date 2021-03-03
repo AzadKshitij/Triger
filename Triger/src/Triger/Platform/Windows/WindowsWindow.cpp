@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : WindowsWindow.cpp
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include <stb_image.h>
 
@@ -28,12 +37,12 @@ namespace Triger
 
 	static uint8_t s_GLFWWindowCount = 0;
 
-	static void GLFWErrorCallback(int error, const char* description)
+	static void GLFWErrorCallback(int error, const char *description)
 	{
 		TR_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	WindowsWindow::WindowsWindow(const WindowProps& props)
+	WindowsWindow::WindowsWindow(const WindowProps &props)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -47,7 +56,7 @@ namespace Triger
 		Shutdown();
 	}
 
-	void WindowsWindow::Init(const WindowProps& props)
+	void WindowsWindow::Init(const WindowProps &props)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -74,8 +83,9 @@ namespace Triger
 			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;
 			int width, height, chennal;
-			stbi_uc* img = stbi_load("assets/Logos/Icon.png", &width, &height, &chennal, 0); //rgba channels 
-			if (img == NULL) std::cout << "Icon Can Not Be Loaded\n in WindowsWindow.cpp line: 72";
+			stbi_uc *img = stbi_load("assets/Logos/Icon.png", &width, &height, &chennal, 0); //rgba channels
+			if (img == NULL)
+				std::cout << "Icon Can Not Be Loaded\n in WindowsWindow.cpp line: 72";
 			m_Images->height = height;
 			m_Images->width = width;
 			m_Images[0].pixels = img;
@@ -89,94 +99,87 @@ namespace Triger
 		SetVSync(true);
 
 		// Set GLFW callbacks
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				data.Width = width;
-				data.Height = height;
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+			data.Width = width;
+			data.Height = height;
 
-				WindowResizeEvent event(width, height);
+			WindowResizeEvent event(width, height);
+			data.EventCallback(event);
+		});
+
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow *window) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+			WindowCloseEvent event;
+			data.EventCallback(event);
+		});
+
+		glfwSetKeyCallback(m_Window, [](GLFWwindow *window, int key, int scancode, int action, int mods) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+			switch (action)
+			{
+			case GLFW_PRESS:
+			{
+				KeyPressedEvent event(key, 0);
 				data.EventCallback(event);
-			});
-
-		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
+				break;
+			}
+			case GLFW_RELEASE:
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				WindowCloseEvent event;
+				KeyReleasedEvent event(key);
 				data.EventCallback(event);
-			});
-
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+				break;
+			}
+			case GLFW_REPEAT:
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				switch (action)
-				{
-				case GLFW_PRESS:
-				{
-					KeyPressedEvent event(key, 0);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					KeyReleasedEvent event(key);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_REPEAT:
-				{
-					KeyPressedEvent event(key, 1);
-					data.EventCallback(event);
-					break;
-				}
-				}
-			});
-
-		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				KeyTypedEvent event(keycode);
+				KeyPressedEvent event(key, 1);
 				data.EventCallback(event);
-			});
+				break;
+			}
+			}
+		});
 
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetCharCallback(m_Window, [](GLFWwindow *window, unsigned int keycode) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
+		});
+
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow *window, int button, int action, int mods) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+			switch (action)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				switch (action)
-				{
-				case GLFW_PRESS:
-				{
-					MouseButtonPressedEvent event(button);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					MouseButtonReleasedEvent event(button);
-					data.EventCallback(event);
-					break;
-				}
-				}
-			});
-
-		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
+			case GLFW_PRESS:
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				MouseScrolledEvent event((float)xOffset, (float)yOffset);
+				MouseButtonPressedEvent event(button);
 				data.EventCallback(event);
-			});
-
-		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
+				break;
+			}
+			case GLFW_RELEASE:
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				MouseMovedEvent event((float)xPos, (float)yPos);
+				MouseButtonReleasedEvent event(button);
 				data.EventCallback(event);
-			});
+				break;
+			}
+			}
+		});
+
+		glfwSetScrollCallback(m_Window, [](GLFWwindow *window, double xOffset, double yOffset) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+			MouseScrolledEvent event((float)xOffset, (float)yOffset);
+			data.EventCallback(event);
+		});
+
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow *window, double xPos, double yPos) {
+			WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+			MouseMovedEvent event((float)xPos, (float)yPos);
+			data.EventCallback(event);
+		});
 	}
 
 	void WindowsWindow::Shutdown()

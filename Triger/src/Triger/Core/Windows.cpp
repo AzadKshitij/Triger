@@ -2,19 +2,20 @@
 #include "Triger/Core/Window.h"
 
 #ifdef TR_PLATFORM_WINDOWS
-	#include "Triger/Platform/Windows/WindowsWindow.h"
+#include "Triger/Platform/Windows/WindowsWindow.h"
 #endif
 
-namespace Triger {
+namespace Triger
+{
 
-	Scope<Window> Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps &props)
 	{
-	#ifdef TR_PLATFORM_WINDOWS
+#ifdef TR_PLATFORM_WINDOWS
 		return CreateScope<WindowsWindow>(props);
-	#else
+#else
 		TR_CORE_ASSERT(false, "Unknown platform!");
 		return nullptr;
-	#endif
+#endif
 	}
 
 }

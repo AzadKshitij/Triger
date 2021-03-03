@@ -1,13 +1,15 @@
-/**
- *  @file   Application.h
- *  @brief  Applicatoin creation base
- *  @author Kshitij Azad
- *  @date   November 2, 2020
- ***********************************************/
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Application.cpp
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 
 #include "trpch.h"
 #include "Triger/Core/Application.h"
-
 
 #include "Triger/Core/Log.h"
 
@@ -17,11 +19,12 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Triger {
+namespace Triger
+{
 
-	Application* Application::s_Instance = nullptr;
+	Application *Application::s_Instance = nullptr;
 
-	Application::Application(const std::string& name)
+	Application::Application(const std::string &name)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -43,7 +46,7 @@ namespace Triger {
 		Renderer::Shutdown();
 	}
 
-	void Application::PushLayer(Layer* layer)
+	void Application::PushLayer(Layer *layer)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -51,7 +54,7 @@ namespace Triger {
 		layer->OnAttach();
 	}
 
-	void Application::PushOverlay(Layer* layer)
+	void Application::PushOverlay(Layer *layer)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -59,14 +62,12 @@ namespace Triger {
 		layer->OnAttach();
 	}
 
-
 	void Application::Close()
 	{
 		m_Running = false;
 	}
 
-
-	void Application::OnEvent(Event& e)
+	void Application::OnEvent(Event &e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -99,7 +100,7 @@ namespace Triger {
 				{
 					TR_PROFILE_SCOPE("LayerStack OnUpdate");
 
-					for (Layer* layer : m_LayerStack)
+					for (Layer *layer : m_LayerStack)
 						layer->OnUpdate(timestep);
 				}
 
@@ -107,7 +108,7 @@ namespace Triger {
 				{
 					TR_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
-					for (Layer* layer : m_LayerStack)
+					for (Layer *layer : m_LayerStack)
 						layer->OnImGuiRender();
 				}
 				m_ImGuiLayer->End();
@@ -117,13 +118,13 @@ namespace Triger {
 		}
 	}
 
-	bool Application::OnWindowClose(WindowCloseEvent& e)
+	bool Application::OnWindowClose(WindowCloseEvent &e)
 	{
 		m_Running = false;
 		return true;
 	}
 
-	bool Application::OnWindowResize(WindowResizeEvent& e)
+	bool Application::OnWindowResize(WindowResizeEvent &e)
 	{
 		TR_PROFILE_FUNCTION();
 

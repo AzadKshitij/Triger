@@ -1,7 +1,17 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : ApplicationEvent.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 #include "Triger/Events/Event.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class WindowResizeEvent : public Event
 	{

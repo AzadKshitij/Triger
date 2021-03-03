@@ -1,9 +1,13 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Triger.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
-/*
-* This File is only intended to include all important
-* header files in one place to use in a game or any kind
-* of application.
-*/
 // ----------------- Core -------------------
 #include "Triger/Core/Base.h"
 
@@ -31,7 +35,6 @@
 #include "Triger/Core/KeyCodes.h"
 #include "Triger/Core/MouseCodes.h"
 #include "Triger/Renderer/OrthographicCameraController.h"
-
 
 #include "Triger/ImGui/ImGuiLayer.h"
 

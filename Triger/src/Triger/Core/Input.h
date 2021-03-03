@@ -1,9 +1,12 @@
-/**
- *  @file   Input.h
- *  @brief  Different type of input to interect with app
- *  @author Kshitij Azad
- *  @date   November 6, 2020
- ***********************************************/
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Input.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Core/KeyCodes.h"
@@ -25,4 +28,4 @@ namespace Triger
 		static float GetMouseY();
 	};
 
-} // namespace Triger 
+} // namespace Triger

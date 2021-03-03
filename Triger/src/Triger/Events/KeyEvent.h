@@ -1,9 +1,19 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : KeyEvent.h
+//   Created On  : 07/11/2020
+//   Updated On  : 07/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 #include "Triger/Events/Event.h"
 
 #include "Triger/Core/KeyCodes.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class KeyEvent : public Event
 	{
