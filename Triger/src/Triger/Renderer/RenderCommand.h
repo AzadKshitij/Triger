@@ -1,8 +1,18 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : RenderCommand.h
+//   Created On  : 10/11/2020
+//   Updated On  : 10/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Renderer/RendererAPI.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class RenderCommand
 	{
@@ -17,7 +27,7 @@ namespace Triger {
 			s_RendererAPI->SetViewport(x, y, width, height);
 		}
 
-		inline static void SetClearColor(const glm::vec4& color)
+		inline static void SetClearColor(const glm::vec4 &color)
 		{
 			s_RendererAPI->SetClearColor(color);
 		}
@@ -27,12 +37,12 @@ namespace Triger {
 			s_RendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count = 0)
+		inline static void DrawIndexed(const Ref<VertexArray> &vertexArray, uint32_t count = 0)
 		{
 			s_RendererAPI->DrawIndexed(vertexArray, count);
 		}
+
 	private:
 		static Scope<RendererAPI> s_RendererAPI;
 	};
-
 }

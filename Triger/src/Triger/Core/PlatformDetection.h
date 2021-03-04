@@ -1,12 +1,21 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : PlatformDetection.h
+//   Created On  : 29/11/2020
+//   Updated On  : 29/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 // Platform detection using predefined macros
 #ifdef _WIN32
-	/* Windows x64/x86 */
+/* Windows x64/x86 */
 #ifdef _WIN64
-	/* Windows x64  */
+/* Windows x64  */
 #define TR_PLATFORM_WINDOWS
 #else
-	/* Windows x86 */
-	#error "x86 Builds are not supported!"
+/* Windows x86 */
+#error "x86 Builds are not supported!"
 #endif
 #elif defined(__APPLE__) || defined(__MACH__)
 #include <TargetConditionals.h>
@@ -15,26 +24,26 @@
  * to ensure that we're running on MAC
  * and not some other Apple platform */
 #if TARGET_IPHONE_SIMULATOR == 1
-	#error "IOS simulator is not supported!"
+#error "IOS simulator is not supported!"
 #elif TARGET_OS_IPHONE == 1
-	#define TR_PLATFORM_IOS
-	#error "IOS is not supported!"
+#define TR_PLATFORM_IOS
+#error "IOS is not supported!"
 #elif TARGET_OS_MAC == 1
-	#define TR_PLATFORM_MACOS
-	#error "MacOS is not supported!"
+#define TR_PLATFORM_MACOS
+#error "MacOS is not supported!"
 #else
-	#error "Unknown Apple platform!"
+#error "Unknown Apple platform!"
 #endif
- /* We also have to check __ANDROID__ before __linux__
+/* We also have to check __ANDROID__ before __linux__
   * since android is based on the linux kernel
   * it has __linux__ defined */
 #elif defined(__ANDROID__)
-	#define TR_PLATFORM_ANDROID
-	#error "Android is not supported!"
+#define TR_PLATFORM_ANDROID
+#error "Android is not supported!"
 #elif defined(__linux__)
-	#define TR_PLATFORM_LINUX
-	#error "Linux is not supported!"
+#define TR_PLATFORM_LINUX
+#error "Linux is not supported!"
 #else
-	/* Unknown compiler/platform */
-	#error "Unknown platform!"
+/* Unknown compiler/platform */
+#error "Unknown platform!"
 #endif // End of platform detection

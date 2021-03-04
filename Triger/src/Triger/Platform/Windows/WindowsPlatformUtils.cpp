@@ -3,8 +3,8 @@
 //   Project     : Triger
 //   License     : https://opensource.org/licenses/MIT
 //   File        : WindowsPlatformUtils.cpp
-//   Created On  : 07/11/2020
-//   Updated On  : 07/11/2020
+//   Created On  : 29/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -17,7 +17,7 @@
 
 #include "Triger/Core/Application.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	std::optional<std::string> FileDialogs::OpenFile(const char *filter)

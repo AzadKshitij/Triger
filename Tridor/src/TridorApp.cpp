@@ -1,9 +1,19 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Tridor
+//   License     : https://opensource.org/licenses/MIT
+//   File        : TridorApp.cpp
+//   Created On  : 27/11/2020
+//   Updated On  : 27/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include <Triger.h>
 #include <Triger/Core/EntryPoint.h>
 
 #include "EditorLayer.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class Tridor : public Application
 	{
@@ -19,9 +29,8 @@ namespace Triger {
 		}
 	};
 
-	Application* CreateApplication()
+	Application *CreateApplication()
 	{
 		return new Tridor();
 	}
-
 }

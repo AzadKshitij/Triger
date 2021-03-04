@@ -1,4 +1,12 @@
-// Flat Color Shader
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Tridor
+//   License     : https://opensource.org/licenses/MIT
+//   File        : FlatColor.glsl
+//   Created On  : 27/11/2020
+//   Updated On  : 27/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/// Flat Color Shader
 
 #type vertex
 #version 330 core

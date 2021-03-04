@@ -1,9 +1,19 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : SceneCamera.cpp
+//   Created On  : 29/11/2020
+//   Updated On  : 29/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Scene/SceneCamera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace Triger {
+namespace Triger
+{
 
 	SceneCamera::SceneCamera()
 	{
@@ -48,8 +58,7 @@ namespace Triger {
 			float orthoTop = m_OrthographicSize * 0.5f;
 
 			m_Projection = glm::ortho(orthoLeft, orthoRight,
-				orthoBottom, orthoTop, m_OrthographicNear, m_OrthographicFar);
+									  orthoBottom, orthoTop, m_OrthographicNear, m_OrthographicFar);
 		}
 	}
-
 }

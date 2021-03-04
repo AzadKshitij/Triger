@@ -1,8 +1,18 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Framebuffer.h
+//   Created On  : 27/11/2020
+//   Updated On  : 27/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Core/Base.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	enum class FramebufferTextureFormat
 	{
@@ -38,11 +48,10 @@ namespace Triger {
 		std::vector<FramebufferTextureSpecification> Attachments;
 	};
 
-
 	struct FramebufferSpecification
 	{
 		uint32_t Width = 0, Height = 0;
-		// FramebufferFormat Format = 
+		// FramebufferFormat Format =
 		FramebufferAttachmentSpecification Attachments;
 		uint32_t Samples = 1;
 
@@ -52,7 +61,6 @@ namespace Triger {
 	class Framebuffer
 	{
 	public:
-
 		virtual ~Framebuffer() = default;
 
 		virtual void Bind() = 0;
@@ -62,13 +70,11 @@ namespace Triger {
 
 		virtual uint32_t GetColorAttachmentRendererID(uint32_t index = 0) const = 0;
 
-		virtual const FramebufferSpecification& GetSpecification() const = 0;
+		virtual const FramebufferSpecification &GetSpecification() const = 0;
 
 		virtual void Resize(uint32_t width, uint32_t height) = 0;
 		virtual int ReadPixel(uint32_t attachmentIndex, int x, int y) = 0;
 
-		static Ref<Framebuffer> Create(const FramebufferSpecification& spec);
+		static Ref<Framebuffer> Create(const FramebufferSpecification &spec);
 	};
-
-
 }

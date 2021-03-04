@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : EditorCamera.cpp
+//   Created On  : 11/12/2020
+//   Updated On  : 11/12/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Renderer/EditorCamera.h"
 
@@ -8,8 +17,8 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
-namespace Triger {
-
+namespace Triger
+{
 
 	EditorCamera::EditorCamera(float fov, float aspectRatio, float nearClip, float farClip)
 		: m_FOV(fov), m_AspectRatio(aspectRatio), m_NearClip(nearClip), m_FarClip(farClip), Camera(glm::perspective(glm::radians(fov), aspectRatio, nearClip, farClip))
@@ -44,7 +53,7 @@ namespace Triger {
 		float y = std::min(m_ViewportHeight / 1000.0f, 2.4f); // max = 2.4f
 		float yFactor = 0.0366f * (y * y) - 0.1778f * y + 0.3021f;
 
-		return { xFactor, yFactor };
+		return {xFactor, yFactor};
 	}
 
 	float EditorCamera::RotationSpeed() const
@@ -77,7 +86,7 @@ namespace Triger {
 				MouseZoom(delta.y);
 		}*/
 
-		const glm::vec2& mouse{ Input::GetMouseX(), Input::GetMouseY() };
+		const glm::vec2 &mouse{Input::GetMouseX(), Input::GetMouseY()};
 		glm::vec2 delta = (mouse - m_InitialMousePosition) * 0.003f;
 		m_InitialMousePosition = mouse;
 
@@ -94,13 +103,13 @@ namespace Triger {
 		UpdateView();
 	}
 
-	void EditorCamera::OnEvent(Event& e)
+	void EditorCamera::OnEvent(Event &e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(TR_BIND_EVENT_FN(EditorCamera::OnMouseScroll));
 	}
 
-	bool EditorCamera::OnMouseScroll(MouseScrolledEvent& e)
+	bool EditorCamera::OnMouseScroll(MouseScrolledEvent &e)
 	{
 		float delta = e.GetYOffset() * 0.1f;
 		MouseZoom(delta);
@@ -108,14 +117,14 @@ namespace Triger {
 		return false;
 	}
 
-	void EditorCamera::MousePan(const glm::vec2& delta)
+	void EditorCamera::MousePan(const glm::vec2 &delta)
 	{
 		auto [xSpeed, ySpeed] = PanSpeed();
 		m_FocalPoint += -GetRightDirection() * delta.x * xSpeed * m_Distance;
 		m_FocalPoint += GetUpDirection() * delta.y * ySpeed * m_Distance;
 	}
 
-	void EditorCamera::MouseRotate(const glm::vec2& delta)
+	void EditorCamera::MouseRotate(const glm::vec2 &delta)
 	{
 		float yawSign = GetUpDirection().y < 0 ? -1.0f : 1.0f;
 		m_Yaw += yawSign * delta.x * RotationSpeed();
@@ -161,12 +170,10 @@ namespace Triger {
 	{
 		m_FOV = 45.0f, m_AspectRatio = 1.778f, m_NearClip = 0.1f, m_FarClip = 1000.0f;
 
-		m_Position = { 0.0f, 0.0f, 0.0f };
-		m_FocalPoint = { 0.0f, 0.0f, 0.0f };
-
+		m_Position = {0.0f, 0.0f, 0.0f};
+		m_FocalPoint = {0.0f, 0.0f, 0.0f};
 
 		m_Distance = 10.0f;
 		m_Pitch = 0.0f, m_Yaw = 0.0f;
 	}
-
 }

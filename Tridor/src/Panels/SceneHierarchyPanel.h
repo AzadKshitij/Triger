@@ -1,16 +1,26 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Tridor
+//   License     : https://opensource.org/licenses/MIT
+//   File        : SceneHierarchyPanel.h
+//   Created On  : 29/11/2020
+//   Updated On  : 29/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	class SceneHierarchyPanel
 	{
 	public:
 		SceneHierarchyPanel() = default;
-		SceneHierarchyPanel(const Ref<Scene>& scene);
+		SceneHierarchyPanel(const Ref<Scene> &scene);
 
-		void SetContext(const Ref<Scene>& scene);
+		void SetContext(const Ref<Scene> &scene);
 
 		void OnImGuiRender();
 
@@ -20,9 +30,9 @@ namespace Triger {
 	private:
 		void DrawEntityNode(Entity entity);
 		void DrawComponents(Entity entity);
+
 	private:
 		Ref<Scene> m_Context;
 		Entity m_SelectionContext;
 	};
-
 }

@@ -1,12 +1,22 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Math.cpp
+//   Created On  : 08/12/2020
+//   Updated On  : 08/12/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Math/Math.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/matrix_decompose.hpp>
 
-namespace Triger::Math {
+	namespace Triger::Math
+{
 
-	bool DecomposeTransform(const glm::mat4& transform, glm::vec3& translation, glm::vec3& rotation, glm::vec3& scale)
+	bool DecomposeTransform(const glm::mat4 &transform, glm::vec3 &translation, glm::vec3 &rotation, glm::vec3 &scale)
 	{
 		// From glm::decompose in matrix_decompose.inl
 
@@ -65,17 +75,17 @@ namespace Triger::Math {
 #endif
 
 		rotation.y = asin(-Row[0][2]);
-		if (cos(rotation.y) != 0) {
+		if (cos(rotation.y) != 0)
+		{
 			rotation.x = atan2(Row[1][2], Row[2][2]);
 			rotation.z = atan2(Row[0][1], Row[0][0]);
 		}
-		else {
+		else
+		{
 			rotation.x = atan2(-Row[2][0], Row[1][1]);
 			rotation.z = 0;
 		}
 
-
 		return true;
 	}
-
 }

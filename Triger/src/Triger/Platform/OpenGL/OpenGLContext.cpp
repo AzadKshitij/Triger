@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : OpenGLContext.cpp
+//   Created On  : 08/11/2020
+//   Updated On  : 08/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Platform/OpenGL/OpenGLContext.h"
 
@@ -5,9 +14,10 @@
 #include <glad/glad.h>
 #include <gl/GL.h>
 
-namespace Triger {
+namespace Triger
+{
 
-	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
+	OpenGLContext::OpenGLContext(GLFWwindow *windowHandle)
 		: m_WindowHandle(windowHandle)
 	{
 		TR_CORE_ASSERT(windowHandle, "Window handle is null!")

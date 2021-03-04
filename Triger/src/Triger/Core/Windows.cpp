@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Windows.cpp
+//   Created On  : 16/11/2020
+//   Updated On  : 16/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Core/Window.h"
 
@@ -5,7 +14,7 @@
 #include "Triger/Platform/Windows/WindowsWindow.h"
 #endif
 
-namespace Triger
+	namespace Triger
 {
 
 	Scope<Window> Window::Create(const WindowProps &props)
@@ -17,5 +26,4 @@ namespace Triger
 		return nullptr;
 #endif
 	}
-
 }

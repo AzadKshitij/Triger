@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Sandbox
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Texture.glsl
+//   Created On  : 11/11/2020
+//   Updated On  : 11/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 // Basic Texture Shader
 
 #type vertex

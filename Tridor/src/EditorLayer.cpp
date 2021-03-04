@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Tridor
+//   License     : https://opensource.org/licenses/MIT
+//   File        : EditorLayer.cpp
+//   Created On  : 27/11/2020
+//   Updated On  : 27/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "EditorLayer.h"
 #include <imgui/imgui.h>
 
@@ -11,13 +20,13 @@
 
 #include "Triger/Math/Math.h"
 
-namespace Triger
+	namespace Triger
 {
 
 	Tridor::AppLog LogMessages;
-	
+
 	EditorLayer::EditorLayer()
-			: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({1.0f,1.0f, 1.0f, 1.0f})
+		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({1.0f, 1.0f, 1.0f, 1.0f})
 	{
 	}
 
@@ -33,7 +42,7 @@ namespace Triger
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
 		FramebufferSpecification fbSpec;
-		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
+		fbSpec.Attachments = {FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth};
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
@@ -106,8 +115,8 @@ namespace Triger
 
 		// Resize
 		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
-				m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
-				(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
@@ -124,19 +133,17 @@ namespace Triger
 
 		m_EditorCamera.OnUpdate(ts);
 
-
 		// Render
 		Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
 		RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
 		RenderCommand::Clear();
 
-
 		// Clear our entity ID attachment to -1
 		m_Framebuffer->ClearAttachment(1, -1);
 
 		// Update scene
-		m_ActiveScene->OnUpdateEditor(ts,m_EditorCamera);
+		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
 		auto [mx, my] = ImGui::GetMousePos();
 		mx -= m_ViewportBounds[0].x;
@@ -151,7 +158,6 @@ namespace Triger
 			int pixelData = m_Framebuffer->ReadPixel(1, mouseX, mouseY);
 			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
 		}
-
 
 		m_Framebuffer->Unbind();
 	}
@@ -270,7 +276,6 @@ namespace Triger
 			name = m_HoveredEntity.GetComponent<TagComponent>().Tag;
 		ImGui::Text("Hovered Entity: %s", name.c_str());
 
-
 		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -280,24 +285,23 @@ namespace Triger
 
 		ImGui::End();
 
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
 		ImGui::Begin("Viewport");
 		auto viewportMinRegion = ImGui::GetWindowContentRegionMin();
 		auto viewportMaxRegion = ImGui::GetWindowContentRegionMax();
 		auto viewportOffset = ImGui::GetWindowPos();
-		m_ViewportBounds[0] = { viewportMinRegion.x + viewportOffset.x, viewportMinRegion.y + viewportOffset.y };
-		m_ViewportBounds[1] = { viewportMaxRegion.x + viewportOffset.x, viewportMaxRegion.y + viewportOffset.y };
+		m_ViewportBounds[0] = {viewportMinRegion.x + viewportOffset.x, viewportMinRegion.y + viewportOffset.y};
+		m_ViewportBounds[1] = {viewportMaxRegion.x + viewportOffset.x, viewportMaxRegion.y + viewportOffset.y};
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+		m_ViewportSize = {viewportPanelSize.x, viewportPanelSize.y};
 
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-		
+		ImGui::Image(reinterpret_cast<void *>(textureID), ImVec2{m_ViewportSize.x, m_ViewportSize.y}, ImVec2{0, 1}, ImVec2{1, 0});
 
 		//-------------------------------- Keys --------------------------------------------
 		ImGui::Begin("Keys");
@@ -362,12 +366,11 @@ namespace Triger
 			ImGui::End();
 		}
 
-
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
 		{
-			
+
 			ImGuizmo::SetOrthographic(false);
 			ImGuizmo::SetDrawlist();
 
@@ -382,7 +385,7 @@ namespace Triger
 			// glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
 
 			// Editor camera
-			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
+			const glm::mat4 &cameraProjection = m_EditorCamera.GetProjection();
 			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
 
 			// Entity transform
@@ -399,8 +402,8 @@ namespace Triger
 			float snapValues[3] = {snapValue, snapValue, snapValue};
 
 			ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
-													 (ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
-													 nullptr, snap ? snapValues : nullptr);
+								 (ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
+								 nullptr, snap ? snapValues : nullptr);
 
 			if (ImGuizmo::IsUsing())
 			{
@@ -413,7 +416,8 @@ namespace Triger
 				tc.Rotation += deltaRotation;
 				tc.Scale = scale;
 			}
-			else {
+			else
+			{
 				m_AllowShortcuts = true;
 			}
 		}
@@ -424,7 +428,7 @@ namespace Triger
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Event &e)
+	void EditorLayer::OnEvent(Event & e)
 	{
 		m_CameraController.OnEvent(e);
 		m_EditorCamera.OnEvent(e);
@@ -434,7 +438,7 @@ namespace Triger
 		dispatcher.Dispatch<MouseButtonPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
 	}
 
-	bool EditorLayer::OnKeyPressed(KeyPressedEvent &e)
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent & e)
 	{
 		// Shortcuts
 		if (e.GetRepeatCount() > 0)
@@ -494,13 +498,13 @@ namespace Triger
 				m_GizmoType = ImGuizmo::OPERATION::SCALE;
 			}
 			break;
-		
+
 		default:
 			break;
 		}
 	}
 
-	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent& e)
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent & e)
 	{
 		if (e.GetMouseButton() == Mouse::ButtonLeft)
 		{

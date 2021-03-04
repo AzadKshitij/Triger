@@ -1,13 +1,23 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : OrthographicCameraController.cpp
+//   Created On  : 11/11/2020
+//   Updated On  : 11/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Renderer/OrthographicCameraController.h"
 
 #include "Triger/Core/Input.h"
 #include "Triger/Core/KeyCodes.h"
 
-namespace Triger {
+	namespace Triger
+{
 
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
-		: m_AspectRatio(aspectRatio), m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio* m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation)
+		: m_AspectRatio(aspectRatio), m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation)
 	{
 	}
 
@@ -57,7 +67,7 @@ namespace Triger {
 		m_CameraTranslationSpeed = m_ZoomLevel;
 	}
 
-	void OrthographicCameraController::OnEvent(Event& e)
+	void OrthographicCameraController::OnEvent(Event & e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -72,7 +82,7 @@ namespace Triger {
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 	}
 
-	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
+	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent & e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -82,12 +92,11 @@ namespace Triger {
 		return false;
 	}
 
-	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
+	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent & e)
 	{
 		TR_PROFILE_FUNCTION();
 
 		OnResize((float)e.GetWidth(), (float)e.GetHeight());
 		return false;
 	}
-
 }

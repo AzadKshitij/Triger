@@ -1,3 +1,12 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : ExampleLayer.cpp
+//   Created On  : 16/11/2020
+//   Updated On  : 16/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "ExampleLayer.h"
 
 #include "imgui/imgui.h"
@@ -5,26 +14,24 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-ExampleLayer::ExampleLayer()
+	ExampleLayer::ExampleLayer()
 	: Layer("ExampleLayer"), m_CameraController(1280.0f / 720.0f)
 {
 	m_VertexArray = Triger::VertexArray::Create();
 
 	float vertices[3 * 7] = {
 		-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-		 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-		 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
-	};
+		0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+		0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f};
 
 	Triger::Ref<Triger::VertexBuffer> vertexBuffer = Triger::VertexBuffer::Create(vertices, sizeof(vertices));
 	Triger::BufferLayout layout = {
-		{ Triger::ShaderDataType::Float3, "a_Position" },
-		{ Triger::ShaderDataType::Float4, "a_Color" }
-	};
+		{Triger::ShaderDataType::Float3, "a_Position"},
+		{Triger::ShaderDataType::Float4, "a_Color"}};
 	vertexBuffer->SetLayout(layout);
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-	uint32_t indices[3] = { 0, 1, 2 };
+	uint32_t indices[3] = {0, 1, 2};
 	Triger::Ref<Triger::IndexBuffer> indexBuffer = Triger::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 	m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -32,19 +39,16 @@ ExampleLayer::ExampleLayer()
 
 	float squareVertices[5 * 4] = {
 		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
-		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
-	};
+		0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
+		-0.5f, 0.5f, 0.0f, 0.0f, 1.0f};
 
 	Triger::Ref<Triger::VertexBuffer> squareVB = Triger::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
-	squareVB->SetLayout({
-		{ Triger::ShaderDataType::Float3, "a_Position" },
-		{ Triger::ShaderDataType::Float2, "a_TexCoord" }
-		});
+	squareVB->SetLayout({{Triger::ShaderDataType::Float3, "a_Position"},
+						 {Triger::ShaderDataType::Float2, "a_TexCoord"}});
 	m_SquareVA->AddVertexBuffer(squareVB);
 
-	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+	uint32_t squareIndices[6] = {0, 1, 2, 2, 3, 0};
 	Triger::Ref<Triger::IndexBuffer> squareIB = Triger::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 	m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -142,7 +146,7 @@ void ExampleLayer::OnUpdate(Triger::Timestep ts)
 	m_CameraController.OnUpdate(ts);
 
 	// Render
-	Triger::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+	Triger::RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
 	Triger::RenderCommand::Clear();
 
 	Triger::Renderer::BeginScene(m_CameraController.GetCamera());
@@ -182,7 +186,7 @@ void ExampleLayer::OnImGuiRender()
 	ImGui::End();
 }
 
-void ExampleLayer::OnEvent(Triger::Event& e)
+void ExampleLayer::OnEvent(Triger::Event &e)
 {
 	m_CameraController.OnEvent(e);
 }

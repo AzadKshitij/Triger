@@ -1,4 +1,12 @@
-#include "trpch.h"
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : OpenGLTexture.cpp
+//   Created On  : 11/11/2020
+//   Updated On  : 11/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/#include "trpch.h"
 #include "Triger/Platform/OpenGL/OpenGLTexture.h"
 
 #include <stb_image.h>

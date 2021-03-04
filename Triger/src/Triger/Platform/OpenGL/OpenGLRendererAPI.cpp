@@ -1,9 +1,19 @@
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : OpenGLRendererAPI.cpp
+//   Created On  : 10/11/2020
+//   Updated On  : 10/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #include "trpch.h"
 #include "Triger/Platform/OpenGL/OpenGLRendererAPI.h"
 
 #include <glad/glad.h>
 
-namespace Triger {
+namespace Triger
+{
 
 	void OpenGLMessageCallback(
 		unsigned source,
@@ -11,15 +21,23 @@ namespace Triger {
 		unsigned id,
 		unsigned severity,
 		int length,
-		const char* message,
-		const void* userParam)
+		const char *message,
+		const void *userParam)
 	{
 		switch (severity)
 		{
-		case GL_DEBUG_SEVERITY_HIGH:         TR_CORE_CRITICAL(message); return;
-		case GL_DEBUG_SEVERITY_MEDIUM:       TR_CORE_ERROR(message); return;
-		case GL_DEBUG_SEVERITY_LOW:          TR_CORE_WARN(message); return;
-		case GL_DEBUG_SEVERITY_NOTIFICATION: TR_CORE_TRACE(message); return;
+		case GL_DEBUG_SEVERITY_HIGH:
+			TR_CORE_CRITICAL(message);
+			return;
+		case GL_DEBUG_SEVERITY_MEDIUM:
+			TR_CORE_ERROR(message);
+			return;
+		case GL_DEBUG_SEVERITY_LOW:
+			TR_CORE_WARN(message);
+			return;
+		case GL_DEBUG_SEVERITY_NOTIFICATION:
+			TR_CORE_TRACE(message);
+			return;
 		}
 
 		TR_CORE_ASSERT(false, "Unknown severity level!");
@@ -48,7 +66,7 @@ namespace Triger {
 		glViewport(x, y, width, height);
 	}
 
-	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
+	void OpenGLRendererAPI::SetClearColor(const glm::vec4 &color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);
 	}
@@ -58,11 +76,10 @@ namespace Triger {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount)
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray> &vertexArray, uint32_t indexCount)
 	{
 		uint32_t count = indexCount ? indexCount : vertexArray->GetIndexBuffer()->GetCount();
 		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
-
 }

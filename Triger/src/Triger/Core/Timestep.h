@@ -1,12 +1,16 @@
-/**
- *  @file   Timestep.h
- *  @brief  
- *  @author Kshitij Azad
- *  @date   November 9, 2020
- ***********************************************/
+/*------------ Copyright © 2020 Azad Kshitij. All rights reserved. ------------
+//
+//   Project     : Triger
+//   License     : https://opensource.org/licenses/MIT
+//   File        : Timestep.h
+//   Created On  : 10/11/2020
+//   Updated On  : 10/11/2020
+//   Created By  : Azad Kshitij @AzadKshitij
+//--------------------------------------------------------------------------*/
 #pragma once
 
-namespace Triger {
+namespace Triger
+{
 
 	class Timestep
 	{
@@ -24,19 +28,19 @@ namespace Triger {
 		 * @brief 
 		*/
 		operator float() const { return m_Time; }
-		
+
 		/**
 		 * @brief 
 		 * @return 
 		*/
 		float GetSeconds() const { return m_Time; }
-		
+
 		/**
 		 * @brief 
 		 * @return 
 		*/
 		float GetMilliseconds() const { return m_Time * 1000.0f; }
-	
+
 	private:
 		float m_Time;
 	};
