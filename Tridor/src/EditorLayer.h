@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : EditorLayer.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 02/03/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -13,7 +13,7 @@
 #include "Panels/SceneHierarchyPanel.h"
 #include "Triger/Renderer/EditorCamera.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class EditorLayer : public Layer

@@ -4,14 +4,14 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : SceneCamera.h
 //   Created On  : 29/11/2020
-//   Updated On  : 29/11/2020
+//   Updated On  : 22/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Renderer/Camera.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class SceneCamera : public Camera

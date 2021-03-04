@@ -4,14 +4,14 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : SceneHierarchyPanel.h
 //   Created On  : 29/11/2020
-//   Updated On  : 29/11/2020
+//   Updated On  : 02/03/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class SceneHierarchyPanel

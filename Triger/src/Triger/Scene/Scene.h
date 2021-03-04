@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Scene.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 11/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -14,7 +14,7 @@
 #include "Triger/Core/Timestep.h"
 #include "Triger/Renderer/EditorCamera.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class Entity;

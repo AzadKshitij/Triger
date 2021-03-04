@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Renderer2D.cpp
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 25/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -16,7 +16,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-	namespace Triger
+namespace Triger
 {
 
 	struct QuadVertex

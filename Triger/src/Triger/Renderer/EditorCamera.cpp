@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : EditorCamera.cpp
 //   Created On  : 11/12/2020
-//   Updated On  : 11/12/2020
+//   Updated On  : 22/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"

@@ -4,14 +4,14 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Framebuffer.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 16/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Core/Base.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	enum class FramebufferTextureFormat

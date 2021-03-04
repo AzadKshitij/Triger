@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : SceneHierarchyPanel.cpp
 //   Created On  : 29/11/2020
-//   Updated On  : 29/11/2020
+//   Updated On  : 02/03/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include <trpch.h>
@@ -27,7 +27,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-	namespace Triger
+namespace Triger
 {
 
 	SceneHierarchyPanel::SceneHierarchyPanel(const Ref<Scene> &context)

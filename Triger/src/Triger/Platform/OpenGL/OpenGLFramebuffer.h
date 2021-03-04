@@ -4,14 +4,14 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLFramebuffer.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 16/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
 
 #include "Triger/Renderer/Framebuffer.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class OpenGLFramebuffer : public Framebuffer

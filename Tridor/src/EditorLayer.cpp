@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : EditorLayer.cpp
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 02/03/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "EditorLayer.h"
@@ -20,7 +20,7 @@
 
 #include "Triger/Math/Math.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	Tridor::AppLog LogMessages;
@@ -428,7 +428,7 @@
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Event & e)
+	void EditorLayer::OnEvent(Event &e)
 	{
 		m_CameraController.OnEvent(e);
 		m_EditorCamera.OnEvent(e);
@@ -438,7 +438,7 @@
 		dispatcher.Dispatch<MouseButtonPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
 	}
 
-	bool EditorLayer::OnKeyPressed(KeyPressedEvent & e)
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent &e)
 	{
 		// Shortcuts
 		if (e.GetRepeatCount() > 0)
@@ -504,7 +504,7 @@
 		}
 	}
 
-	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent & e)
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent &e)
 	{
 		if (e.GetMouseButton() == Mouse::ButtonLeft)
 		{

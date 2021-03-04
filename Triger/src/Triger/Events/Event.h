@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Event.h
 //   Created On  : 07/11/2020
-//   Updated On  : 07/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -14,7 +14,7 @@
 
 #include "Triger/Core/Base.h"
 
-	namespace Triger
+namespace Triger
 {
 	// Will be change in future
 	/*

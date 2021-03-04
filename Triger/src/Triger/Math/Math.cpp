@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Math.cpp
 //   Created On  : 08/12/2020
-//   Updated On  : 08/12/2020
+//   Updated On  : 22/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -13,7 +13,7 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/matrix_decompose.hpp>
 
-	namespace Triger::Math
+namespace Triger::Math
 {
 
 	bool DecomposeTransform(const glm::mat4 &transform, glm::vec3 &translation, glm::vec3 &rotation, glm::vec3 &scale)

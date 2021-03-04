@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Texture.h
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 27/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -13,7 +13,7 @@
 
 #include "Triger/Core/Base.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class Texture

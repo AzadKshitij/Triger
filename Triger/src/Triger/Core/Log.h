@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Log.h
 //   Created On  : 07/11/2020
-//   Updated On  : 07/11/2020
+//   Updated On  : 30/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once

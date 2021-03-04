@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : VertexArray.h
 //   Created On  : 09/11/2020
-//   Updated On  : 09/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -12,7 +12,7 @@
 #include <memory>
 #include "Triger/Renderer/Buffer.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class VertexArray

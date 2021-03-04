@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Entity.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 22/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -13,7 +13,7 @@
 
 #include "entt.hpp"
 
-	namespace Triger
+namespace Triger
 {
 
 	class Entity

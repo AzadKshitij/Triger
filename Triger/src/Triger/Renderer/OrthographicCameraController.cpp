@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OrthographicCameraController.cpp
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -13,7 +13,7 @@
 #include "Triger/Core/Input.h"
 #include "Triger/Core/KeyCodes.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
@@ -67,7 +67,7 @@
 		m_CameraTranslationSpeed = m_ZoomLevel;
 	}
 
-	void OrthographicCameraController::OnEvent(Event & e)
+	void OrthographicCameraController::OnEvent(Event &e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -82,7 +82,7 @@
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 	}
 
-	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent & e)
+	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent &e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -92,7 +92,7 @@
 		return false;
 	}
 
-	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent & e)
+	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent &e)
 	{
 		TR_PROFILE_FUNCTION();
 

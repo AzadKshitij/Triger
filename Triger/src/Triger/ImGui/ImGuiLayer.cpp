@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : ImGuiLayer.cpp
 //   Created On  : 07/11/2020
-//   Updated On  : 07/11/2020
+//   Updated On  : 08/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -22,7 +22,7 @@
 
 #include "ImGuizmo.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	ImGuiLayer::ImGuiLayer()
@@ -80,7 +80,7 @@
 		ImGui::DestroyContext();
 	}
 
-	void ImGuiLayer::OnEvent(Event & e)
+	void ImGuiLayer::OnEvent(Event &e)
 	{
 		if (m_BlockEvents)
 		{

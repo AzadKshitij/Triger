@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Components.h
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 08/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -18,7 +18,7 @@
 #include "Triger/Scene/SceneCamera.h"
 #include "Triger/Scene/ScriptableEntity.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	struct TagComponent

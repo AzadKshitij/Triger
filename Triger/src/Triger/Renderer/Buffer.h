@@ -4,12 +4,12 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Buffer.h
 //   Created On  : 09/11/2020
-//   Updated On  : 09/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
 
-	namespace Triger
+namespace Triger
 {
 
 	enum class ShaderDataType

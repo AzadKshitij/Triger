@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : EditorCamera.h
 //   Created On  : 11/12/2020
-//   Updated On  : 11/12/2020
+//   Updated On  : 12/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -16,7 +16,7 @@
 
 #include <glm/glm.hpp>
 
-	namespace Triger
+namespace Triger
 {
 
 	class EditorCamera : public Camera

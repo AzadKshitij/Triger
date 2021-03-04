@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLShader.h
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 16/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -12,8 +12,8 @@
 #include "Triger/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
-	// TODO: REMOVE!
-	typedef unsigned int GLenum;
+// TODO: REMOVE!
+typedef unsigned int GLenum;
 
 namespace Triger
 {

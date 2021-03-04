@@ -4,14 +4,14 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : RenderCommand.cpp
 //   Created On  : 10/11/2020
-//   Updated On  : 10/11/2020
+//   Updated On  : 22/12/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
 
 #include "Triger/Renderer/RenderCommand.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();

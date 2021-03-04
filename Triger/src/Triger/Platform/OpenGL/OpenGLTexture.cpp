@@ -4,15 +4,16 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLTexture.cpp
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
-//--------------------------------------------------------------------------*/#include "trpch.h"
+//--------------------------------------------------------------------------*/
+#include "trpch.h"
 #include "Triger/Platform/OpenGL/OpenGLTexture.h"
 
 #include <stb_image.h>
 
-
-namespace Triger {
+	namespace Triger
+{
 
 	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height)
 		: m_Width(width), m_Height(height)
@@ -32,14 +33,14 @@ namespace Triger {
 		glTextureParameteri(m_RendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	}
 
-	OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
+	OpenGLTexture2D::OpenGLTexture2D(const std::string &path)
 		: m_Path(path)
 	{
 		TR_PROFILE_FUNCTION();
 
 		int width, height, channels;
 		stbi_set_flip_vertically_on_load(1);
-		stbi_uc* data = nullptr;
+		stbi_uc *data = nullptr;
 		{
 			TR_PROFILE_SCOPE("stbi_load - OpenGLTexture2D::OpenGLTexture2D(const std::string&)");
 			data = stbi_load(path.c_str(), &width, &height, &channels, 0);
@@ -86,7 +87,7 @@ namespace Triger {
 		glDeleteTextures(1, &m_RendererID);
 	}
 
-	void OpenGLTexture2D::SetData(void* data, uint32_t size)
+	void OpenGLTexture2D::SetData(void *data, uint32_t size)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -101,5 +102,4 @@ namespace Triger {
 
 		glBindTextureUnit(slot, m_RendererID);
 	}
-
 }

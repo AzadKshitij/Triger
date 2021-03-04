@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLVertexArray.cpp
 //   Created On  : 09/11/2020
-//   Updated On  : 09/11/2020
+//   Updated On  : 25/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -12,7 +12,7 @@
 
 #include <glad/glad.h>
 
-	namespace Triger
+namespace Triger
 {
 
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)

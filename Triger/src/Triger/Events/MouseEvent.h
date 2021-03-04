@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : MouseEvent.h
 //   Created On  : 07/11/2020
-//   Updated On  : 07/11/2020
+//   Updated On  : 29/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -12,7 +12,7 @@
 
 #include "Triger/Core/MouseCodes.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class MouseMovedEvent : public Event

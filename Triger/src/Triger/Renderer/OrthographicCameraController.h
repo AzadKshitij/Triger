@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OrthographicCameraController.h
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 27/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #pragma once
@@ -15,7 +15,7 @@
 #include "Triger/Events/ApplicationEvent.h"
 #include "Triger/Events/MouseEvent.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class OrthographicCameraController

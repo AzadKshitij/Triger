@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : Scene.cpp
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 25/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -19,7 +19,7 @@
 
 #include "Triger/Scene/SceneCamera.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	Scene::Scene()
@@ -44,7 +44,7 @@
 		m_Registry.destroy(entity);
 	}
 
-	void Scene::OnUpdateEditor(Timestep ts, EditorCamera & camera)
+	void Scene::OnUpdateEditor(Timestep ts, EditorCamera &camera)
 	{
 		Renderer2D::BeginScene(camera);
 
@@ -135,34 +135,34 @@
 	}
 
 	template <typename T>
-	void Scene::OnComponentAdded(Entity entity, T & component)
+	void Scene::OnComponentAdded(Entity entity, T &component)
 	{
 		static_assert(false);
 	}
 
 	template <>
-	void Scene::OnComponentAdded<TransformComponent>(Entity entity, TransformComponent & component)
+	void Scene::OnComponentAdded<TransformComponent>(Entity entity, TransformComponent &component)
 	{
 	}
 
 	template <>
-	void Scene::OnComponentAdded<CameraComponent>(Entity entity, CameraComponent & component)
+	void Scene::OnComponentAdded<CameraComponent>(Entity entity, CameraComponent &component)
 	{
 		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
 	}
 
 	template <>
-	void Scene::OnComponentAdded<SpriteRendererComponent>(Entity entity, SpriteRendererComponent & component)
+	void Scene::OnComponentAdded<SpriteRendererComponent>(Entity entity, SpriteRendererComponent &component)
 	{
 	}
 
 	template <>
-	void Scene::OnComponentAdded<TagComponent>(Entity entity, TagComponent & component)
+	void Scene::OnComponentAdded<TagComponent>(Entity entity, TagComponent &component)
 	{
 	}
 
 	template <>
-	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent & component)
+	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent &component)
 	{
 	}
 }

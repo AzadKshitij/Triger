@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLShader.cpp
 //   Created On  : 11/11/2020
-//   Updated On  : 11/11/2020
+//   Updated On  : 16/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -16,7 +16,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-	namespace Triger
+namespace Triger
 {
 
 	static GLenum ShaderTypeFromString(const std::string &type)

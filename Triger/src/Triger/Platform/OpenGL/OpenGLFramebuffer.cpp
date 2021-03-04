@@ -4,7 +4,7 @@
 //   License     : https://opensource.org/licenses/MIT
 //   File        : OpenGLFramebuffer.cpp
 //   Created On  : 27/11/2020
-//   Updated On  : 27/11/2020
+//   Updated On  : 25/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
@@ -12,7 +12,7 @@
 
 #include <glad/glad.h>
 
-	namespace Triger
+namespace Triger
 {
 
 	static const uint32_t s_MaxFramebufferSize = 8192; // 8 GB
