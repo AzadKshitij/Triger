@@ -1,5 +1,6 @@
 # Directories
 .vs/
+.codelite/
 /bin/
 bin/
 bin-int/
@@ -8,10 +9,14 @@ bin-int/
 
 
 # Files
-*.user 
+*.user
 
 # Triger files
 *.log
+
+# Makefiles
+Makefile
+**/Makefile
 
 # Visual Studio files and folder
 .vs/
@@ -19,3 +24,11 @@ bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+
+# CodeLite files and folder
+.codelite/
+**.workspace
+**.project
+**.mk
+**compile_flags.txt
+tags
