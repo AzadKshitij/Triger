@@ -31,6 +31,9 @@ project "Tridor"
 	filter "system:windows"
 		systemversion "latest"
 
+    filter "system:linux"
+		systemversion "latest"
+
 	filter "configurations:Debug"
 		defines "TR_DEBUG"
 		runtime "Debug"
