@@ -118,6 +118,7 @@ namespace Triger
 		}
 
 		return shaderSources;
+
 	}
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string> &shaderSources)
