@@ -10,10 +10,11 @@
 #pragma once
 
 #include "Triger/Core/Base.h"
+#include "Triger/Core/Application.h"
 
 #ifdef TR_PLATFORM_WINDOWS
 
-extern Triger::Application *Triger::CreateApplication();
+extern Triger::Application *Triger::CreateApplication(ApplicationCommandLineArgs args);
 
 int main(int argc, char **argv)
 {
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
 
 	//TR_CORE_INFO("Triger Core Is Running ");
 	TR_PROFILE_BEGIN_SESSION("Startup", "TrigerProfile-Startup.json");
-	auto app = Triger::CreateApplication();
+	auto app = Triger::CreateApplication({argc, argv});
 	TR_PROFILE_END_SESSION();
 
 	TR_PROFILE_BEGIN_SESSION("Runtime", "TrigerProfile-Runtime.json");

@@ -2,7 +2,7 @@
 //
 //   Project     : Triger
 //   License     : https://opensource.org/licenses/MIT
-//   File        : Windows.cpp
+//   File        : Window.cpp
 //   Created On  : 16/11/2020
 //   Updated On  : 16/11/2020
 //   Created By  : Azad Kshitij @AzadKshitij
@@ -14,7 +14,7 @@
 #include "Triger/Platform/Windows/WindowsWindow.h"
 #endif
 
-	namespace Triger
+namespace Triger
 {
 
 	Scope<Window> Window::Create(const WindowProps &props)

@@ -7,6 +7,10 @@ bin-int/
 **/bin/
 **/bin-int/
 
+# Directories
+Triger/vendor/VulkanSDK
+Tridor/assets/cache
+scripts/__pycache__
 
 # Files
 *.user

@@ -62,16 +62,17 @@ namespace Triger
 	{
 		// Update scripts
 		{
-			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto &nsc) {
-				// TODO: Move to Scene::OnScenePlay
-				if (!nsc.Instance)
-				{
-					nsc.Instance = nsc.InstantiateScript();
-					nsc.Instance->m_Entity = Entity{entity, this};
-					nsc.Instance->OnCreate();
-				}
-				nsc.Instance->OnUpdate(ts);
-			});
+			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto &nsc)
+														  {
+															  // TODO: Move to Scene::OnScenePlay
+															  if (!nsc.Instance)
+															  {
+																  nsc.Instance = nsc.InstantiateScript();
+																  nsc.Instance->m_Entity = Entity{entity, this};
+																  nsc.Instance->OnCreate();
+															  }
+															  nsc.Instance->OnUpdate(ts);
+														  });
 		}
 
 		// Render 2D
@@ -148,7 +149,8 @@ namespace Triger
 	template <>
 	void Scene::OnComponentAdded<CameraComponent>(Entity entity, CameraComponent &component)
 	{
-		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+		if (m_ViewportWidth > 0 && m_ViewportHeight > 0)
+			component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
 	}
 
 	template <>
