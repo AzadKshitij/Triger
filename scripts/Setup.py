@@ -22,5 +22,5 @@ if (premakeInstalled):
 
     print("\nSetup completed!")
 else:
-    print("Triger requires Premake to generate project files.")
+    print("Trigar requires Premake to generate project files.")
 

@@ -8,7 +8,7 @@
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 
-#pragma one
+#pragma once
 
 #include "Triger/Core/Window.h"
 #include "Triger/Renderer/GraphicsContext.h"

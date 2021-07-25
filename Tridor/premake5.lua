@@ -39,12 +39,27 @@ project "Tridor"
 		runtime "Debug"
 		symbols "on"
 
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}
+
 	filter "configurations:Release"
 		defines "TR_RELEASE"
 		runtime "Release"
 		optimize "on"
+		
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}
 
 	filter "configurations:Dist"
 		defines "TR_DIST"
 		runtime "Release"
 		optimize "on"
+		
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}

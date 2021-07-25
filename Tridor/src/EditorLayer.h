@@ -11,7 +11,6 @@
 
 #include "Triger.h"
 #include "Panels/SceneHierarchyPanel.h"
-#include "Triger/Renderer/EditorCamera.h"
 
 namespace Triger
 {

@@ -13,12 +13,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Log/AppLog.h"
-#include "Triger.h"
+#include "Triger/Scene/SceneSerializer.h"
+
+#include "Triger/Utils/PlatformUtils.h"
 
 #include "ImGuizmo.h"
 
 #include "Triger/Math/Math.h"
+
+#include "Log/AppLog.h"
+
+#include "ImGuizmo.h"
+
+#include "Triger/Math/Math.h" 
 
 namespace Triger
 {
@@ -566,11 +573,11 @@ namespace Triger
 	}
 	void EditorLayer::SaveSceneAs()
 	{
-		std::optional<std::string> filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
-		if (filepath)
+		std::string filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
+		if (!filepath.empty())
 		{
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(*filepath);
+			serializer.Serialize(filepath);
 		}
 	}
 

@@ -19,7 +19,7 @@
 #include <sstream>
 #include "Triger/Core/Log.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	using FloatingPointMicroseconds = std::chrono::duration<double, std::micro>;

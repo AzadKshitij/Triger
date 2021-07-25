@@ -2,7 +2,7 @@
 #include "UniformBuffer.h"
 
 #include "Triger/Renderer/Renderer.h"
-#include "Platform/OpenGL/OpenGLUniformBuffer.h"
+#include "Triger/Platform/OpenGL/OpenGLUniformBuffer.h"
 
 namespace Triger
 {

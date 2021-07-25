@@ -20,7 +20,7 @@
 namespace Triger
 {
 
-	std::string<std::string> FileDialogs::OpenFile(const char *filter)
+	std::string FileDialogs::OpenFile(const char* filter)
 	{
 		OPENFILENAMEA ofn;
 		CHAR szFile[260] = {0};

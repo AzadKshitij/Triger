@@ -12,7 +12,7 @@
     {                                                  \
         if (!(check))                                  \
         {                                              \
-            HZ##type##ERROR(msg, __VA_ARGS__);         \
+            TR##type##ERROR(msg, __VA_ARGS__);         \
             TR_DEBUGBREAK();                           \
         }                                              \
     }
