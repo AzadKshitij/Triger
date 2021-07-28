@@ -24,6 +24,10 @@ void main()
 #type fragment
 #version 330 core
 
+#extension GL_AMD_gpu_shader_half_float : enable
+#extension GL_AMD_gpu_shader_half_float_fetch : enable
+#extension GL_EXT_shader_explicit_arithmetic_types : require
+
 layout(location = 0) out vec4 color;
 
 uniform vec4 u_Color;

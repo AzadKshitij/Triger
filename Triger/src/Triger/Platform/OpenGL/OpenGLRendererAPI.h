@@ -11,7 +11,7 @@
 
 #include "Triger/Renderer/RendererAPI.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class OpenGLRendererAPI : public RendererAPI

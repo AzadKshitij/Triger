@@ -11,6 +11,7 @@
 
 #include "Triger.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 namespace Triger
 {
@@ -71,5 +72,6 @@ namespace Triger
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowsePanel;
 	};
 }

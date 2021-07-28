@@ -283,6 +283,7 @@ namespace Triger
 		}
 
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_ContentBrowsePanel.OnImGuiRender();
 
 		ImGui::Begin("Stats");
 

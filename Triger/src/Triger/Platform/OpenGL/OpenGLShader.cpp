@@ -362,7 +362,7 @@ namespace Triger
 
 		for (auto id : shaderIDs)
 		{
-			glDetachShader(program, id);
+			glDetachShader(program, id); 
 			glDeleteShader(id);
 		}
 
