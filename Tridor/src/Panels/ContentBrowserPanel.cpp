@@ -20,23 +20,22 @@ namespace Triger {
 	void ContentBrowserPanel::OnImGuiRender()
 	{
 		ImGui::Begin("Content Browser"); 
-		if (m_CurrentDirectory != std::filesystem::path(s_AssetPath))
-		{
-			ImGui::Columns(2);
-			if (ImGui::ArrowButton("Back", ImGuiDir_Left))
+		//if (m_CurrentDirectory != std::filesystem::path(s_AssetPath))
+		//{ 
+			if (ImGui::ArrowButton("Back", ImGuiDir_Left) && m_CurrentDirectory != std::filesystem::path(s_AssetPath))
 			{
 				m_CurrentDirectory = m_CurrentDirectory.parent_path();
 				if (m_lastVisitedPath.parent_path() != m_CurrentDirectory)
 				{
 					m_lastVisitedPath = m_lastVisitedPath.parent_path();
 				}
-			} 
-			ImGui::NextColumn();
+			}  
+			ImGui::SameLine();
 			if (ImGui::ArrowButton("Forward", ImGuiDir_Right))
 			{
 				m_CurrentDirectory = m_lastVisitedPath;
 			} 
-		}
+		//}
 
 		static float padding = 10.0f;
 		static float thumbnailSize = 128.0f;
