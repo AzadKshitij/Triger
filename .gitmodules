@@ -8,7 +8,7 @@
 	branch = master
 [submodule "Triger/vendor/ImGui"]
 	path = Triger/vendor/ImGui
-	url = https://github.com/TheCherno/imgui.git
+	url = https://github.com/AzadKshitij/imgui
 	branch = docking
 [submodule "Triger/vendor/glm"]
 	path = Triger/vendor/glm
@@ -16,7 +16,7 @@
 	branch = master
 [submodule "Triger/vendor/yaml-cpp"]
 	path = Triger/vendor/yaml-cpp
-	url = https://github.com/thecherno/yaml-cpp
+	url = https://github.com/AzadKshitij/yaml-cpp
 [submodule "Triger/vendor/ImGuizmo"]
 	path = Triger/vendor/ImGuizmo
 	url = https://github.com/thecherno/imguizmo
