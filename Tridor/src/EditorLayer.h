@@ -12,6 +12,7 @@
 #include "Triger.h"
 #include "Panels/SceneHierarchyPanel.h"
 #include "Panels/ContentBrowserPanel.h"
+#include "Log/AppLog.h"
 
 namespace Triger
 {
@@ -67,11 +68,12 @@ namespace Triger
 		int m_GizmoType = -1;
 		bool m_AllowShortcuts = true;
 
-		// View
-		bool m_showConsole = true;
+		// View 
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 		ContentBrowserPanel m_ContentBrowsePanel;
+		AppLog m_AppLogs;
+		
 	};
 }
