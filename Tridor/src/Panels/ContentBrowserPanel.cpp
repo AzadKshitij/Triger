@@ -7,6 +7,7 @@ namespace Triger {
 
 	// Once we have projects, change this
 	static const std::filesystem::path s_AssetPath = "assets";
+	std::filesystem::path m_lastVisitedPath = "assets";
 
 	ContentBrowserPanel::ContentBrowserPanel()
 		: m_CurrentDirectory(s_AssetPath)
@@ -18,17 +19,26 @@ namespace Triger {
 
 	void ContentBrowserPanel::OnImGuiRender()
 	{
-		ImGui::Begin("Content Browser");
-
+		ImGui::Begin("Content Browser"); 
 		if (m_CurrentDirectory != std::filesystem::path(s_AssetPath))
 		{
-			if (ImGui::Button("<-"))
+			ImGui::Columns(2);
+			if (ImGui::ArrowButton("Back", ImGuiDir_Left))
 			{
 				m_CurrentDirectory = m_CurrentDirectory.parent_path();
-			}
+				if (m_lastVisitedPath.parent_path() != m_CurrentDirectory)
+				{
+					m_lastVisitedPath = m_lastVisitedPath.parent_path();
+				}
+			} 
+			ImGui::NextColumn();
+			if (ImGui::ArrowButton("Forward", ImGuiDir_Right))
+			{
+				m_CurrentDirectory = m_lastVisitedPath;
+			} 
 		}
 
-		static float padding = 16.0f;
+		static float padding = 10.0f;
 		static float thumbnailSize = 128.0f;
 		float cellSize = thumbnailSize + padding;
 
@@ -52,6 +62,7 @@ namespace Triger {
 				if (directoryEntry.is_directory())
 				{
 					m_CurrentDirectory /= path.filename();
+					m_lastVisitedPath = path;
 				}
 			}
 			
@@ -59,13 +70,11 @@ namespace Triger {
 
 			ImGui::NextColumn();
 
-		}
-
+		} 
 		ImGui::Columns(1);
-
-		ImGui::SliderFloat("Thumbnail Size", &thumbnailSize, 16, 512);
-		ImGui::SliderFloat("Padding", &padding, 0, 32);
-
+		ImGui::SliderFloat("Thumbnail Size", &thumbnailSize, 60, 512);
+		ImGui::SliderFloat("Padding", &padding, 0, 32); 
+		ImGui::ShowDemoWindow();
 		// TODO: status bar
 
 		ImGui::End();
