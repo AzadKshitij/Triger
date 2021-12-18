@@ -26,27 +26,8 @@
 #define TR_DEBUGBREAK()
 #endif
 
-#ifdef TR_ENABLE_ASSERTS
-#define TR_ASSERT(x, ...)                                   \
-	{                                                       \
-		if (!(x))                                           \
-		{                                                   \
-			TR_ERROR("Assertion Failed: {0}", __VA_ARGS__); \
-			TR_DEBUGBREAK();                                \
-		}                                                   \
-	}
-#define TR_CORE_ASSERT(x, ...)                                   \
-	{                                                            \
-		if (!(x))                                                \
-		{                                                        \
-			TR_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); \
-			TR_DEBUGBREAK();                                     \
-		}                                                        \
-	}
-#else
-#define TR_ASSERT(x, ...)
-#define TR_CORE_ASSERT(x, ...)
-#endif
+#define TR_EXPAND_MACRO(x) x
+#define TR_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -72,3 +53,6 @@ namespace Triger
 	}
 
 }
+
+#include "Triger/Core/Log.h"
+#include "Triger/Core/Assert.h"

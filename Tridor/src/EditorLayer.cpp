@@ -23,10 +23,10 @@
 namespace Triger
 {
 
-	Tridor::AppLog LogMessages;
+	//AppLog LogMessages;
 
 	EditorLayer::EditorLayer()
-		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({1.0f, 1.0f, 1.0f, 1.0f})
+		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 1.0f, 1.0f, 1.0f, 1.0f })
 	{
 	}
 
@@ -34,20 +34,28 @@ namespace Triger
 	{
 		TR_PROFILE_FUNCTION();
 
-		LogMessages.putMessage(0, "Normal");
+		/*LogMessages.putMessage(0, "Normal");
 		LogMessages.putMessage(1, "Green");
 		LogMessages.putMessage(2, "Warning");
-		LogMessages.putMessage(3, "Error");
+		LogMessages.putMessage(3, "Error");*/
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
 		FramebufferSpecification fbSpec;
-		fbSpec.Attachments = {FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth};
+		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
+
+		auto commandLineArgs = Application::Get().GetCommandLineArgs();
+		if (commandLineArgs.Count > 1)
+		{
+			auto sceneFilePath = commandLineArgs[1];
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(sceneFilePath);
+		}
 
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.01f, 1000.0f);
 
@@ -136,7 +144,7 @@ namespace Triger
 		// Render
 		Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
-		RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
 		// Clear our entity ID attachment to -1
@@ -177,7 +185,7 @@ namespace Triger
 		ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
 		if (opt_fullscreen)
 		{
-			ImGuiViewport *viewport = ImGui::GetMainViewport();
+			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImGui::SetNextWindowPos(viewport->Pos);
 			ImGui::SetNextWindowSize(viewport->Size);
 			ImGui::SetNextWindowViewport(viewport->ID);
@@ -204,8 +212,8 @@ namespace Triger
 			ImGui::PopStyleVar(2);
 
 		// DockSpace
-		ImGuiIO &io = ImGui::GetIO();
-		ImGuiStyle &style = ImGui::GetStyle();
+		ImGuiIO& io = ImGui::GetIO();
+		ImGuiStyle& style = ImGui::GetStyle();
 		float minWinSizeX = style.WindowMinSize.x;
 		style.WindowMinSize.x = 370.0f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
@@ -240,29 +248,29 @@ namespace Triger
 					Application::Get().Close();
 				ImGui::EndMenu();
 			}
-			if (ImGui::BeginMenu("View"))
-			{
-				// Disabling fullscreen would allow the window to be moved to the front of other windows,
-				// which we can't undo at the moment without finer window depth/z control.
-				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
-				if (m_showConsole)
-				{
-					if (ImGui::MenuItem("Hide Console"))
-					{
-						m_showConsole = false;
-						NewScene();
-					}
-				}
-				else
-				{
-					if (ImGui::MenuItem("Show Console"))
-					{
-						m_showConsole = true;
-						NewScene();
-					}
-				}
-				ImGui::EndMenu();
-			}
+			//if (ImGui::BeginMenu("View"))
+			//{
+			//	// Disabling fullscreen would allow the window to be moved to the front of other windows,
+			//	// which we can't undo at the moment without finer window depth/z control.
+			//	//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
+			//	if (m_showConsole)
+			//	{
+			//		if (ImGui::MenuItem("Hide Console"))
+			//		{
+			//			m_showConsole = false;
+			//			NewScene();
+			//		}
+			//	}
+			//	else
+			//	{
+			//		if (ImGui::MenuItem("Show Console"))
+			//		{
+			//			m_showConsole = true;
+			//			NewScene();
+			//		}
+			//	}
+			//	ImGui::EndMenu();
+			//}
 
 			ImGui::EndMenuBar();
 		}
@@ -285,23 +293,23 @@ namespace Triger
 
 		ImGui::End();
 
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
 		auto viewportMinRegion = ImGui::GetWindowContentRegionMin();
 		auto viewportMaxRegion = ImGui::GetWindowContentRegionMax();
 		auto viewportOffset = ImGui::GetWindowPos();
-		m_ViewportBounds[0] = {viewportMinRegion.x + viewportOffset.x, viewportMinRegion.y + viewportOffset.y};
-		m_ViewportBounds[1] = {viewportMaxRegion.x + viewportOffset.x, viewportMaxRegion.y + viewportOffset.y};
+		m_ViewportBounds[0] = { viewportMinRegion.x + viewportOffset.x, viewportMinRegion.y + viewportOffset.y };
+		m_ViewportBounds[1] = { viewportMaxRegion.x + viewportOffset.x, viewportMaxRegion.y + viewportOffset.y };
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		m_ViewportSize = {viewportPanelSize.x, viewportPanelSize.y};
+		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-		ImGui::Image(reinterpret_cast<void *>(textureID), ImVec2{m_ViewportSize.x, m_ViewportSize.y}, ImVec2{0, 1}, ImVec2{1, 0});
+		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
 		//-------------------------------- Keys --------------------------------------------
 		ImGui::Begin("Keys");
@@ -314,18 +322,19 @@ namespace Triger
 		ImGui::End();
 
 		//-------------------------------- Console --------------------------------------------
+		/*
 		if (m_showConsole)
 		{
 			ImGui::Begin("Console");
 
 			ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
-			/*if (logMessages.logMessages.first == "Warning")
+			if (logMessages.logMessages.first == "Warning")
 			{
 				if (logMessages.logMessages.second != "")
 				{
 					ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
 				}
-			}*/
+			}
 			for (int i = 0; i < LogMessages.logMessages.size(); i++)
 			{
 				switch (LogMessages.logMessages[i].first)
@@ -365,6 +374,7 @@ namespace Triger
 
 			ImGui::End();
 		}
+		*/
 
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
@@ -385,11 +395,11 @@ namespace Triger
 			// glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
 
 			// Editor camera
-			const glm::mat4 &cameraProjection = m_EditorCamera.GetProjection();
+			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
 			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
 
 			// Entity transform
-			auto &tc = selectedEntity.GetComponent<TransformComponent>();
+			auto& tc = selectedEntity.GetComponent<TransformComponent>();
 			glm::mat4 transform = tc.GetTransform();
 
 			// Snapping
@@ -399,11 +409,11 @@ namespace Triger
 			if (m_GizmoType == ImGuizmo::OPERATION::ROTATE)
 				snapValue = 45.0f;
 
-			float snapValues[3] = {snapValue, snapValue, snapValue};
+			float snapValues[3] = { snapValue, snapValue, snapValue };
 
 			ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
-								 (ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
-								 nullptr, snap ? snapValues : nullptr);
+				(ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
+				nullptr, snap ? snapValues : nullptr);
 
 			if (ImGuizmo::IsUsing())
 			{
@@ -428,7 +438,7 @@ namespace Triger
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Event &e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
 		m_EditorCamera.OnEvent(e);
@@ -438,7 +448,7 @@ namespace Triger
 		dispatcher.Dispatch<MouseButtonPressedEvent>(TR_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
 	}
 
-	bool EditorLayer::OnKeyPressed(KeyPressedEvent &e)
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
 	{
 		// Shortcuts
 		if (e.GetRepeatCount() > 0)
@@ -504,7 +514,7 @@ namespace Triger
 		}
 	}
 
-	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent &e)
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonEvent& e)
 	{
 		if (e.GetMouseButton() == Mouse::ButtonLeft)
 		{
@@ -526,16 +536,16 @@ namespace Triger
 
 	void EditorLayer::OpenScene()
 	{
-		std::optional<std::string> filepath = FileDialogs::OpenFile("Triger Scene (*.hazel)\0*.triger\0");
-		if (filepath)
+		std::string filepath = FileDialogs::OpenFile("Triger Scene (*.triger)\0*.triger\0");
+		if (!filepath.empty())
 		{
 			m_ActiveScene = CreateRef<Scene>();
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 
 			SceneSerializer serializer(m_ActiveScene);
-			m_openedFilepath = *filepath;
-			serializer.Deserialize(*filepath);
+			m_openedFilepath = filepath;
+			serializer.Deserialize(filepath);
 		}
 	}
 
@@ -548,11 +558,11 @@ namespace Triger
 		}
 		else
 		{
-			std::optional<std::string> filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
-			if (filepath)
+			std::string filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
+			if (!filepath.empty())
 			{
 				SceneSerializer serializer(m_ActiveScene);
-				serializer.Serialize(*filepath);
+				serializer.Serialize(filepath);
 			}
 		}
 	}

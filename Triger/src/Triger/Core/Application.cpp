@@ -22,9 +22,10 @@
 namespace Triger
 {
 
-	Application *Application::s_Instance = nullptr;
+	Application* Application::s_Instance = nullptr;
 
-	Application::Application(const std::string &name)
+	Application::Application(const std::string& name, ApplicationCommandLineArgs args)
+		: m_CommandLineArgs(args)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -46,7 +47,7 @@ namespace Triger
 		Renderer::Shutdown();
 	}
 
-	void Application::PushLayer(Layer *layer)
+	void Application::PushLayer(Layer* layer)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -54,7 +55,7 @@ namespace Triger
 		layer->OnAttach();
 	}
 
-	void Application::PushOverlay(Layer *layer)
+	void Application::PushOverlay(Layer* layer)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -67,7 +68,7 @@ namespace Triger
 		m_Running = false;
 	}
 
-	void Application::OnEvent(Event &e)
+	void Application::OnEvent(Event& e)
 	{
 		TR_PROFILE_FUNCTION();
 
@@ -100,7 +101,7 @@ namespace Triger
 				{
 					TR_PROFILE_SCOPE("LayerStack OnUpdate");
 
-					for (Layer *layer : m_LayerStack)
+					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(timestep);
 				}
 
@@ -108,7 +109,7 @@ namespace Triger
 				{
 					TR_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
-					for (Layer *layer : m_LayerStack)
+					for (Layer* layer : m_LayerStack)
 						layer->OnImGuiRender();
 				}
 				m_ImGuiLayer->End();
@@ -118,13 +119,13 @@ namespace Triger
 		}
 	}
 
-	bool Application::OnWindowClose(WindowCloseEvent &e)
+	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_Running = false;
 		return true;
 	}
 
-	bool Application::OnWindowResize(WindowResizeEvent &e)
+	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
 		TR_PROFILE_FUNCTION();
 

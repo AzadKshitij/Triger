@@ -12,14 +12,14 @@
 
 #include "EditorLayer.h"
 
-	namespace Triger
+namespace Triger
 {
 
 	class Tridor : public Application
 	{
 	public:
-		Tridor()
-			: Application("Tridor")
+		Tridor(ApplicationCommandLineArgs args)
+			: Application("Tridor", args)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -29,8 +29,8 @@
 		}
 	};
 
-	Application *CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new Tridor();
+		return new Tridor(args);
 	}
 }
