@@ -34,7 +34,7 @@ This camera is same as Blender's viewport camera
 
 3. **Open** and Build the solution( shorcut F7 ).
 
-4. **Run** the solution ( Defalt starter project is **SandboxApp** if you want to check **TrigerEditor** aka **Tridor** change starter project to Tridor ).
+4. **Run** the solution ( Defalt starter project is **TrigerEditor** if you want to check **SandboxApp** change starter project to SandboxApp ).
 
 # How to Contribute
 
