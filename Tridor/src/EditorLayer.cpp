@@ -13,17 +13,22 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Log/AppLog.h"
-#include "Triger.h"
+#include "Triger/Scene/SceneSerializer.h"
+
+#include "Triger/Utils/PlatformUtils.h"
 
 #include "ImGuizmo.h"
 
 #include "Triger/Math/Math.h"
 
+#include "Log/AppLog.h"
+
+#include "ImGuizmo.h"
+
+#include "Triger/Math/Math.h" 
+
 namespace Triger
 {
-
-	//AppLog LogMessages;
 
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 1.0f, 1.0f, 1.0f, 1.0f })
@@ -33,11 +38,6 @@ namespace Triger
 	void EditorLayer::OnAttach()
 	{
 		TR_PROFILE_FUNCTION();
-
-		/*LogMessages.putMessage(0, "Normal");
-		LogMessages.putMessage(1, "Green");
-		LogMessages.putMessage(2, "Warning");
-		LogMessages.putMessage(3, "Error");*/
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
@@ -276,6 +276,9 @@ namespace Triger
 		}
 
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_ContentBrowsePanel.OnImGuiRender();
+		//m_AppLogs.OnImGuiRender();
+		m_AppLogs.ShowExampleAppLog();
 
 		ImGui::Begin("Stats");
 
@@ -322,59 +325,6 @@ namespace Triger
 		ImGui::End();
 
 		//-------------------------------- Console --------------------------------------------
-		/*
-		if (m_showConsole)
-		{
-			ImGui::Begin("Console");
-
-			ImGui::TextColored(ImVec4(1, 1, 0, 1), "Working (Will Be Available In Future)");
-			if (logMessages.logMessages.first == "Warning")
-			{
-				if (logMessages.logMessages.second != "")
-				{
-					ImGui::TextColored(ImVec4(1, 0, 0, 1), logMessages.logMessages.second);
-				}
-			}
-			for (int i = 0; i < LogMessages.logMessages.size(); i++)
-			{
-				switch (LogMessages.logMessages[i].first)
-				{
-				case 0: // Normal
-				{
-					ImGui::TextColored(ImVec4(1, 1, 1, 1), "Normal : %s ", LogMessages.logMessages[i].second);
-
-					break;
-				}
-
-				case 1: // Green
-				{
-					ImGui::TextColored(ImVec4(0, 1, 0, 1), "Worked : %s ", LogMessages.logMessages[i].second);
-
-					break;
-				}
-
-				case 2: // Yellow
-				{
-					ImGui::TextColored(ImVec4(1, 1, 0, 1), "Warning : %s ", LogMessages.logMessages[i].second);
-
-					break;
-				}
-
-				case 3: // Red
-				{
-					ImGui::TextColored(ImVec4(1, 0, 0, 1), "Error : %s ", LogMessages.logMessages[i].second);
-
-					break;
-				}
-
-				default:
-					break;
-				}
-			}
-
-			ImGui::End();
-		}
-		*/
 
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
@@ -434,8 +384,6 @@ namespace Triger
 
 		ImGui::End();
 		ImGui::PopStyleVar();
-
-		ImGui::End();
 	}
 
 	void EditorLayer::OnEvent(Event& e)
@@ -568,11 +516,11 @@ namespace Triger
 	}
 	void EditorLayer::SaveSceneAs()
 	{
-		std::optional<std::string> filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
-		if (filepath)
+		std::string filepath = FileDialogs::SaveFile("Triger Scene (*.triger)\0*.triger\0");
+		if (!filepath.empty())
 		{
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(*filepath);
+			serializer.Serialize(filepath);
 		}
 	}
 
