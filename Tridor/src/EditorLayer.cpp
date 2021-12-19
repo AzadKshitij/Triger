@@ -298,6 +298,8 @@ namespace Triger
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
+
+
 		auto viewportMinRegion = ImGui::GetWindowContentRegionMin();
 		auto viewportMaxRegion = ImGui::GetWindowContentRegionMax();
 		auto viewportOffset = ImGui::GetWindowPos();
@@ -466,7 +468,7 @@ namespace Triger
 	{
 		if (e.GetMouseButton() == Mouse::ButtonLeft)
 		{
-			if (m_ViewportFocused && !ImGuizmo::IsOver())
+			if (m_ViewportHovered && !ImGuizmo::IsOver())
 			{
 				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
 			}
