@@ -14,6 +14,8 @@
 #include "Panels/ContentBrowserPanel.h"
 #include "Log/AppLog.h"
 
+#include "Triger/Renderer/EditorCamera.h"
+
 namespace Triger
 {
 

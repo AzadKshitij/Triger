@@ -23,10 +23,6 @@
 
 #include "Log/AppLog.h"
 
-#include "ImGuizmo.h"
-
-#include "Triger/Math/Math.h" 
-
 namespace Triger
 {
 
@@ -623,12 +619,13 @@ namespace Triger
 	void EditorLayer::OnScenePlay()
 	{
 		m_SceneState = SceneState::Play;
+		m_ActiveScene->OnRuntimeStart();
 	}
 
 	void EditorLayer::OnSceneStop()
 	{
 		m_SceneState = SceneState::Edit;
-
+		m_ActiveScene->OnRuntimeStop();
 	}
 
 } // namespace Triger
