@@ -15,12 +15,24 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
-#include "Triger/Scene/SceneCamera.h"
-#include "Triger/Scene/ScriptableEntity.h"
 #include "Triger/Renderer/Texture.h"
+#include "Triger/Core/UUID.h"
+
+
+#include "SceneCamera.h"
+
 
 namespace Triger
 {
+
+	struct IDComponent
+	{
+		UUID ID;
+
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+	};
+
 
 	struct TagComponent
 	{
@@ -73,6 +85,8 @@ namespace Triger
 			: Color(color) {}
 	};
 
+
+	class ScriptableEntity;
 	struct NativeScriptComponent
 	{
 		ScriptableEntity *Instance = nullptr;
@@ -120,5 +134,7 @@ namespace Triger
 		BoxCollider2DComponent() = default;
 		BoxCollider2DComponent(const BoxCollider2DComponent&) = default;
 	};
+
+
 
 }

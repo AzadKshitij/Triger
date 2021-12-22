@@ -8,10 +8,10 @@
 //   Created By  : Azad Kshitij @AzadKshitij
 //--------------------------------------------------------------------------*/
 #include "trpch.h"
-#include "Triger/Scene/SceneSerializer.h"
 
-#include "Triger/Scene/Entity.h"
-#include "Triger/Scene/Components.h"
+#include "SceneSerializer.h"
+#include "Entity.h"
+#include "Components.h"
 
 #include <fstream>
 
@@ -151,8 +151,11 @@ namespace Triger
 
 	static void SerializeEntity(YAML::Emitter &out, Entity entity)
 	{
+
+		TR_CORE_ASSERT(entity.HasComponent<IDComponent>());
+
 		out << YAML::BeginMap;											 // Entity
-		out << YAML::Key << "Entity" << YAML::Value << "12837192831273"; // TODO: Entity ID goes here
+		out << YAML::Key << "Entity" << YAML::Value << entity.GetUUID() ; // TODO: Entity ID goes here
 
 		if (entity.HasComponent<TagComponent>())
 		{
@@ -305,6 +308,7 @@ namespace Triger
 
 				TR_CORE_TRACE("Deserialized entity with ID = {0}, name = {1}", uuid, name);
 
+				//Entity deserializedEntity = m_Scene->CreateEntityWithUUID(uuid, name);
 				Entity deserializedEntity = m_Scene->CreateEntity(name);
 
 				auto transformComponent = entity["TransformComponent"];

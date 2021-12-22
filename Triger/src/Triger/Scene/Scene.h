@@ -13,6 +13,7 @@
 
 #include "Triger/Core/Timestep.h"
 #include "Triger/Renderer/EditorCamera.h"
+#include "Triger/Core/UUID.h"
 
 class b2World;
 
@@ -28,6 +29,7 @@ namespace Triger
 		~Scene();
 
 		Entity CreateEntity(const std::string &name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();
@@ -38,6 +40,10 @@ namespace Triger
 		void OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();
+
+		void DuplicateEntity(Entity entity);
+
+		static Ref<Scene> Copy(Ref<Scene> scene);
 
 	private:
 		entt::registry m_Registry;
