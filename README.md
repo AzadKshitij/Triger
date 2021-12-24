@@ -7,8 +7,9 @@
 Triger is primarily an early-stage interactive application and rendering engine for Windows. But working on making it cross plateform looking for contributors who can work on Linux version.
 
 # Showcase
+
 - ### 3D Viewport Camera
-This camera is same as Blender's viewport camera
+  This camera is same as Blender's viewport camera
 
 ![3DViewPortCameraShowcase](./Showcase/GIF/3DViewPortCameraShowcase.gif)
 
@@ -34,7 +35,7 @@ This camera is same as Blender's viewport camera
 
 3. **Open** and Build the solution( shorcut F7 ).
 
-4. **Run** the solution ( Defalt starter project is **SandboxApp** if you want to check **TrigerEditor** aka **Tridor** change starter project to Tridor ).
+4. **Run** the solution.
 
 # How to Contribute
 

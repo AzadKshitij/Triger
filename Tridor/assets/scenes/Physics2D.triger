@@ -1,10 +1,10 @@
 Scene: Untitled
 Entities:
-  - Entity: 12837192831273
+  - Entity: 6255526306870732051
     TagComponent:
       Tag: Sprite
     TransformComponent:
-      Translation: [0.304855078, 1.0149976, 0]
+      Translation: [-0.0169734955, 4.951334, 4.59145333e-10]
       Rotation: [0, 0, 3.73372501e-07]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
@@ -19,7 +19,83 @@ Entities:
       Friction: 0.5
       Restitution: 0
       RestitutionThreshold: 0.5
-  - Entity: 12837192831273
+  - Entity: 7467890337235989144
+    TagComponent:
+      Tag: Sprite
+    TransformComponent:
+      Translation: [-3.25478935, 4.97314548, 0]
+      Rotation: [0, 0, 3.73372501e-07]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [1, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 3267696090405094395
+    TagComponent:
+      Tag: Sprite
+    TransformComponent:
+      Translation: [-2.46797061, 3.59486437, 0.00218773261]
+      Rotation: [0, 0, 3.73372501e-07]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [1, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 9968263825017287500
+    TagComponent:
+      Tag: Sprite
+    TransformComponent:
+      Translation: [-1.69129074, 2.28473854, 0]
+      Rotation: [0, 0, 3.73372501e-07]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [1, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8980719099104328009
+    TagComponent:
+      Tag: Sprite
+    TransformComponent:
+      Translation: [0.0189437866, 0.0848385096, 0]
+      Rotation: [0, 0, 0]
+      Scale: [15, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 9332403772603190627
     TagComponent:
       Tag: Camera
     TransformComponent:
@@ -37,20 +113,20 @@ Entities:
         OrthographicFar: 1
       Primary: true
       FixedAspectRatio: false
-  - Entity: 12837192831273
+  - Entity: 10949999254445255868
     TagComponent:
       Tag: Sprite
     TransformComponent:
-      Translation: [0, 0, 0]
-      Rotation: [0, 0, 0]
-      Scale: [15, 1, 1]
+      Translation: [-0.80362618, 3.47304535, 0]
+      Rotation: [0, 0, 3.73372501e-07]
+      Scale: [1, 1, 1]
     SpriteRendererComponent:
       Color: [1, 1, 1, 1]
     Rigidbody2DComponent:
-      BodyType: Static
+      BodyType: Dynamic
       FixedRotation: false
     BoxCollider2DComponent:
-      Offset: [0, 0]
+      Offset: [1, 0]
       Size: [0.5, 0.5]
       Density: 1
       Friction: 0.5

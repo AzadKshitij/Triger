@@ -303,6 +303,8 @@ namespace Triger
 		//m_AppLogs.OnImGuiRender();
 		m_AppLogs.ShowExampleAppLog();
 
+		ImGui::ShowStyleEditor();
+
 		ImGui::Begin("Stats");
 
 		std::string name = "None";

@@ -17,6 +17,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Triger.h"
+#include "Triger/ImGui/IconsFontAwesome5.h"
 
 #include <cstring>
 
@@ -310,6 +311,16 @@ namespace Triger
 					}
 				}
 
+				if (!m_SelectionContext.HasComponent<CircleCollider2DComponent>())
+				{
+					if (ImGui::MenuItem("Circle Collider 2D"))
+					{
+						m_SelectionContext.AddComponent<CircleCollider2DComponent>();
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+
 			ImGui::EndPopup();
 		}
 
@@ -429,12 +440,24 @@ namespace Triger
 		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, [](auto& component)
 		{
 			ImGui::DragFloat2("Offset", glm::value_ptr(component.Offset));
-			ImGui::DragFloat2("Size", glm::value_ptr(component.Offset));
+			ImGui::DragFloat2("Size", glm::value_ptr(component.Size));
 			ImGui::DragFloat("Density", &component.Density, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Friction", &component.Friction, 0.01f, 0.0f, 1.0f);
-			ImGui::DragFloat("Restitution", &component.Restitution, 0.01f, 0.0f, 1.0f);
+			ImGui::DragFloat("Bouncyness", &component.Restitution, 0.01f, 0.0f, 1.0f);
+			ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold, 0.01f, 0.0f);
+			ImGui::Text(ICON_FA_PAINT_BRUSH "  Paint");
+		});
+
+		DrawComponent<CircleCollider2DComponent>("Circle Collider 2D", entity, [](auto& component)
+		{
+			ImGui::DragFloat2("Offset", glm::value_ptr(component.Offset));
+			ImGui::DragFloat("Radius", &component.Radius);
+			ImGui::DragFloat("Density", &component.Density, 0.01f, 0.0f, 1.0f);
+			ImGui::DragFloat("Friction", &component.Friction, 0.01f, 0.0f, 1.0f);
+			ImGui::DragFloat("Bouncyness", &component.Restitution, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold, 0.01f, 0.0f);
 		});
+
 
 	}
 }

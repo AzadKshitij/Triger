@@ -30,7 +30,9 @@ namespace Triger {
 				m_lastVisitedPath = m_lastVisitedPath.parent_path();
 			}
 		}
+
 		ImGui::SameLine();
+		
 		if (ImGui::ArrowButton("Forward", ImGuiDir_Right))
 		{
 			m_CurrentDirectory = m_lastVisitedPath;

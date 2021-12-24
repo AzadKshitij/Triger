@@ -43,11 +43,14 @@ namespace Triger
 		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;	// Enable Docking
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; // Enable Multi-Viewport / Platform Windows
-		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
 		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
 
+
 		io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", 19.0f);
-		io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", 19.0f);
+		io.FontDefault =  io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", 19.0f);
+		// use FONT_ICON_FILE_NAME_FAR if you want regular instead of solid
+
+
 
 		// Setup Dear ImGui style
 		ImGui::StyleColorsDark();
