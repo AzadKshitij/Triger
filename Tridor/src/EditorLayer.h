@@ -36,6 +36,8 @@ namespace Triger
 		bool OnKeyPressed(KeyPressedEvent& e);
 		bool OnMouseButtonPressed(MouseButtonEvent& e);
 
+		void OnOverlayRender();
+
 		void NewScene();
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);
@@ -78,6 +80,7 @@ namespace Triger
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
 		int m_GizmoType = -1;
+		bool m_ShowPhysicsColliders = false;
 		bool m_AllowShortcuts = true;
 
 		enum class SceneState

@@ -41,6 +41,12 @@ namespace Triger
 
 		Entity GetPrimaryCameraEntity();
 
+		template<typename... Components>
+		auto GetAllEntitiesWith()
+		{
+			return m_Registry.view<Components...>();
+		}
+
 		void DuplicateEntity(Entity entity);
 
 		static Ref<Scene> Copy(Ref<Scene> scene);

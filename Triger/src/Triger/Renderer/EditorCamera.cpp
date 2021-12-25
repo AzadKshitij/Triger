@@ -99,6 +99,10 @@ namespace Triger
 			else
 				MouseRotate(delta);
 		}
+		if (Input::IsMouseButtonPressed(Mouse::ButtonRight))
+		{
+			MousePan(delta);
+		}
 
 		UpdateView();
 	}

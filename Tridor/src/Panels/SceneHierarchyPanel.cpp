@@ -293,6 +293,15 @@ namespace Triger
 					}
 				}
 
+				if (!m_SelectionContext.HasComponent<CircleRendererComponent>())
+				{
+					if (ImGui::MenuItem("Circle Renderer"))
+					{
+						m_SelectionContext.AddComponent<CircleRendererComponent>();
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
 				if (!m_SelectionContext.HasComponent<Rigidbody2DComponent>())
 				{
 					if (ImGui::MenuItem("Rigidbody 2D"))
@@ -412,30 +421,38 @@ namespace Triger
 
 			});
 
-			DrawComponent<Rigidbody2DComponent>("Rigidbody 2D", entity, [](auto& component)
-		{
-			const char* bodyTypeStrings[] = { "Static", "Dynamic", "Kinematic"};
-			const char* currentBodyTypeString = bodyTypeStrings[(int)component.Type];
-			if (ImGui::BeginCombo("Body Type", currentBodyTypeString))
+		DrawComponent<CircleRendererComponent>("Circle Renderer", entity, [](auto& component)
 			{
-				for (int i = 0; i < 2; i++)
+				ImGui::ColorEdit4("Color", glm::value_ptr(component.Color));
+				ImGui::DragFloat("Thickness", &component.Thickness, 0.025f, 0.0f, 1.0f);
+				ImGui::DragFloat("Fade", &component.Fade, 0.00025f, 0.0f, 1.0f);
+			});
+
+
+		DrawComponent<Rigidbody2DComponent>("Rigidbody 2D", entity, [](auto& component)
+			{
+				const char* bodyTypeStrings[] = { "Static", "Dynamic", "Kinematic"};
+				const char* currentBodyTypeString = bodyTypeStrings[(int)component.Type];
+				if (ImGui::BeginCombo("Body Type", currentBodyTypeString))
 				{
-					bool isSelected = currentBodyTypeString == bodyTypeStrings[i];
-					if (ImGui::Selectable(bodyTypeStrings[i], isSelected))
+					for (int i = 0; i < 2; i++)
 					{
-						currentBodyTypeString = bodyTypeStrings[i];
-						component.Type = (Rigidbody2DComponent::BodyType)i;
+						bool isSelected = currentBodyTypeString == bodyTypeStrings[i];
+						if (ImGui::Selectable(bodyTypeStrings[i], isSelected))
+						{
+							currentBodyTypeString = bodyTypeStrings[i];
+							component.Type = (Rigidbody2DComponent::BodyType)i;
+						}
+
+						if (isSelected)
+							ImGui::SetItemDefaultFocus();
 					}
 
-					if (isSelected)
-						ImGui::SetItemDefaultFocus();
+					ImGui::EndCombo();
 				}
 
-				ImGui::EndCombo();
-			}
-
-			ImGui::Checkbox("Fixed Rotation", &component.FixedRotation);
-		});
+				ImGui::Checkbox("Fixed Rotation", &component.FixedRotation);
+			});
 
 		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, [](auto& component)
 		{
@@ -445,7 +462,6 @@ namespace Triger
 			ImGui::DragFloat("Friction", &component.Friction, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Bouncyness", &component.Restitution, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold, 0.01f, 0.0f);
-			ImGui::Text(ICON_FA_PAINT_BRUSH "  Paint");
 		});
 
 		DrawComponent<CircleCollider2DComponent>("Circle Collider 2D", entity, [](auto& component)
