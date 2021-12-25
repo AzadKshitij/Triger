@@ -2,7 +2,7 @@
 //
 //   Project     : Tridor
 //   License     : https://opensource.org/licenses/MIT
-//   File        : Texture.glsl
+//   File        : Renderer2D_Quad.glsl
 //   Created On  : 27/11/2020
 //   Updated On  : 16/02/2021
 //   Created By  : Azad Kshitij @AzadKshitij
