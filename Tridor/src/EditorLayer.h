@@ -40,6 +40,12 @@ namespace Triger
 		void SaveScene();
 		void SaveSceneAs();
 
+		void OnScenePlay();
+		void OnSceneStop();
+
+		// UI Panels
+		void UI_Toolbar();
+
 	private:
 		Triger::OrthographicCameraController m_CameraController;
 
@@ -67,6 +73,13 @@ namespace Triger
 		glm::vec4 m_SquareColor = {0.2f, 0.3f, 0.8f, 1.0f};
 
 		int m_GizmoType = -1;
+
+		enum class SceneState
+		{
+			Edit = 0, Play = 1
+		};
+		SceneState m_SceneState = SceneState::Edit;
+
 		bool m_AllowShortcuts = true;
 
 		// View 
@@ -74,6 +87,10 @@ namespace Triger
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 		ContentBrowserPanel m_ContentBrowsePanel;
+
+		// Editor resources
+		Ref<Texture2D> m_IconPlay, m_IconStop;
+
 		AppLog m_AppLogs;
 		
 	};
