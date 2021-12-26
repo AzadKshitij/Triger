@@ -12,7 +12,7 @@
 #include "Triger.h"
 
 namespace Triger
-{
+{ 
 
 	class SceneHierarchyPanel
 	{
