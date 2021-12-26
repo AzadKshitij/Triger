@@ -18,6 +18,8 @@
 #include "Triger/Scene/SceneCamera.h"
 #include "Triger/Scene/ScriptableEntity.h"
 
+#include "Triger/Renderer/Texture.h"
+
 namespace Triger
 {
 
@@ -63,6 +65,8 @@ namespace Triger
 	struct SpriteRendererComponent
 	{
 		glm::vec4 Color{1.0f, 1.0f, 1.0f, 1.0f};
+		Ref<Texture2D> Texture;
+		float TilingFactor = 1.0f;
 
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent &) = default;
