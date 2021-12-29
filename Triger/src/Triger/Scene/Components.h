@@ -9,19 +9,28 @@
 //--------------------------------------------------------------------------*/
 #pragma once
 
+
+#include "Triger/Scene/SceneCamera.h"
+#include "Triger/Renderer/Texture.h"
+#include "Triger/Core/UUID.h"
+
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
-#include "Triger/Scene/SceneCamera.h"
-#include "Triger/Scene/ScriptableEntity.h"
-
-#include "Triger/Renderer/Texture.h"
-
 namespace Triger
 {
+	struct IDComponent
+	{
+		UUID ID;
+
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+	};
+
 
 	struct TagComponent
 	{
@@ -73,7 +82,9 @@ namespace Triger
 		SpriteRendererComponent(const glm::vec4 &color)
 			: Color(color) {}
 	};
-
+	
+	// Forward declaration
+	class ScriptableEntity;
 	struct NativeScriptComponent
 	{
 		ScriptableEntity *Instance = nullptr;

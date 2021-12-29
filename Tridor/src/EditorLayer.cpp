@@ -541,12 +541,13 @@ namespace Triger
 
 	void EditorLayer::OpenScene()
 	{
-		std::string filepath = FileDialogs::OpenFile("Hazel Scene (*.hazel)\0*.hazel\0");
+		std::string filepath = FileDialogs::OpenFile("Triger Scene (*.triger)\0*.triger\0");
 		if (!filepath.empty())
 		{
 			m_ActiveScene = CreateRef<Scene>();
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+			m_openedFilepath = filepath;
 			OpenScene(filepath);
 		}
 
@@ -590,6 +591,7 @@ namespace Triger
 			if (!filepath.empty())
 			{
 				SceneSerializer serializer(m_ActiveScene);
+				m_openedFilepath = filepath;
 				serializer.Serialize(filepath);
 			}
 		}

@@ -10,6 +10,7 @@
 #pragma once
 
 #include "Triger/Core/Timestep.h"
+#include "Triger/Core/UUID.h"
 #include "Triger/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
@@ -28,6 +29,7 @@ namespace Triger
 		~Scene();
 
 		Entity CreateEntity(const std::string &name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 		
 		void OnRuntimeStart();
