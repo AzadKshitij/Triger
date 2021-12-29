@@ -46,33 +46,58 @@ namespace Triger
 	{
 		ImGui::Begin("Scene Hierarchy");
 
-		m_Context->m_Registry.each([&](auto entityID) {
-			Entity entity{entityID, m_Context.get()};
-			DrawEntityNode(entity);
-		});
+		//if (m_Context)
+		//{
+		//	m_Context->m_Registry.each([&](auto entityID)
+		//		{
+		//			Entity entity{ entityID , m_Context.get() };
+		//			DrawEntityNode(entity);
+		//		});
+		//	if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+		//		m_SelectionContext = {};
+		//	// Right-click on blank space
+		//	if (ImGui::BeginPopupContextWindow(0, 1, false))
+		//	{
+		//		if (ImGui::MenuItem("Create Empty Entity"))
+		//			m_Context->CreateEntity("Empty Entity");
+		//		ImGui::EndPopup();
+		//	}
+		//}
 
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-			m_SelectionContext = {};
+		if (m_Context) {
+			m_Context->m_Registry.each([&](auto entityID)
+				{
+					Entity entity{ entityID , m_Context.get() };
+					DrawEntityNode(entity);
+				});
 
-		// Right-click on blank space
-		if (ImGui::BeginPopupContextWindow(0, 1, false))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
-				m_SelectionContext = m_Context->CreateEntity("Empty Entity");
-			else if (ImGui::MenuItem("Create Camera"))
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_SelectionContext = {};
+
+			// Right-click on blank space
+			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
-				m_SelectionContext = m_Context->CreateEntity("Camera");
-				m_SelectionContext.AddComponent<CameraComponent>();
-				ImGui::CloseCurrentPopup();
-			}
-			else if (ImGui::MenuItem("Create Sprite"))
-			{
-				m_SelectionContext = m_Context->CreateEntity("Sprite");
-				m_SelectionContext.AddComponent<SpriteRendererComponent>();
-				ImGui::CloseCurrentPopup();
-			}
+				if (ImGui::MenuItem("Create Empty Entity"))
+				{
+					m_SelectionContext = m_Context->CreateEntity("Empty Entity");
+					ImGui::CloseCurrentPopup();
+				}
 
-			ImGui::EndPopup();
+				else if (ImGui::MenuItem("Create Camera"))
+				{
+					m_SelectionContext = m_Context->CreateEntity("Camera");
+					m_SelectionContext.AddComponent<CameraComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+				else if (ImGui::MenuItem("Create Sprite"))
+				{
+					m_SelectionContext = m_Context->CreateEntity("Sprite");
+					m_SelectionContext.AddComponent<SpriteRendererComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+
+				ImGui::EndPopup();
+			}
 		}
 
 		ImGui::End();
