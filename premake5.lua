@@ -26,6 +26,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
 	include "vendor/premake"
+	include "Triger/vendor/Box2D"
 	include "Triger/vendor/GLFW"
 	include "Triger/vendor/Glad"
 	include "Triger/vendor/ImGui"
