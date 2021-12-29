@@ -20,3 +20,6 @@
 [submodule "Triger/vendor/ImGuizmo"]
 	path = Triger/vendor/ImGuizmo
 	url = https://github.com/thecherno/imguizmo
+[submodule "Triger/vendor/Box2D"]
+	path = Triger/vendor/Box2D
+	url = https://github.com/thecherno/box2d
